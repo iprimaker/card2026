@@ -16,11 +16,12 @@ export function initImages(){
     const backgroundSelectArea = document.getElementById("backgroundSelectArea");
     const backgroundSelect = document.getElementById("backgroundSelect");
     const characterInput = document.getElementById("character");
-    enableTouchZoom();
 
     if(!backgroundVisible || !backgroundSelectArea || !backgroundSelect || !characterInput){
         console.error("画像関連のHTML要素が見つかりません");
         return;
+
+    enableTouchZoom();
     }
 
     setupBackgroundSelect(backgroundSelect);
