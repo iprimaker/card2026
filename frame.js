@@ -6,14 +6,14 @@ let frameObject = null;
 
 const FRAME_LIST = {
     A: [
-        { id: "frame1", name: "うた（青）", path: "./flameA1.png" },
-        { id: "frame2", name: "ダンス（赤）", path: "./flameA2.png" },
-        { id: "frame3", name: "ファッション（黄）", path: "./flameA3.png" }
+        { id: "frame1", name: "うた（あお）", path: "./flameA1.png" },
+        { id: "frame2", name: "ダンス（あか）", path: "./flameA2.png" },
+        { id: "frame3", name: "ファッション（きいろ）", path: "./flameA3.png" }
     ],
     B: [
-        { id: "frame1", name: "すき", path: "./flameB1.png" },
-        { id: "frame2", name: "ゆめ", path: "./flameB2.png" },
-        { id: "frame3", name: "ゆうじょう", path: "./flameB3.png" }
+        { id: "frame1", name: "すき（ピンク）", path: "./flameB1.png" },
+        { id: "frame2", name: "ゆめ（あお）", path: "./flameB2.png" },
+        { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3.png" }
     ]
 };
 
