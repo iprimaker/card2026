@@ -10,9 +10,8 @@ import { initBuzzPower } from "./buzzPower.js";
 import { getCurrentCardType, setCurrentCardType } from "./config.js";
 
 export function startApp(){
-
-    const cardTypeSelect = document.getElementById("cardType");
     const config = getCurrentCardType();
+    const cardTypeSelect = document.getElementById("cardType");
 
     cardTypeSelect.value = config.type;
 
@@ -22,8 +21,8 @@ export function startApp(){
     initAttribute();
     initText();
     initSerial();
-    initBuzzPower();
     initSave();
+    initBuzzPower();
     initReset();
 
     cardTypeSelect.addEventListener("change", () => {
@@ -31,37 +30,24 @@ export function startApp(){
         location.reload();
     });
 
-    resizePreview();
-
     console.log("Original Card Maker 起動");
-
 }
 
 window.addEventListener("resize", resizePreview);
 
-function resizePreview(){
+setTimeout(resizePreview, 100);
 
+function resizePreview(){
     const preview = document.querySelector(".preview");
     const fabricContainer = document.querySelector(".canvas-container");
 
-    if(!preview || !fabricContainer){
-        return;
-    }
+    if(!preview || !fabricContainer) return;
 
-    const padding = window.innerWidth <= 900 ? 40 : 80;
+    const scale = Math.min(
+        preview.clientWidth / 697,
+        preview.clientHeight / 1016
+    ) * 0.9;
 
-    const availableWidth = preview.clientWidth - padding;
-    const availableHeight = preview.clientHeight - padding;
-
-    let scale = Math.min(
-    availableWidth / 697,
-    availableHeight / 1016
-);
-
-// スマホだけ縮小
-if(window.innerWidth <= 900){
-    scale *= 0.8;
+    fabricContainer.style.transform = `scale(${scale})`;
+    fabricContainer.style.transformOrigin = "center center";
 }
-
-fabricContainer.style.transform = `scale(${scale})`;
-fabricContainer.style.transformOrigin = "center center";
