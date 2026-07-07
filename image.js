@@ -20,8 +20,6 @@ export function initImages(){
     if(!backgroundVisible || !backgroundSelectArea || !backgroundSelect || !characterInput){
         console.error("画像関連のHTML要素が見つかりません");
         return;
-
-    enableTouchZoom();
         
     }
 
