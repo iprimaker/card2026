@@ -48,12 +48,16 @@ function resizePreview(){
         return;
     }
 
+    const padding = window.innerWidth <= 900 ? 40 : 80;
+
+    const availableWidth = preview.clientWidth - padding;
+    const availableHeight = preview.clientHeight - padding;
+
     const scale = Math.min(
-        preview.clientWidth / 697,
-        preview.clientHeight / 1016
-    ) * 0.9;
+        availableWidth / 697,
+        availableHeight / 1016
+    );
 
     fabricContainer.style.transform = `scale(${scale})`;
     fabricContainer.style.transformOrigin = "center center";
-
 }
