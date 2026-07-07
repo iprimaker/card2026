@@ -1,4 +1,4 @@
-import { startApp } from "./modules/app.js";
+import { startApp } from "./app.js";
 
 window.addEventListener("DOMContentLoaded", () => {
 
