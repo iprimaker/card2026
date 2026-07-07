@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アイプリカードメーカーβ版</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../CSS/css/editor.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>アイプリカードメーカーβ版</h1>
+
+    <div class="headerButtons">
+        <button id="newsButton">お知らせ</button>
+        <button id="noticeButton">ご利用にあたって</button>
+    </div>
+</header>
+
+<div id="noticeModal" class="modal">
+    <div class="modalContent">
+        <button id="closeModal" class="closeButton">✕</button>
+
+        <h2>利用にあたっての注意事項</h2>
+
+        <ul>
+            <li>本ツールは個人の趣味の範囲内でご使用ください。</li>
+            <li>作成した画像の商用利用は禁止とさせていただきます。</li>
+            <li>他者が不快になる作品の制作はご遠慮ください。</li>
+            <li>本ツールを使用したことに関する表記や使用報告は不要です。ただ、していただけますと制作者が喜びます。</li>
+            <li>さいごに、皆さんのマイキャラちゃんたちを輝かせてあげてください！</li>
+            <li>管理者：ここっと　連絡先：example@example.com</li>
+        </ul>
+    </div>
+</div>
+
+<div id="newsModal" class="modal">
+    <div class="modalContent">
+        <button id="closeNewsModal" class="closeButton">✕</button>
+
+        <h2>お知らせ</h2>
+
+        <ul>
+            <li>2026/07/06　制作開始</li>
+            <li>2026/07/07　アイプリカードメーカーβ版公開</li>
+        </ul>
+
+        <h2>実装予定</h2>
+
+        <ul>
+            <li>文字追加機能</li>
+            <li>新規フレームや新規属性の素材追加</li>
+            <li>10単位のバズパワーの追加</li>
+        </ul>
+    </div>
+</div>
+
+<div class="editor">
+
+    <aside class="menu">
+
+        <div class="item">
+            <label>カードタイプ</label>
+            <select id="cardType">
+                <option value="A">ひみつのアイプリ</option>
+                <option value="B">おねがいアイプリ</option>
+            </select>
+        </div>
+
+        <div class="item">
+            <label>
+                <input type="checkbox" id="backgroundVisible" checked>
+                背景を表示（OFFで透過になります）
+            </label>
+        </div>
+
+        <div class="item" id="backgroundSelectArea">
+            <label>背景を選択</label>
+            <select id="backgroundSelect"></select>
+        </div>
+
+        <div class="item">
+            <label>キャラクター画像</label>
+            <input type="file" id="character" accept="image/*">
+        </div>
+
+        <div class="item">
+            <label>フレーム</label>
+            <select id="frame"></select>
+        </div>
+
+        <div class="item" id="attributeArea">
+            <label>属性</label>
+            <select id="attribute"></select>
+        </div>
+
+        <div class="item" id="buzzPowerArea">
+            <label>バズパワー</label>
+            <select id="buzzPower"></select>
+        </div>
+
+        <div class="item">
+            <label>
+                <input type="checkbox" id="textVisible" checked>
+                テキスト類を表示　※ただいま準備中
+            </label>
+        </div>
+
+        <div class="item" id="nameArea">
+            <label>名前（4文字）</label>
+            <input id="cardName" type="text" maxlength="4" placeholder="例：み">
+        </div>
+
+        <div class="item" id="costumeArea">
+            <label>衣装名（15文字）</label>
+            <input id="costumeName" type="text" maxlength="15" placeholder="衣装名">
+        </div>
+
+        <button id="resetButton">新規作成</button>
+        <button id="saveButton">PNG保存</button>
+
+    </aside>
+
+    <main class="preview">
+        <div class="canvasContainer">
+            <canvas id="cardCanvas" width="697" height="1016"></canvas>
+        </div>
+    </main>
+
+</div>
+
+<script type="module" src="../js/editor.js"></script>
+
+</body>
+</html>
