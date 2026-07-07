@@ -6,16 +6,16 @@ let attributeObject = null;
 
 const ATTRIBUTE_LIST = {
     A: [
-        { id: "attribute1", name: "うた（通常）", path: "../assets/attribute/A.png" },
-        { id: "attribute2", name: "ダンス（通常）", path: "../assets/attribute/B.png" },
-        { id: "attribute3", name: "ファッション（通常）", path: "../assets/attribute/C.png" },
-        { id: "attribute4", name: "ネオン（バズリウム）", path: "../assets/attribute/D.png" },
-        { id: "attribute5", name: "ジュエル（バズリウム）", path: "../assets/attribute/E.png" },
-        { id: "attribute6", name: "スペース（バズリウム）", path: "../assets/attribute/F.png" },
-        { id: "attribute7", name: "アニマル（バズリウム）", path: "../assets/attribute/G.png" },
-        { id: "attribute8", name: "フラワー（バズリウム）", path: "../assets/attribute/H.png" },
-        { id: "attribute9", name: "メロディ（バズリウム）", path: "../assets/attribute/I.png" },
-        { id: "attribute10", name: "プリンセス（バズリウム）", path: "../assets/attribute/J.png" }
+        { id: "attribute1", name: "うた（通常）", path: "./A.png" },
+        { id: "attribute2", name: "ダンス（通常）", path: "./B.png" },
+        { id: "attribute3", name: "ファッション（通常）", path: "./C.png" },
+        { id: "attribute4", name: "ネオン（バズリウム）", path: "./D.png" },
+        { id: "attribute5", name: "ジュエル（バズリウム）", path: "./E.png" },
+        { id: "attribute6", name: "スペース（バズリウム）", path: "./F.png" },
+        { id: "attribute7", name: "アニマル（バズリウム）", path: "./G.png" },
+        { id: "attribute8", name: "フラワー（バズリウム）", path: "./H.png" },
+        { id: "attribute9", name: "メロディ（バズリウム）", path: "./I.png" },
+        { id: "attribute10", name: "プリンセス（バズリウム）", path: "./J.png" }
     ],
     B: []
 };
