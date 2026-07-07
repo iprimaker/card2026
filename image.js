@@ -6,8 +6,8 @@ let characterObject = null;
 let hideSelectionTimer = null;
 
 const BACKGROUND_LIST = [
-    { id: "background1", name: "ひみつ　Aタイプ", path: "../assets/back/backA1.png" },
-    { id: "background2", name: "おねがい　Bタイプ", path: "../assets/back/backB2.png" }
+    { id: "background1", name: "ひみつ　Aタイプ", path: "./backA1.png" },
+    { id: "background2", name: "おねがい　Bタイプ", path: "./backB2.png" }
 ];
 
 export function initImages(){
