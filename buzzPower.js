@@ -6,21 +6,21 @@ let buzzPowerObject = null;
 
 const BUZZ_POWER_LIST = {
     A: [
-        { id: "buzz1", name: "900", path: "../assets/buzzpower/A900.png" },
-        { id: "buzz2", name: "950", path: "../assets/buzzpower/A950.png" },
-        { id: "buzz3", name: "1000", path: "../assets/buzzpower/A1000.png" },
-        { id: "buzz4", name: "1050", path: "../assets/buzzpower/A1050.png" },
-        { id: "buzz5", name: "1100", path: "../assets/buzzpower/A1100.png" },
-        { id: "buzz6", name: "1150", path: "../assets/buzzpower/A1150.png" },
-        { id: "buzz7", name: "1200", path: "../assets/buzzpower/A1200.png" }, 
-        { id: "buzz8", name: "1250", path: "../assets/buzzpower/A1250.png" },
-        { id: "buzz9", name: "1300", path: "../assets/buzzpower/A1300.png" },
-        { id: "buzz10", name: "1320", path: "../assets/buzzpower/A1320.png" },
-        { id: "buzz11", name: "1350", path: "../assets/buzzpower/A1350.png" },
-        { id: "buzz12", name: "1400", path: "../assets/buzzpower/A1400.png" }
+        { id: "buzz1", name: "900", path: "./A900.png" },
+        { id: "buzz2", name: "950", path: "./A950.png" },
+        { id: "buzz3", name: "1000", path: "./A1000.png" },
+        { id: "buzz4", name: "1050", path: "./A1050.png" },
+        { id: "buzz5", name: "1100", path: "./A1100.png" },
+        { id: "buzz6", name: "1150", path: "./A1150.png" },
+        { id: "buzz7", name: "1200", path: "./A1200.png" }, 
+        { id: "buzz8", name: "1250", path: "./A1250.png" },
+        { id: "buzz9", name: "1300", path: "./A1300.png" },
+        { id: "buzz10", name: "1320", path: "./A1320.png" },
+        { id: "buzz11", name: "1350", path: "./A1350.png" },
+        { id: "buzz12", name: "1400", path: "./A1400.png" }
     ],
     B: [ 
-        { id: "buzz1", name: "選択できません", path: "../assets/buzzpower/B900.png" }
+        { id: "buzz1", name: "只今準備中です", path: "../assets/buzzpower/B900.png" }
     ]
 };
 
