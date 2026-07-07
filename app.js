@@ -53,11 +53,15 @@ function resizePreview(){
     const availableWidth = preview.clientWidth - padding;
     const availableHeight = preview.clientHeight - padding;
 
-    const scale = Math.min(
-        availableWidth / 697,
-        availableHeight / 1016
-    );
+    let scale = Math.min(
+    availableWidth / 697,
+    availableHeight / 1016
+);
 
-    fabricContainer.style.transform = `scale(${scale})`;
-    fabricContainer.style.transformOrigin = "center center";
+// スマホだけ縮小
+if(window.innerWidth <= 900){
+    scale *= 0.8;
 }
+
+fabricContainer.style.transform = `scale(${scale})`;
+fabricContainer.style.transformOrigin = "center center";
