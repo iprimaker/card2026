@@ -22,6 +22,7 @@ export function initImages(){
         return;
 
     enableTouchZoom();
+        
     }
 
     setupBackgroundSelect(backgroundSelect);
