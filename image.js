@@ -16,6 +16,7 @@ export function initImages(){
     const backgroundSelectArea = document.getElementById("backgroundSelectArea");
     const backgroundSelect = document.getElementById("backgroundSelect");
     const characterInput = document.getElementById("character");
+    enableTouchZoom();
 
     if(!backgroundVisible || !backgroundSelectArea || !backgroundSelect || !characterInput){
         console.error("画像関連のHTML要素が見つかりません");
@@ -186,4 +187,53 @@ function startHideSelectionTimer(){
         canvas.discardActiveObject();
         canvas.requestRenderAll();
     }, 5000);
+}
+
+function enableTouchZoom(){
+
+    const canvas = getCanvas();
+
+    if(!canvas) return;
+
+    let lastDistance = null;
+
+    canvas.upperCanvasEl.addEventListener("touchmove", (e) => {
+
+        if(e.touches.length !== 2) return;
+
+        e.preventDefault();
+
+        const activeObject = canvas.getActiveObject();
+
+        if(!activeObject || activeObject.layerType !== "character") return;
+
+        const touch1 = e.touches[0];
+        const touch2 = e.touches[1];
+
+        const dx = touch1.clientX - touch2.clientX;
+        const dy = touch1.clientY - touch2.clientY;
+
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if(lastDistance){
+
+            const scaleChange = distance / lastDistance;
+
+            activeObject.scaleX *= scaleChange;
+            activeObject.scaleY *= scaleChange;
+
+            activeObject.setCoords();
+
+            canvas.requestRenderAll();
+
+        }
+
+        lastDistance = distance;
+
+    }, { passive:false });
+
+    canvas.upperCanvasEl.addEventListener("touchend", () => {
+        lastDistance = null;
+    });
+
 }
