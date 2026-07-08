@@ -1,6 +1,7 @@
 import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
+import { updateTextStyle } from "./text.js";
 
 let frameObject = null;
 
