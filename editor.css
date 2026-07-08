@@ -1,3 +1,18 @@
+@font-face{
+    font-family:"NameFont";
+    src:url("./fonts/name.ttf") format("truetype");
+}
+
+@font-face{
+    font-family:"CostumeFont";
+    src:url("./fonts/costume.otf") format("opentype");
+}
+
+@font-face{
+    font-family:"SerialFont";
+    src:url("./fonts/serial.ttf") format("truetype");
+}
+
 *{
     margin:0;
     padding:0;
