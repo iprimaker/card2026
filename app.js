@@ -38,34 +38,44 @@ window.addEventListener("resize", resizePreview);
 setTimeout(resizePreview, 100);
 
 function resizePreview(){
-    const preview = document.querySelector(".preview");
-    const fabricContainer = document.querySelector(".canvas-container");
 
-    if(!preview || !fabricContainer) return;
+    const fabricContainer = document.querySelector(".canvas-container");
+    const header = document.querySelector("header");
+
+    if(!fabricContainer || !header) return;
 
     const CARD_WIDTH = 697;
     const CARD_HEIGHT = 1016;
+
+    const margin = 16;
 
     let availableWidth;
     let availableHeight;
 
     if(window.innerWidth <= 900){
-        availableWidth = window.innerWidth - 24;
 
-        const headerHeight = document.querySelector("header").offsetHeight;
-        availableHeight = window.innerHeight - headerHeight - 24;
+        // スマホ
+        availableWidth = window.innerWidth - margin * 2;
+        availableHeight = window.innerHeight - header.offsetHeight - margin * 2;
+
     }else{
+
+        const preview = document.querySelector(".preview");
+
         availableWidth = preview.clientWidth - 40;
         availableHeight = preview.clientHeight - 40;
+
     }
 
-    let scale = Math.min(
+    const scale = Math.min(
         availableWidth / CARD_WIDTH,
-        availableHeight / CARD_HEIGHT
+        availableHeight / CARD_HEIGHT,
+        1
     );
 
-    scale = Math.min(scale, 1);
-
-    fabricContainer.style.transform = `scale(${scale})`;
+    fabricContainer.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    fabricContainer.style.position = "absolute";
+    fabricContainer.style.left = "50%";
+    fabricContainer.style.top = "50%";
     fabricContainer.style.transformOrigin = "center center";
 }
