@@ -14,7 +14,7 @@ const TEXT_STYLE = {
                 angle: -30,
                 fontFamily: "Zen Maru Gothic",
                 fontSize: 28,
-                fontWeight: "Black",
+                fontWeight: 900,
                 fill: "#E4D3A7",
                 stroke: null,
                 strokeWidth: 0
@@ -33,10 +33,10 @@ const TEXT_STYLE = {
             name: {
                 fontFamily: "Zen Maru Gothic",
                 fontSize: 58,
-                fontWeight: "Black",
+                fontWeight: 900,
                 fill: "#E4D3A7",
                 stroke: null,
-                strokeWidth: 6
+                strokeWidth: 0
             },
             costume: {
                 fontFamily: "A_CostumeFont",
@@ -52,10 +52,10 @@ const TEXT_STYLE = {
             name: {
                 fontFamily: "Zen Maru Gothic",
                 fontSize: 58,
-                fontWeight: "Black",
+                fontWeight: 900,
                 fill: "#E4D3A7",
                 stroke: null,
-                strokeWidth: 6
+                strokeWidth: 0
             },
             costume: {
                 fontFamily: "A_CostumeFont",
