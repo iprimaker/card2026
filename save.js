@@ -27,4 +27,3 @@ function saveImage(){
 
     alert("保存しました！");
 }
-}
