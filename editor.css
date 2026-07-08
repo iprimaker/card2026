@@ -295,51 +295,6 @@ header h1{
     border-radius:999px;
 }
 
-.saveToast{
-    position:fixed;
-    left:50%;
-    bottom:40px;
-    transform:translateX(-50%) translateY(30px);
-    opacity:0;
-
-    display:flex;
-    align-items:center;
-    gap:10px;
-
-    padding:14px 24px;
-    border-radius:999px;
-
-    background:linear-gradient(135deg,#ff78b6,#7aa7ff);
-    color:white;
-
-    font-size:17px;
-    font-weight:bold;
-
-    box-shadow:0 14px 35px rgba(90,70,130,.28);
-
-    pointer-events:none;
-    z-index:9999;
-
-    transition:.35s;
-}
-
-.saveToast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-}
-
-.saveSparkle{
-    font-size:24px;
-    animation:sparkle 1s ease infinite;
-}
-
-
-@keyframes sparkle{
-    0%{ transform:scale(1) rotate(0deg); }
-    50%{ transform:scale(1.35) rotate(15deg); }
-    100%{ transform:scale(1) rotate(0deg); }
-}
-
 
 @media(max-width:900px){
 
