@@ -20,7 +20,7 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                fontFamily: "A_CostumeFont",
+                fontFamily: "Dela Gothic One",
                 fontSize: 28,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
@@ -39,7 +39,7 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                fontFamily: "A_CostumeFont",
+                fontFamily: "Dela Gothic One",
                 fontSize: 28,
                 fontWeight: "normal",
                 fill: "#ffffff",
@@ -58,7 +58,7 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                fontFamily: "A_CostumeFont",
+                fontFamily: "Dela Gothic One",
                 fontSize: 28,
                 fontWeight: "normal",
                 fill: "#ffffff",
