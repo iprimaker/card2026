@@ -1,4 +1,4 @@
-import { initCanvas, getCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
+import { initCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
 import { initImages } from "./image.js";
 import { initFrame } from "./frame.js";
 import { initAttribute } from "./attribute.js";
@@ -41,9 +41,9 @@ export function startApp(){
 function resizePreview(){
 
     const preview = document.querySelector(".preview");
-    const canvas = getCanvas();
+    const fabricContainer = document.querySelector(".canvas-container");
 
-    if(!preview || !canvas) return;
+    if(!preview || !fabricContainer) return;
 
     const margin = window.innerWidth <= 900 ? 24 : 40;
 
@@ -56,12 +56,6 @@ function resizePreview(){
         1
     );
 
-    canvas.setZoom(scale);
-
-    canvas.setDimensions({
-        width: CARD_WIDTH * scale,
-        height: CARD_HEIGHT * scale
-    });
-
-    canvas.requestRenderAll();
+    fabricContainer.style.transform = `scale(${scale})`;
+    fabricContainer.style.transformOrigin = "center center";
 }
