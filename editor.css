@@ -1,11 +1,11 @@
 @font-face{
     font-family:"A_NameFont";
-    src:url("./A_name.ttf") format("truetype");
+    src:url("./font_A_name.ttf") format("truetype");
 }
 
 @font-face{
     font-family:"A_CostumeFont";
-    src:url("./A_costume.ttf") format("truetype");
+    src:url("./font_A_costume.ttf") format("truetype");
 }
 
 *{
