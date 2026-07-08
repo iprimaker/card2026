@@ -7,8 +7,7 @@ const layerOrder = {
     attribute:4,
     text:5,
     serial:6,
-    buzzPower:7,
-    watermark:8
+    buzzPower:7
 };
 
 export function sortLayers(){
