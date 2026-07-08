@@ -19,21 +19,9 @@ header{
     justify-content:space-between;
     align-items:center;
     padding:0 30px;
-
-    background:linear-gradient(
-        135deg,
-        rgba(255,248,205,.45),
-        rgba(255,241,180,.35)
-    );
-
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
-
-    border-bottom:1px solid rgba(255,255,255,.5);
-
-    box-shadow:
-        0 6px 24px rgba(120,90,160,.08);
-
+    background:rgba(255,255,255,.75);
+    backdrop-filter:blur(14px);
+    box-shadow:0 2px 18px rgba(120,90,160,.15);
     z-index:10;
 }
 
