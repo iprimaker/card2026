@@ -1,3 +1,4 @@
+import { preloadImages } from "./preload.js";
 import { initCanvas, getCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
 import { initImages } from "./image.js";
 import { initFrame } from "./frame.js";
