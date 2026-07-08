@@ -38,15 +38,23 @@ window.addEventListener("resize", resizePreview);
 setTimeout(resizePreview, 100);
 
 function resizePreview(){
+
     const preview = document.querySelector(".preview");
     const fabricContainer = document.querySelector(".canvas-container");
 
     if(!preview || !fabricContainer) return;
 
-    const scale = Math.min(
+    let scale = Math.min(
         preview.clientWidth / 697,
         preview.clientHeight / 1016
-    ) * 0.9;
+    );
+
+    // スマホは少し余裕を持たせる
+    if(window.innerWidth <= 900){
+        scale *= 0.72;
+    }else{
+        scale *= 0.9;
+    }
 
     fabricContainer.style.transform = `scale(${scale})`;
     fabricContainer.style.transformOrigin = "center center";
