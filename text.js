@@ -48,7 +48,7 @@ const TEXT_STYLE = {
                 fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: nul,
+                stroke: null,
                 strokeWidth: 0,
                 scaleX: 0.62,
                 scaleY: 1.38,
