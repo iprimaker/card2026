@@ -11,13 +11,13 @@ import { initBuzzPower } from "./buzzPower.js";
 import { getCurrentCardType, setCurrentCardType } from "./config.js";
 
 export function startApp(){
+    preloadImages();
 
     const config = getCurrentCardType();
     const cardTypeSelect = document.getElementById("cardType");
 
     cardTypeSelect.value = config.type;
 
-    preloadImages();
     initCanvas();
     initImages();
     initFrame();
