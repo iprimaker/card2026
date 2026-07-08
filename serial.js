@@ -15,7 +15,7 @@ export function initSerial(){
 
     serialText = new fabric.Text(`${prefix}-${randomNumber}`, {
     left: 638,
-    top: 27,
+    top: 25,
     originX: "center",
 
     fontFamily: "Zen Maru Gothic",
