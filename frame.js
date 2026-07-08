@@ -39,14 +39,13 @@ export function initFrame() {
     });
 
     frameSelect.addEventListener("change", () => {
+    const selected = frames.find(frame => frame.id === frameSelect.value);
 
-        const selected = frames.find(frame => frame.id === frameSelect.value);
-
-        if (selected) {
-            drawFrame(selected.path);
-        }
-
-    });
+    if(selected){
+        drawFrame(selected.path);
+        updateTextStyle();
+    }
+});
 
     if (frames.length > 0) {
         drawFrame(frames[0].path);
