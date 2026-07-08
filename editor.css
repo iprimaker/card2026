@@ -296,17 +296,17 @@ header h1{
         min-height:100vh;
     }
 
-  .preview{
+ .preview{
     order:1;
 
     width:100%;
-    min-height:55vh;
+    min-height:50vh;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    padding:20px;
+    padding:4px 0;   /* ← 上下の余白を小さく */
 
     overflow:hidden;
 }
