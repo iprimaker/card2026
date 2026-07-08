@@ -16,7 +16,7 @@ export function initImages(){
     const backgroundSelect = document.getElementById("backgroundSelect");
     const characterInput = document.getElementById("character");
 
-    if(!backgroundVisible || !backgroundSelectArea || !backgroundSelect || !characterInput){
+    if(!backgroundSelectArea || !backgroundSelect || !characterInput){
         console.error("画像関連のHTML要素が見つかりません");
         return;
     }
@@ -31,20 +31,9 @@ export function initImages(){
         }
     });
 
-    backgroundVisible.addEventListener("change", () => {
-        const visible = backgroundVisible.checked;
-
-        backgroundSelectArea.style.display = visible ? "block" : "none";
-
-        if(backgroundObject){
-            backgroundObject.visible = visible;
-            sortLayers();
-        }
-    });
-
     characterInput.addEventListener("change", uploadCharacter);
 
-    backgroundSelectArea.style.display = backgroundVisible.checked ? "block" : "none";
+    backgroundSelectArea.style.display = "block";
 
     if(BACKGROUND_LIST.length > 0){
         backgroundSelect.value = BACKGROUND_LIST[0].id;
@@ -100,7 +89,7 @@ function drawBackground(path){
 });
 
         img.layerType = "background";
-        img.visible = document.getElementById("backgroundVisible").checked;
+        img.visible = true;
 
         backgroundObject = img;
 
