@@ -20,25 +20,33 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     // お知らせ
-    const newsButton = document.getElementById("newsButton");
-    const newsModal = document.getElementById("newsModal");
-    const closeNewsModal = document.getElementById("closeNewsModal");
+const NEWS_VERSION = "20260709-1";
 
-    if(newsButton && newsModal && closeNewsModal){
-        if(localStorage.getItem("newsRead") === "true"){
-            newsButton.classList.add("read");
-        }
+const newsButton = document.getElementById("newsButton");
+const newsModal = document.getElementById("newsModal");
+const closeNewsModal = document.getElementById("closeNewsModal");
 
-        newsButton.addEventListener("click", () => {
-            newsModal.classList.add("show");
-            localStorage.setItem("newsRead", "true");
-            newsButton.classList.add("read");
-        });
+if(newsButton && newsModal && closeNewsModal){
 
-        closeNewsModal.addEventListener("click", () => {
-            newsModal.classList.remove("show");
-        });
+    const readVersion = localStorage.getItem("newsReadVersion");
+
+    if(readVersion === NEWS_VERSION){
+        newsButton.classList.add("read");
+    }else{
+        newsButton.classList.remove("read");
     }
+
+    newsButton.addEventListener("click", () => {
+        newsModal.classList.add("show");
+
+        localStorage.setItem("newsReadVersion", NEWS_VERSION);
+        newsButton.classList.add("read");
+    });
+
+    closeNewsModal.addEventListener("click", () => {
+        newsModal.classList.remove("show");
+    });
+}
 
     // 使い方ガイド
     const guideButton = document.getElementById("guideButton");
