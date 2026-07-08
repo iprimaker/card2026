@@ -80,7 +80,7 @@ const TEXT_STYLE = {
                 scaleX: 0.75,
                 scaleY: 1.22,
                 shadow: new fabric.Shadow({
-                    color: "rgba(0,0,0,0.35)",
+                    color: "#2059D1,
                     blur: 4,
                     offsetX: 1,
                     offsetY: 2
