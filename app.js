@@ -1,4 +1,4 @@
-import { initCanvas } from "./canvas.js";
+import { initCanvas, getCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
 import { initImages } from "./image.js";
 import { initFrame } from "./frame.js";
 import { initAttribute } from "./attribute.js";
@@ -10,6 +10,7 @@ import { initBuzzPower } from "./buzzPower.js";
 import { getCurrentCardType, setCurrentCardType } from "./config.js";
 
 export function startApp(){
+
     const config = getCurrentCardType();
     const cardTypeSelect = document.getElementById("cardType");
 
@@ -25,44 +26,42 @@ export function startApp(){
     initBuzzPower();
     initReset();
 
+    resizePreview();
+
     cardTypeSelect.addEventListener("change", () => {
         setCurrentCardType(cardTypeSelect.value);
         location.reload();
     });
 
+    window.addEventListener("resize", resizePreview);
+
     console.log("Original Card Maker 起動");
 }
 
-window.addEventListener("resize", resizePreview);
-
-setTimeout(resizePreview, 100);
-
 function resizePreview(){
+
     const preview = document.querySelector(".preview");
-    const fabricContainer = document.querySelector(".canvas-container");
+    const canvas = getCanvas();
 
-    if(!preview || !fabricContainer) return;
+    if(!preview || !canvas) return;
 
-    const CARD_WIDTH = 697;
-    const CARD_HEIGHT = 1016;
+    const margin = window.innerWidth <= 900 ? 24 : 40;
 
-    let scale;
+    const availableWidth = preview.clientWidth - margin;
+    const availableHeight = preview.clientHeight - margin;
 
-    if(window.innerWidth <= 900){
-        const availableWidth = window.innerWidth - 24;
+    const scale = Math.min(
+        availableWidth / CARD_WIDTH,
+        availableHeight / CARD_HEIGHT,
+        1
+    );
 
-        scale = availableWidth / CARD_WIDTH;
-        scale = Math.min(scale, 1);
-    }else{
-        scale = Math.min(
-            preview.clientWidth / CARD_WIDTH,
-            preview.clientHeight / CARD_HEIGHT
-        ) * 0.9;
-    }
+    canvas.setZoom(scale);
 
-    fabricContainer.style.position = "";
-    fabricContainer.style.left = "";
-    fabricContainer.style.top = "";
-    fabricContainer.style.transform = `scale(${scale})`;
-    fabricContainer.style.transformOrigin = "center center";
+    canvas.setDimensions({
+        width: CARD_WIDTH * scale,
+        height: CARD_HEIGHT * scale
+    });
+
+    canvas.requestRenderAll();
 }
