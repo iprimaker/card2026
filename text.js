@@ -20,7 +20,7 @@ const TEXT_STYLE = {
                 fontFamily: "A_CostumeFont",
                 fontSize: 28,
                 fontWeight: "normal",
-                fill: "#E4D3A7",
+                fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0
             }
@@ -31,8 +31,8 @@ const TEXT_STYLE = {
                 fontFamily: "A_NameFont",
                 fontSize: 58,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#ff8ebc",
+                fill: "#E4D3A7",
+                stroke: null,
                 strokeWidth: 6
             },
             costume: {
@@ -50,8 +50,8 @@ const TEXT_STYLE = {
                 fontFamily: "A_NameFont",
                 fontSize: 58,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#ffd95a",
+                fill: "#E4D3A7",
+                stroke: null,
                 strokeWidth: 6
             },
             costume: {
