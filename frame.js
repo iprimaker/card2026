@@ -71,14 +71,14 @@ function drawFrame(path){
 
         console.log("フレーム画像読込成功", img.width, img.height);
 
-        img.set({
-            left: canvas.getWidth() / 2,
-            top: canvas.getHeight() / 2,
-            originX: "center",
-            originY: "center",
-            selectable: false,
-            evented: false
-        });
+       img.set({
+    left: 697 / 2,
+    top: 1016 / 2,
+    originX: "center",
+    originY: "center",
+    selectable: false,
+    evented: false
+});
 
         img.layerType = "frame";
 
