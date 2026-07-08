@@ -63,7 +63,7 @@ const BUZZ_POWER_LIST = {
             { id: "buzz11", name: "1400", path: "./B_yujo_1400.png" }
         ],
 
-          frame3: [
+          frame4: [
             { id: "buzz1", name: "900", path: "./B_yuki_900.png" },
             { id: "buzz2", name: "950", path: "./B_yuki_950.png" },
             { id: "buzz3", name: "1000", path: "./B_yuki_1000.png" },
