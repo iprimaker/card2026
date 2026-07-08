@@ -48,12 +48,12 @@ const TEXT_STYLE = {
                 fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
+                stroke: "#FFFFFF",
+                strokeWidth: 1,
                 scaleX: 0.62,
                 scaleY: 1.38,
                 shadow: new fabric.Shadow({
-                    color: "rgba(0,0,0,0.35)",
+                    color: "＃2059D1,
                     blur: 4,
                     offsetX: 1,
                     offsetY: 2
