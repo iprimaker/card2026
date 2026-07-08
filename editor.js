@@ -47,5 +47,24 @@ window.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+    
+    // 使い方ガイド
+    const guideModal = document.getElementById("guideModal");
+    const closeGuideModal = document.getElementById("closeGuideModal");
 
+    if(guideModal && closeGuideModal){
+
+        // 初回のみ表示
+        if(localStorage.getItem("guideRead") !== "true"){
+            guideModal.classList.add("show");
+        }
+
+        closeGuideModal.addEventListener("click", () => {
+            guideModal.classList.remove("show");
+            localStorage.setItem("guideRead", "true");
+        });
+
+    }
+
+});
 });
