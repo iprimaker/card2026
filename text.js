@@ -29,7 +29,7 @@ const COSTUME_STYLE = {
     originX: "center",
     originY: "center",
 
-    fontFamily: "Zen Maru Gothic",
+    fontFamily: "A_costume.ttf",
     fontSize: 28,
     fontWeight: "bold",
 
