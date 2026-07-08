@@ -38,23 +38,33 @@ window.addEventListener("resize", resizePreview);
 setTimeout(resizePreview, 100);
 
 function resizePreview(){
-
     const preview = document.querySelector(".preview");
     const fabricContainer = document.querySelector(".canvas-container");
 
     if(!preview || !fabricContainer) return;
 
+    const CARD_WIDTH = 697;
+    const CARD_HEIGHT = 1016;
+
+    let availableWidth;
+    let availableHeight;
+
+    if(window.innerWidth <= 900){
+        availableWidth = window.innerWidth - 24;
+
+        const headerHeight = document.querySelector("header").offsetHeight;
+        availableHeight = window.innerHeight - headerHeight - 24;
+    }else{
+        availableWidth = preview.clientWidth - 40;
+        availableHeight = preview.clientHeight - 40;
+    }
+
     let scale = Math.min(
-        preview.clientWidth / 697,
-        preview.clientHeight / 1016
+        availableWidth / CARD_WIDTH,
+        availableHeight / CARD_HEIGHT
     );
 
-    // スマホは少し余裕を持たせる
-    if(window.innerWidth <= 900){
-        scale *= 0.72;
-    }else{
-        scale *= 0.9;
-    }
+    scale = Math.min(scale, 1);
 
     fabricContainer.style.transform = `scale(${scale})`;
     fabricContainer.style.transformOrigin = "center center";
