@@ -16,9 +16,10 @@ function saveImage(){
     canvas.renderAll();
 
     const image = canvas.toDataURL({
-        format: "png",
-        quality: 1
-    });
+    format: "png",
+    quality: 1,
+    multiplier: 3
+});
 
     const link = document.createElement("a");
     link.href = image;
