@@ -12,9 +12,9 @@ const TEXT_STYLE = {
                 left: 82,
                 top: 62,
                 angle: -30,
-                fontFamily: "A_NameFont",
+                fontFamily: "Zen Maru Gothic",
                 fontSize: 28,
-                fontWeight: "normal",
+                fontWeight: "bold",
                 fill: "#E4D3A7",
                 stroke: null,
                 strokeWidth: 0
@@ -31,9 +31,9 @@ const TEXT_STYLE = {
 
         frame2: {
             name: {
-                fontFamily: "A_NameFont",
+                fontFamily: "Zen Maru Gothic",
                 fontSize: 58,
-                fontWeight: "normal",
+                fontWeight: "bold",
                 fill: "#E4D3A7",
                 stroke: null,
                 strokeWidth: 6
@@ -50,9 +50,9 @@ const TEXT_STYLE = {
 
         frame3: {
             name: {
-                fontFamily: "A_NameFont",
+                fontFamily: "Zen Maru Gothic",
                 fontSize: 58,
-                fontWeight: "normal",
+                fontWeight: "bold",
                 fill: "#E4D3A7",
                 stroke: null,
                 strokeWidth: 6
