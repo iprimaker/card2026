@@ -51,8 +51,8 @@ const TEXT_STYLE = {
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.75,
-                scaleY: 1.22,
+                scaleX: 0.62,
+                scaleY: 1.38,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
