@@ -38,7 +38,7 @@ const TEXT_STYLE = {
                 top: 62,
                 angle: -30,
                 fontFamily: "Zen Maru Gothic",
-                fontSize: 40,
+                fontSize: 28,
                 fontWeight: 900,
                 fill: "#E4D3A7",
                 stroke: null,
@@ -46,7 +46,7 @@ const TEXT_STYLE = {
             },
             costume: {
                 fontFamily: "Dela Gothic One",
-                fontSize: 22,
+                fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
