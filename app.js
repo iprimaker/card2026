@@ -7,7 +7,6 @@ import { initSerial } from "./serial.js";
 import { initSave } from "./save.js";
 import { initReset } from "./reset.js";
 import { initBuzzPower } from "./buzzPower.js";
-import { initWatermark } from "./watermark.js";
 import { getCurrentCardType, setCurrentCardType } from "./config.js";
 
 export function startApp(){
@@ -23,7 +22,6 @@ export function startApp(){
     initText();
     initSerial();
     initSave();
-    initWatermark();
     initBuzzPower();
     initReset();
 
