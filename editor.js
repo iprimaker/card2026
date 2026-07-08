@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     // お知らせ
-const NEWS_VERSION = "20260709-1";
+const NEWS_VERSION = "20260709-3";
 
 const newsButton = document.getElementById("newsButton");
 const newsModal = document.getElementById("newsModal");
