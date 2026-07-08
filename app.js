@@ -65,5 +65,3 @@ function resizePreview(){
 
     canvas.requestRenderAll();
 }
-
-app.jsは変える必要ある？
