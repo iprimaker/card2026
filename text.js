@@ -17,17 +17,16 @@ const COSTUME_PATH_A = [
     { x:332, y:925, angle:-1 },
     { x:353, y:922, angle:0 },
     { x:374, y:919, angle:1 },
-
     { x:395, y:916, angle:2 },
-    { x:416, y:914, angle:3 },
-    { x:437, y:912, angle:4 },
-    { x:458, y:911, angle:5 },
-    { x:479, y:910, angle:6 },
-    { x:500, y:910, angle:7 },
-    { x:521, y:911, angle:8 },
-    { x:542, y:912, angle:9 },
-    { x:563, y:914, angle:10 },
-    { x:584, y:916, angle:11 }
+    { x:416, y:913, angle:3 },
+    { x:437, y:910, angle:4 },
+    { x:458, y:907, angle:5 },
+    { x:479, y:904, angle:6 },
+    { x:500, y:901, angle:7 },
+    { x:521, y:898, angle:8 },
+    { x:542, y:895, angle:9 },
+    { x:563, y:892, angle:10 },
+    { x:584, y:889, angle:11 }
 ];
 
 const TEXT_STYLE = {
