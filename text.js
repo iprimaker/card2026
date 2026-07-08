@@ -38,7 +38,7 @@ const TEXT_STYLE = {
                 top: 62,
                 angle: -30,
                 fontFamily: "Zen Maru Gothic",
-                fontSize: 28,
+                fontSize: 40,
                 fontWeight: 900,
                 fill: "#E4D3A7",
                 stroke: null,
