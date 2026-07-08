@@ -3,7 +3,8 @@ import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
 
 let nameText = null;
-let costumeText = null;
+let costumeLetters = [];
+let currentCostumeStyle = null;
 
 const TEXT_STYLE = {
     A: {
@@ -20,12 +21,25 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
                 fontFamily: "Dela Gothic One",
-                fontSize: 28,
+                fontSize: 24,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
-                strokeWidth: 0
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         },
 
@@ -39,12 +53,25 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
                 fontFamily: "Dela Gothic One",
-                fontSize: 28,
+                fontSize: 24,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#ff8ebc",
-                strokeWidth: 4
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         },
 
@@ -58,12 +85,25 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
                 fontFamily: "Dela Gothic One",
-                fontSize: 28,
+                fontSize: 24,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#ffd95a",
-                strokeWidth: 4
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         }
     },
@@ -79,12 +119,25 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                fontFamily: "B_CostumeFont",
-                fontSize: 26,
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
+                fontFamily: "Dela Gothic One",
+                fontSize: 24,
                 fontWeight: "normal",
-                fill: "#E4D3A7",
+                fill: "#FFFFFF",
                 stroke: null,
-                strokeWidth: 0
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         },
 
@@ -98,12 +151,25 @@ const TEXT_STYLE = {
                 strokeWidth: 6
             },
             costume: {
-                fontFamily: "B_CostumeFont",
-                fontSize: 26,
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
+                fontFamily: "Dela Gothic One",
+                fontSize: 24,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#7ac8ff",
-                strokeWidth: 4
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         },
 
@@ -117,12 +183,25 @@ const TEXT_STYLE = {
                 strokeWidth: 6
             },
             costume: {
-                fontFamily: "B_CostumeFont",
-                fontSize: 26,
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
+                fontFamily: "Dela Gothic One",
+                fontSize: 24,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#ffb36b",
-                strokeWidth: 4
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         },
 
@@ -136,12 +215,25 @@ const TEXT_STYLE = {
                 strokeWidth: 6
             },
             costume: {
-                fontFamily: "B_CostumeFont",
-                fontSize: 26,
+                left: 205,
+                top: 945,
+                angle: -4,
+                spacing: 25,
+                curve: 5,
+
+                fontFamily: "Dela Gothic One",
+                fontSize: 24,
                 fontWeight: "normal",
-                fill: "#ffffff",
-                stroke: "#ffb36b",
-                strokeWidth: 4
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+
+                shadow: new fabric.Shadow({
+                    color: "rgba(0,0,0,0.35)",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
             }
         }
     }
@@ -150,15 +242,6 @@ const TEXT_STYLE = {
 const NAME_BASE = {
     left: 348,
     top: 820,
-    originX: "center",
-    originY: "center",
-    selectable: false,
-    evented: false
-};
-
-const COSTUME_BASE = {
-    left: 348,
-    top: 900,
     originX: "center",
     originY: "center",
     selectable: false,
@@ -193,10 +276,7 @@ export function initText(){
     nameText = new fabric.Text("NAME", NAME_BASE);
     nameText.layerType = "text";
 
-    costumeText = new fabric.Text("COSTUME", COSTUME_BASE);
-    costumeText.layerType = "text";
-
-    canvas.add(nameText, costumeText);
+    canvas.add(nameText);
 
     updateTextStyle();
 
@@ -204,7 +284,10 @@ export function initText(){
         const visible = textVisible ? textVisible.checked : true;
 
         nameText.visible = visible;
-        costumeText.visible = visible;
+
+        costumeLetters.forEach(letter => {
+            letter.visible = visible;
+        });
 
         if(nameArea) nameArea.style.display = visible ? "block" : "none";
         if(costumeArea) costumeArea.style.display = visible ? "block" : "none";
@@ -228,8 +311,12 @@ export function initText(){
 
     if(costumeInput){
         costumeInput.addEventListener("input", () => {
-            costumeText.text = costumeInput.value || "COSTUME";
-            canvas.requestRenderAll();
+            drawCostumeLetters(
+                costumeInput.value || "COSTUME",
+                currentCostumeStyle
+            );
+
+            applyTextVisible();
         });
     }
 
@@ -241,8 +328,9 @@ export function updateTextStyle(){
     const canvas = getCanvas();
     const config = getCurrentCardType();
     const frameSelect = document.getElementById("frame");
+    const costumeInput = document.getElementById("costumeName");
 
-    if(!canvas || !nameText || !costumeText) return;
+    if(!canvas || !nameText) return;
 
     const frameId = frameSelect ? frameSelect.value : "frame1";
 
@@ -256,9 +344,79 @@ export function updateTextStyle(){
         ...styleSet.name
     });
 
-    costumeText.set({
-        ...COSTUME_BASE,
-        ...styleSet.costume
+    currentCostumeStyle = styleSet.costume;
+
+    drawCostumeLetters(
+        costumeInput?.value || "COSTUME",
+        currentCostumeStyle
+    );
+
+    sortLayers();
+    canvas.requestRenderAll();
+}
+
+function drawCostumeLetters(text, style){
+
+    const canvas = getCanvas();
+
+    if(!canvas || !style) return;
+
+    costumeLetters.forEach(letter => {
+        canvas.remove(letter);
+    });
+
+    costumeLetters = [];
+
+    const startX = style.left ?? 205;
+    const startY = style.top ?? 945;
+    const baseAngle = style.angle ?? -4;
+    const curve = style.curve ?? 5;
+
+    const chars = [...text];
+    const maxWidth = style.maxWidth ?? 270;
+
+    let spacing = style.spacing ?? 25;
+
+    if(chars.length > 1){
+        spacing = Math.min(spacing, maxWidth / (chars.length - 1));
+    }
+
+    chars.forEach((char, index) => {
+
+        const x = startX + index * spacing;
+
+        const curveY = Math.sin(index / Math.max(chars.length - 1, 1) * Math.PI) * curve;
+        const y = startY - curveY;
+
+        const letterAngle = baseAngle + index * 0.25;
+
+        const letter = new fabric.Text(char, {
+            left: x,
+            top: y,
+            angle: letterAngle,
+
+            originX: "center",
+            originY: "center",
+
+            fontFamily: style.fontFamily || "Dela Gothic One",
+            fontSize: style.fontSize || 24,
+            fontWeight: style.fontWeight || "normal",
+
+            fill: style.fill || "#FFFFFF",
+
+            stroke: style.stroke || null,
+            strokeWidth: style.strokeWidth || 0,
+
+            shadow: style.shadow || null,
+
+            selectable: false,
+            evented: false
+        });
+
+        letter.layerType = "text";
+
+        costumeLetters.push(letter);
+        canvas.add(letter);
     });
 
     sortLayers();
