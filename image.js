@@ -12,7 +12,6 @@ const BACKGROUND_LIST = [
 
 export function initImages(){
 
-    const backgroundVisible = document.getElementById("backgroundVisible");
     const backgroundSelectArea = document.getElementById("backgroundSelectArea");
     const backgroundSelect = document.getElementById("backgroundSelect");
     const characterInput = document.getElementById("character");
