@@ -5,6 +5,40 @@ import { getCurrentCardType } from "./config.js";
 let nameText = null;
 let costumeText = null;
 
+const NAME_STYLE = {
+    left: 348,
+    top: 820,
+    originX: "center",
+    originY: "center",
+
+    fontFamily: "Zen Maru Gothic",
+    fontSize: 58,
+    fontWeight: "bold",
+
+    fill: "#ffffff",
+    stroke: "#ffcf4f",
+    strokeWidth: 8,
+
+    selectable: false,
+    evented: false
+};
+
+const COSTUME_STYLE = {
+    left: 348,
+    top: 900,
+    originX: "center",
+    originY: "center",
+
+    fontFamily: "Zen Maru Gothic",
+    fontSize: 28,
+    fontWeight: "bold",
+
+    fill: "#444444",
+
+    selectable: false,
+    evented: false
+};
+
 export function initText(){
 
     const canvas = getCanvas();
@@ -26,53 +60,37 @@ export function initText(){
         costumeInput.maxLength = config.maxCostume;
     }
 
-    // テキスト機能は準備中のため、OFF固定
     if(textVisible){
-        textVisible.checked = false;
-        textVisible.disabled = true;
+        textVisible.checked = true;
+        textVisible.disabled = false;
     }
 
-    nameText = new fabric.Text("NAME", {
-        left: 30,
-        top: 30,
-        originX: "center",
-        fontSize: 20,
-        fontWeight: "bold",
-        fill: "#ffffff",
-        stroke: "#fffc5f",
-        strokeWidth: 3,
-        selectable: false,
-        evented: false
-    });
+    nameText = new fabric.Text("NAME", NAME_STYLE);
     nameText.layerType = "text";
 
-    costumeText = new fabric.Text("COSTUME", {
-        left: 175,
-        top: 425,
-        originX: "center",
-        fontSize: 18,
-        fill: "#333333",
-        selectable: false,
-        evented: false
-    });
+    costumeText = new fabric.Text("COSTUME", COSTUME_STYLE);
     costumeText.layerType = "text";
 
     canvas.add(nameText, costumeText);
 
     function applyTextVisible(){
-        const visible = false;
+        const visible = textVisible ? textVisible.checked : true;
 
         nameText.visible = visible;
         costumeText.visible = visible;
 
-        if(nameArea) nameArea.style.display = "none";
-        if(costumeArea) costumeArea.style.display = "none";
+        if(nameArea) nameArea.style.display = visible ? "block" : "none";
+        if(costumeArea) costumeArea.style.display = visible ? "block" : "none";
 
         sortLayers();
         canvas.requestRenderAll();
     }
 
     applyTextVisible();
+
+    if(textVisible){
+        textVisible.addEventListener("change", applyTextVisible);
+    }
 
     if(nameInput){
         nameInput.addEventListener("input", () => {
