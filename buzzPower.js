@@ -24,19 +24,43 @@ const BUZZ_POWER_LIST = {
         frame1: [
             { id: "buzz1", name: "900", path: "./B_suki_900.png" },
             { id: "buzz2", name: "950", path: "./B_suki_950.png" },
-            { id: "buzz3", name: "1000", path: "./B_suki_1000.png" }
+            { id: "buzz1", name: "1000", path: "./B_suki_1000.png" },
+            { id: "buzz2", name: "1050", path: "./B_suki_1050.png" },
+            { id: "buzz1", name: "1100", path: "./B_suki_1100.png" },
+            { id: "buzz2", name: "1150", path: "./B_suki_1150.png" },
+            { id: "buzz1", name: "1200", path: "./B_suki_1200.png" },
+            { id: "buzz2", name: "1250", path: "./B_suki_1250.png" },
+            { id: "buzz1", name: "1300", path: "./B_suki_1300.png" },
+            { id: "buzz2", name: "1350", path: "./B_suki_1350.png" },
+            { id: "buzz3", name: "1200", path: "./B_suki_1400.png" }
         ],
 
         frame2: [
             { id: "buzz1", name: "900", path: "./B_yume_900.png" },
             { id: "buzz2", name: "950", path: "./B_yume_950.png" },
-            { id: "buzz3", name: "1000", path: "./B_yume_1000.png" }
+            { id: "buzz1", name: "1000", path: "./B_yume_1000.png" },
+            { id: "buzz2", name: "1050", path: "./B_yume_1050.png" },
+            { id: "buzz1", name: "1100", path: "./B_yume_1100.png" },
+            { id: "buzz2", name: "1150", path: "./B_yume_1150.png" },
+            { id: "buzz1", name: "1200", path: "./B_yume_1200.png" },
+            { id: "buzz2", name: "1250", path: "./B_yume_1250.png" },
+            { id: "buzz1", name: "1300", path: "./B_yume_1300.png" },
+            { id: "buzz2", name: "1350", path: "./B_yume_1350.png" },
+            { id: "buzz3", name: "1200", path: "./B_yume_1400.png" }
         ],
 
         frame3: [
-            { id: "buzz1", name: "900", path: "./B_yuujou_900.png" },
-            { id: "buzz2", name: "950", path: "./B_yuujou_950.png" },
-            { id: "buzz3", name: "1000", path: "./B_yuujou_1000.png" }
+            { id: "buzz1", name: "900", path: "./B_yu_900.png" },
+            { id: "buzz2", name: "950", path: "./B_yume_950.png" },
+            { id: "buzz1", name: "1000", path: "./B_yume_1000.png" },
+            { id: "buzz2", name: "1050", path: "./B_yume_1050.png" },
+            { id: "buzz1", name: "1100", path: "./B_yume_1100.png" },
+            { id: "buzz2", name: "1150", path: "./B_yume_1150.png" },
+            { id: "buzz1", name: "1200", path: "./B_yume_1200.png" },
+            { id: "buzz2", name: "1250", path: "./B_yume_1250.png" },
+            { id: "buzz1", name: "1300", path: "./B_yume_1300.png" },
+            { id: "buzz2", name: "1350", path: "./B_yume_1350.png" },
+            { id: "buzz3", name: "1200", path: "./B_yume_1400.png" }
         ]
     }
 };
