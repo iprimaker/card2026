@@ -5,6 +5,9 @@ let backgroundObject = null;
 let characterObject = null;
 let hideSelectionTimer = null;
 
+const CARD_WIDTH = 697;
+const CARD_HEIGHT = 1016;
+
 const BACKGROUND_LIST = [
     { id: "background1", name: "ひみつ　Aタイプ", path: "./backA1.png" },
     { id: "background2", name: "おねがい　Bタイプ", path: "./backB2.png" }
@@ -35,10 +38,8 @@ export function initImages(){
 
     backgroundSelectArea.style.display = "block";
 
-    if(BACKGROUND_LIST.length > 0){
-        backgroundSelect.value = BACKGROUND_LIST[0].id;
-        drawBackground(BACKGROUND_LIST[0].path);
-    }
+    backgroundSelect.value = BACKGROUND_LIST[0].id;
+    drawBackground(BACKGROUND_LIST[0].path);
 
     const canvas = getCanvas();
 
@@ -58,10 +59,8 @@ function setupBackgroundSelect(backgroundSelect){
 
     BACKGROUND_LIST.forEach(bg => {
         const option = document.createElement("option");
-
         option.value = bg.id;
         option.textContent = bg.name;
-
         backgroundSelect.appendChild(option);
     });
 }
@@ -79,14 +78,16 @@ function drawBackground(path){
 
     fabric.Image.fromURL(path, img => {
 
-       img.set({
-    left: 697 / 2,
-    top: 1016 / 2,
-    originX: "center",
-    originY: "center",
-    selectable: false,
-    evented: false
-});
+        img.set({
+            left: CARD_WIDTH / 2,
+            top: CARD_HEIGHT / 2,
+            originX: "center",
+            originY: "center",
+            selectable: false,
+            evented: false,
+            hasControls: false,
+            hasBorders: false
+        });
 
         img.layerType = "background";
         img.visible = true;
@@ -95,6 +96,7 @@ function drawBackground(path){
 
         canvas.add(backgroundObject);
         sortLayers();
+        canvas.requestRenderAll();
 
     });
 }
@@ -121,8 +123,8 @@ function uploadCharacter(e){
             }
 
             img.set({
-                left: canvas.getWidth() / 2,
-                top: canvas.getHeight() / 2,
+                left: CARD_WIDTH / 2,
+                top: CARD_HEIGHT / 2,
                 originX: "center",
                 originY: "center",
 
@@ -189,50 +191,36 @@ function enableTouchZoom(){
     let lastDistance = null;
 
     canvas.upperCanvasEl.addEventListener("touchstart", (e) => {
-
         if(e.touches.length === 2){
             e.preventDefault();
 
-            const touch1 = e.touches[0];
-            const touch2 = e.touches[1];
-
-            const dx = touch1.clientX - touch2.clientX;
-            const dy = touch1.clientY - touch2.clientY;
+            const dx = e.touches[0].clientX - e.touches[1].clientX;
+            const dy = e.touches[0].clientY - e.touches[1].clientY;
 
             lastDistance = Math.sqrt(dx * dx + dy * dy);
         }
-
     }, { passive:false });
 
     canvas.upperCanvasEl.addEventListener("touchmove", (e) => {
 
         if(e.touches.length !== 2) return;
 
-        e.preventDefault();
-
         const activeObject = canvas.getActiveObject();
 
         if(!activeObject || activeObject.layerType !== "character") return;
 
-        const touch1 = e.touches[0];
-        const touch2 = e.touches[1];
+        e.preventDefault();
 
-        const dx = touch1.clientX - touch2.clientX;
-        const dy = touch1.clientY - touch2.clientY;
+        const dx = e.touches[0].clientX - e.touches[1].clientX;
+        const dy = e.touches[0].clientY - e.touches[1].clientY;
 
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if(lastDistance){
             const scaleChange = distance / lastDistance;
 
-            let newScaleX = activeObject.scaleX * scaleChange;
-            let newScaleY = activeObject.scaleY * scaleChange;
-
-            newScaleX = Math.max(0.1, Math.min(newScaleX, 5));
-            newScaleY = Math.max(0.1, Math.min(newScaleY, 5));
-
-            activeObject.scaleX = newScaleX;
-            activeObject.scaleY = newScaleY;
+            activeObject.scaleX = Math.max(0.1, Math.min(activeObject.scaleX * scaleChange, 5));
+            activeObject.scaleY = Math.max(0.1, Math.min(activeObject.scaleY * scaleChange, 5));
 
             activeObject.setCoords();
             canvas.requestRenderAll();
