@@ -296,18 +296,18 @@ header h1{
         min-height:100vh;
     }
 
-    .preview{
+   .preview{
     order:1;
-    width:100%;
-    height:calc(100vh - 70px);
-    min-height:0;
-    padding:12px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-}
+    position:relative;
 
+    width:100%;
+    height:calc(100vh - 90px);
+
+    overflow:hidden;
+
+    display:block;
+}
+    
     .menu{
         order:2;
         width:100%;
