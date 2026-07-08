@@ -72,13 +72,13 @@ function drawAttribute(path){
     fabric.Image.fromURL(path, img => {
 
         img.set({
-            left: canvas.getWidth() / 2,
-            top: canvas.getHeight() / 2,
-            originX: "center",
-            originY: "center",
-            selectable: false,
-            evented: false
-        });
+    left: 697 / 2,
+    top: 1016 / 2,
+    originX: "center",
+    originY: "center",
+    selectable: false,
+    evented: false
+});
 
         img.layerType = "attribute";
 
