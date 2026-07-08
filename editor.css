@@ -379,3 +379,10 @@ header h1{
     transform-origin:center center;
 }
 
+
+.canvas-container,
+.upper-canvas,
+.lower-canvas{
+    touch-action:none;
+}
+
