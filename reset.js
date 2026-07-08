@@ -10,7 +10,7 @@ export function initReset(){
 
 function resetEditor(){
 
-    const result = confirm("現在の内容をリセットしますか？");
+    const result = confirm("現在のカードデザインをリセットしますか？");
 
     if(!result){
         return;
