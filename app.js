@@ -1,4 +1,4 @@
-import { initCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
+import { initCanvas, getCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
 import { initImages } from "./image.js";
 import { initFrame } from "./frame.js";
 import { initAttribute } from "./attribute.js";
@@ -41,9 +41,9 @@ export function startApp(){
 function resizePreview(){
 
     const preview = document.querySelector(".preview");
-    const fabricContainer = document.querySelector(".canvas-container");
+    const canvas = getCanvas();
 
-    if(!preview || !fabricContainer) return;
+    if(!preview || !canvas) return;
 
     const margin = window.innerWidth <= 900 ? 24 : 40;
 
@@ -56,6 +56,14 @@ function resizePreview(){
         1
     );
 
-    fabricContainer.style.transform = `scale(${scale})`;
-    fabricContainer.style.transformOrigin = "center center";
+    canvas.setZoom(scale);
+
+    canvas.setDimensions({
+        width: CARD_WIDTH * scale,
+        height: CARD_HEIGHT * scale
+    });
+
+    canvas.requestRenderAll();
 }
+
+app.jsは変える必要ある？
