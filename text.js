@@ -11,13 +11,11 @@ const NAME_STYLE = {
     originX: "center",
     originY: "center",
 
-    fontFamily: "A_name.ttf",
+    fontFamily: "A_name",
     fontSize: 58,
-    fontWeight: "bold",
+    fontWeight: "normal",
 
-    fill: "#ffffff",
-    stroke: "#ffcf4f",
-    strokeWidth: 8,
+    fill: "#E4D3A7",
 
     selectable: false,
     evented: false
