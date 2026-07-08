@@ -200,15 +200,31 @@ function enableTouchZoom(){
 
     let lastDistance = null;
 
+    canvas.upperCanvasEl.addEventListener("touchstart", (e) => {
+
+        if(e.touches.length === 2){
+            e.preventDefault();
+
+            const touch1 = e.touches[0];
+            const touch2 = e.touches[1];
+
+            const dx = touch1.clientX - touch2.clientX;
+            const dy = touch1.clientY - touch2.clientY;
+
+            lastDistance = Math.sqrt(dx * dx + dy * dy);
+        }
+
+    }, { passive:false });
+
     canvas.upperCanvasEl.addEventListener("touchmove", (e) => {
 
         if(e.touches.length !== 2) return;
 
+        e.preventDefault();
+
         const activeObject = canvas.getActiveObject();
 
         if(!activeObject || activeObject.layerType !== "character") return;
-
-        e.preventDefault();
 
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
@@ -221,12 +237,18 @@ function enableTouchZoom(){
         if(lastDistance){
             const scaleChange = distance / lastDistance;
 
-            activeObject.scaleX *= scaleChange;
-            activeObject.scaleY *= scaleChange;
+            let newScaleX = activeObject.scaleX * scaleChange;
+            let newScaleY = activeObject.scaleY * scaleChange;
+
+            newScaleX = Math.max(0.1, Math.min(newScaleX, 5));
+            newScaleY = Math.max(0.1, Math.min(newScaleY, 5));
+
+            activeObject.scaleX = newScaleX;
+            activeObject.scaleY = newScaleY;
 
             activeObject.setCoords();
-
             canvas.requestRenderAll();
+
             startHideSelectionTimer();
         }
 
