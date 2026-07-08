@@ -11,7 +11,7 @@ const NAME_STYLE = {
     originX: "center",
     originY: "center",
 
-    fontFamily: "A_name",
+    fontFamily: "A_nameFont",
     fontSize: 58,
     fontWeight: "normal",
 
@@ -27,7 +27,7 @@ const COSTUME_STYLE = {
     originX: "center",
     originY: "center",
 
-    fontFamily: "A_costume.ttf",
+    fontFamily: "A_costume.Font",
     fontSize: 28,
     fontWeight: "bold",
 
