@@ -6,8 +6,8 @@ export const CARD_TYPES = {
 
         attribute: true,
 
-        maxName: 4,
-        maxCostume: 15
+        maxName: 7,
+        maxCostume: 20
     },
 
     B: {
@@ -16,8 +16,8 @@ export const CARD_TYPES = {
 
         attribute: false,
 
-        maxName: 4,
-        maxCostume: 15
+        maxName: 7,
+        maxCostume: 20
     }
 
 };
