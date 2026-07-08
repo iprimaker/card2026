@@ -13,7 +13,8 @@ const FRAME_LIST = {
     B: [
         { id: "frame1", name: "すき（ピンク）", path: "./flameB1_2.png" },
         { id: "frame2", name: "ゆめ（あお）", path: "./flameB2_2.png" },
-        { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3_2.png" }
+        { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3_2.png" },
+        { id: "frame4", name: "ゆうき（きいろ）", path: "./flameB4_2.png" }
     ]
 };
 
