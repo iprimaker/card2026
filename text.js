@@ -121,6 +121,25 @@ const TEXT_STYLE = {
                 stroke: "#ffb36b",
                 strokeWidth: 4
             }
+        },
+
+        frame4: {
+            name: {
+                fontFamily: "B_NameFont",
+                fontSize: 54,
+                fontWeight: "normal",
+                fill: "#ffffff",
+                stroke: "#ffb36b",
+                strokeWidth: 6
+            },
+            costume: {
+                fontFamily: "B_CostumeFont",
+                fontSize: 26,
+                fontWeight: "normal",
+                fill: "#ffffff",
+                stroke: "#ffb36b",
+                strokeWidth: 4
+            }
         }
     }
 };
