@@ -25,5 +25,4 @@ function saveImage(){
     link.download = "original-card.png";
     link.click();
 
-    alert("保存しました！");
 }
