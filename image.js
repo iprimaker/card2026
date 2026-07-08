@@ -20,7 +20,6 @@ export function initImages(){
     if(!backgroundVisible || !backgroundSelectArea || !backgroundSelect || !characterInput){
         console.error("画像関連のHTML要素が見つかりません");
         return;
-        
     }
 
     setupBackgroundSelect(backgroundSelect);
@@ -55,10 +54,14 @@ export function initImages(){
 
     const canvas = getCanvas();
 
-    canvas.on("object:moving", startHideSelectionTimer);
-    canvas.on("object:scaling", startHideSelectionTimer);
-    canvas.on("object:rotating", startHideSelectionTimer);
-    canvas.on("mouse:down", startHideSelectionTimer);
+    if(canvas){
+        canvas.on("object:moving", startHideSelectionTimer);
+        canvas.on("object:scaling", startHideSelectionTimer);
+        canvas.on("object:rotating", startHideSelectionTimer);
+        canvas.on("mouse:down", startHideSelectionTimer);
+    }
+
+    enableTouchZoom();
 }
 
 function setupBackgroundSelect(backgroundSelect){
@@ -193,7 +196,7 @@ function enableTouchZoom(){
 
     const canvas = getCanvas();
 
-    if(!canvas) return;
+    if(!canvas || !canvas.upperCanvasEl) return;
 
     let lastDistance = null;
 
@@ -201,11 +204,11 @@ function enableTouchZoom(){
 
         if(e.touches.length !== 2) return;
 
-        e.preventDefault();
-
         const activeObject = canvas.getActiveObject();
 
         if(!activeObject || activeObject.layerType !== "character") return;
+
+        e.preventDefault();
 
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
@@ -216,7 +219,6 @@ function enableTouchZoom(){
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         if(lastDistance){
-
             const scaleChange = distance / lastDistance;
 
             activeObject.scaleX *= scaleChange;
@@ -225,7 +227,7 @@ function enableTouchZoom(){
             activeObject.setCoords();
 
             canvas.requestRenderAll();
-
+            startHideSelectionTimer();
         }
 
         lastDistance = distance;
@@ -235,5 +237,4 @@ function enableTouchZoom(){
     canvas.upperCanvasEl.addEventListener("touchend", () => {
         lastDistance = null;
     });
-
 }
