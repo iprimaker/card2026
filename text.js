@@ -63,13 +63,16 @@ const TEXT_STYLE = {
         },
 
         frame2: {
-            name: {
+           name: {
+                left: 82,
+                top: 62,
+                angle: -30,
                 fontFamily: "Zen Maru Gothic",
-                fontSize: 58,
+                fontSize: 28,
                 fontWeight: 900,
                 fill: "#E4D3A7",
-                stroke: null,
-                strokeWidth: 0
+                stroke: "#E4D3A7",
+                strokeWidth: 1,
             },
             costume: {
                 fontFamily: "Dela Gothic One",
@@ -90,13 +93,16 @@ const TEXT_STYLE = {
         },
 
         frame3: {
-            name: {
+          name: {
+                left: 82,
+                top: 62,
+                angle: -30,
                 fontFamily: "Zen Maru Gothic",
-                fontSize: 58,
+                fontSize: 28,
                 fontWeight: 900,
                 fill: "#E4D3A7",
-                stroke: null,
-                strokeWidth: 0
+                stroke: "#E4D3A7",
+                strokeWidth: 1,
             },
             costume: {
                 fontFamily: "Dela Gothic One",
