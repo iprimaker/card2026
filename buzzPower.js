@@ -32,7 +32,7 @@ const BUZZ_POWER_LIST = {
             { id: "buzz2", name: "1250", path: "./B_suki_1250.png" },
             { id: "buzz1", name: "1300", path: "./B_suki_1300.png" },
             { id: "buzz2", name: "1350", path: "./B_suki_1350.png" },
-            { id: "buzz3", name: "1200", path: "./B_suki_1400.png" }
+            { id: "buzz3", name: "1400", path: "./B_suki_1400.png" }
         ],
 
         frame2: [
@@ -46,7 +46,7 @@ const BUZZ_POWER_LIST = {
             { id: "buzz2", name: "1250", path: "./B_yume_1250.png" },
             { id: "buzz1", name: "1300", path: "./B_yume_1300.png" },
             { id: "buzz2", name: "1350", path: "./B_yume_1350.png" },
-            { id: "buzz3", name: "1200", path: "./B_yume_1400.png" }
+            { id: "buzz3", name: "1400", path: "./B_yume_1400.png" }
         ],
 
         frame3: [
@@ -60,7 +60,7 @@ const BUZZ_POWER_LIST = {
             { id: "buzz2", name: "1250", path: "./B_yujo_1250.png" },
             { id: "buzz1", name: "1300", path: "./B_yujo_1300.png" },
             { id: "buzz2", name: "1350", path: "./B_yujo_1350.png" },
-            { id: "buzz3", name: "1200", path: "./B_yujo_1400.png" }
+            { id: "buzz3", name: "1400", path: "./B_yujo_1400.png" }
         ],
 
           frame3: [
@@ -74,7 +74,7 @@ const BUZZ_POWER_LIST = {
             { id: "buzz2", name: "1250", path: "./B_yuki_1250.png" },
             { id: "buzz1", name: "1300", path: "./B_yuki_1300.png" },
             { id: "buzz2", name: "1350", path: "./B_yuki_1350.png" },
-            { id: "buzz3", name: "1200", path: "./B_yuki_1400.png" }
+            { id: "buzz3", name: "1400", path: "./B_yuki_1400.png" }
         ]
     }
 };
