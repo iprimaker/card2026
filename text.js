@@ -6,6 +6,29 @@ let nameText = null;
 let costumeLetters = [];
 let currentCostumeStyle = null;
 
+const COSTUME_PATH_A = [
+    { x: 185, y: 946, angle: -8 },
+    { x: 209, y: 944, angle: -7 },
+    { x: 233, y: 942, angle: -6 },
+    { x: 257, y: 941, angle: -5 },
+    { x: 281, y: 940, angle: -4 },
+    { x: 305, y: 940, angle: -3 },
+    { x: 329, y: 941, angle: -2 },
+    { x: 353, y: 942, angle: -1 },
+    { x: 377, y: 944, angle: 0 },
+    { x: 401, y: 946, angle: 1 },
+    { x: 425, y: 949, angle: 2 },
+    { x: 449, y: 952, angle: 3 },
+    { x: 473, y: 955, angle: 4 },
+    { x: 497, y: 958, angle: 5 },
+    { x: 521, y: 961, angle: 6 },
+    { x: 545, y: 964, angle: 7 },
+    { x: 569, y: 967, angle: 8 },
+    { x: 593, y: 970, angle: 9 },
+    { x: 617, y: 973, angle: 10 },
+    { x: 641, y: 976, angle: 11 }
+];
+
 const TEXT_STYLE = {
     A: {
         frame1: {
@@ -21,20 +44,14 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
-
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-
-                scaleX: 0.78,
-                scaleY: 1.18,
-
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -54,17 +71,14 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.78,
-                scaleY: 1.18,
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -84,17 +98,14 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.78,
-                scaleY: 1.18,
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -116,17 +127,14 @@ const TEXT_STYLE = {
                 strokeWidth: 0
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.78,
-                scaleY: 1.18,
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -146,17 +154,14 @@ const TEXT_STYLE = {
                 strokeWidth: 6
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.78,
-                scaleY: 1.18,
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -176,17 +181,14 @@ const TEXT_STYLE = {
                 strokeWidth: 6
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.78,
-                scaleY: 1.18,
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -206,17 +208,14 @@ const TEXT_STYLE = {
                 strokeWidth: 6
             },
             costume: {
-                left: 192,
-                top: 943,
-                spacing: 28,
                 fontFamily: "Dela Gothic One",
-                fontSize: 23,
+                fontSize: 22,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
-                scaleX: 0.78,
-                scaleY: 1.18,
+                scaleX: 0.75,
+                scaleY: 1.22,
                 shadow: new fabric.Shadow({
                     color: "rgba(0,0,0,0.35)",
                     blur: 4,
@@ -254,7 +253,7 @@ export function initText(){
     }
 
     if(costumeInput){
-        costumeInput.maxLength = config.maxCostume;
+        costumeInput.maxLength = 20;
     }
 
     if(textVisible){
@@ -347,6 +346,7 @@ export function updateTextStyle(){
 function drawCostumeLetters(text, style){
 
     const canvas = getCanvas();
+    const config = getCurrentCardType();
 
     if(!canvas || !style) return;
 
@@ -356,37 +356,26 @@ function drawCostumeLetters(text, style){
 
     costumeLetters = [];
 
-    const chars = [...text];
+    const chars = [...text].slice(0, 20);
 
-    const startX = style.left ?? 192;
-    const startY = style.top ?? 943;
-    const spacing = style.spacing ?? 28;
+    let costumePath = COSTUME_PATH_A;
 
     chars.forEach((char, index) => {
 
-        const t = index / Math.max(chars.length - 1, 1);
+        const point = costumePath[index];
 
-        const x = startX + index * spacing;
-
-        // リボンに沿うように、右へ行くほど少し下げる
-        const y =
-            startY
-            + t * 16
-            - Math.sin(t * Math.PI) * 5;
-
-        // リボンの傾きに合わせて、右へ行くほど角度をゆるめる
-        const angle = -8 + t * 7;
+        if(!point) return;
 
         const letter = new fabric.Text(char, {
-            left: x,
-            top: y,
-            angle: angle,
+            left: point.x,
+            top: point.y,
+            angle: point.angle,
 
             originX: "center",
             originY: "center",
 
             fontFamily: style.fontFamily || "Dela Gothic One",
-            fontSize: style.fontSize || 23,
+            fontSize: style.fontSize || 22,
             fontWeight: style.fontWeight || "normal",
 
             fill: style.fill || "#FFFFFF",
@@ -394,8 +383,8 @@ function drawCostumeLetters(text, style){
             stroke: style.stroke || null,
             strokeWidth: style.strokeWidth || 0,
 
-            scaleX: style.scaleX ?? 0.78,
-            scaleY: style.scaleY ?? 1.18,
+            scaleX: style.scaleX ?? 0.75,
+            scaleY: style.scaleY ?? 1.22,
 
             shadow: style.shadow || null,
 
