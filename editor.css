@@ -5,7 +5,7 @@
 
 @font-face{
     font-family:"A_CostumeFont";
-    src:url("./A_costume.otf") format("opentype");
+    src:url("./A_costume.ttf") format("truetype");
 }
 
 *{
