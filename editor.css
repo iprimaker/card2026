@@ -37,6 +37,7 @@ header h1{
 }
 
 #newsButton,
+#guideButton,
 #noticeButton{
     padding:10px 18px;
     border:none;
@@ -54,11 +55,16 @@ header h1{
     background:linear-gradient(135deg,#ff9f5a,#ffd36e);
 }
 
+#guideButton{
+    background:linear-gradient(135deg,#67d8c2,#69a9ff);
+}
+
 #noticeButton{
     background:linear-gradient(135deg,#8b7cff,#6dbdff);
 }
 
 #newsButton:hover,
+#guideButton:hover,
 #noticeButton:hover{
     transform:translateY(-2px);
     opacity:.95;
@@ -254,10 +260,6 @@ header h1{
     border-radius:20px;
 }
 
-/* ===========================
-   準備中項目
-=========================== */
-
 .disabledItem{
     background:#ececec;
     border:2px dashed #cfcfcf;
@@ -281,20 +283,20 @@ header h1{
     position:absolute;
     top:12px;
     right:14px;
-
     padding:4px 10px;
-
     font-size:11px;
     font-weight:bold;
-
     color:#666;
-
     background:#ffffff;
-
     border:1px solid #c8c8c8;
     border-radius:999px;
 }
 
+.canvas-container,
+.upper-canvas,
+.lower-canvas{
+    touch-action:none;
+}
 
 @media(max-width:900px){
 
@@ -323,9 +325,11 @@ header h1{
         width:100%;
         justify-content:flex-start;
         flex-wrap:wrap;
+        gap:8px;
     }
 
     #newsButton,
+    #guideButton,
     #noticeButton{
         font-size:13px;
         padding:9px 14px;
@@ -338,18 +342,18 @@ header h1{
         min-height:100vh;
     }
 
-.preview{
-    order:1;
-    width:100%;
-    height:auto;
-    min-height:auto;
-    padding:16px 0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:visible;
-}
-    
+    .preview{
+        order:1;
+        width:100%;
+        height:auto;
+        min-height:auto;
+        padding:16px 0;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:visible;
+    }
+
     .menu{
         order:2;
         width:100%;
@@ -365,24 +369,18 @@ header h1{
         margin-bottom:12px;
     }
 
-.canvasContainer{
-    width:100%;
-    height:auto;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:visible;
-}
-    
-   .canvas-container{
-    margin:0 auto;
-    transform-origin:center center;
-}
+    .canvasContainer{
+        width:100%;
+        height:auto;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:visible;
+    }
 
+    .canvas-container{
+        margin:0 auto;
+        transform-origin:center center;
+    }
 
-.canvas-container,
-.upper-canvas,
-.lower-canvas{
-    touch-action:none;
 }
-
