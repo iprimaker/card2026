@@ -11,7 +11,7 @@ const NAME_STYLE = {
     originX: "center",
     originY: "center",
 
-    fontFamily: "Zen Maru Gothic",
+    fontFamily: "A_name.ttf",
     fontSize: 58,
     fontWeight: "bold",
 
