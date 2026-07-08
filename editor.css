@@ -21,8 +21,8 @@ header{
     padding:0 30px;
     background:linear-gradient(
     135deg,
-    rgba(255,251,225,0.88),
-    rgba(255,254,242,0.82)
+    rgba(255,251,225,0.82),
+    rgba(255,254,242,0.88)
 );
     backdrop-filter:blur(14px);
     box-shadow:0 2px 18px rgba(120,90,160,.15);
