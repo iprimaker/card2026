@@ -48,17 +48,10 @@ function resizePreview(){
         preview.clientHeight / 1016
     ) * 0.9;
 
-    if(window.innerWidth <= 900){
-        fabricContainer.style.position = "absolute";
-        fabricContainer.style.left = "50%";
-        fabricContainer.style.top = "50%";
-        fabricContainer.style.transform = `translate(-50%, -50%) scale(${scale})`;
-    }else{
-        fabricContainer.style.position = "";
-        fabricContainer.style.left = "";
-        fabricContainer.style.top = "";
-        fabricContainer.style.transform = `scale(${scale})`;
-    }
-
+    // PC・スマホ共通
+    fabricContainer.style.position = "";
+    fabricContainer.style.left = "";
+    fabricContainer.style.top = "";
+    fabricContainer.style.transform = `scale(${scale})`;
     fabricContainer.style.transformOrigin = "center center";
 }
