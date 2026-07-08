@@ -43,12 +43,23 @@ function resizePreview(){
 
     if(!preview || !fabricContainer) return;
 
-    const scale = Math.min(
-        preview.clientWidth / 697,
-        preview.clientHeight / 1016
-    ) * 0.9;
+    const CARD_WIDTH = 697;
+    const CARD_HEIGHT = 1016;
 
-    // PC・スマホ共通
+    let scale;
+
+    if(window.innerWidth <= 900){
+        const availableWidth = window.innerWidth - 24;
+
+        scale = availableWidth / CARD_WIDTH;
+        scale = Math.min(scale, 1);
+    }else{
+        scale = Math.min(
+            preview.clientWidth / CARD_WIDTH,
+            preview.clientHeight / CARD_HEIGHT
+        ) * 0.9;
+    }
+
     fabricContainer.style.position = "";
     fabricContainer.style.left = "";
     fabricContainer.style.top = "";
