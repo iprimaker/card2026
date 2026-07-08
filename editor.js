@@ -41,13 +41,19 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     // 使い方ガイド
+    const guideButton = document.getElementById("guideButton");
     const guideModal = document.getElementById("guideModal");
     const closeGuideModal = document.getElementById("closeGuideModal");
 
-    if(guideModal && closeGuideModal){
+    if(guideButton && guideModal && closeGuideModal){
+
         if(localStorage.getItem("guideRead") !== "true"){
             guideModal.classList.add("show");
         }
+
+        guideButton.addEventListener("click", () => {
+            guideModal.classList.add("show");
+        });
 
         closeGuideModal.addEventListener("click", () => {
             guideModal.classList.remove("show");
