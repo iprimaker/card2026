@@ -112,8 +112,8 @@ function drawFrame(path){
     top: 1016 / 2,
     originX: "center",
     originY: "center",
-    selectable: true,
-    evented: true
+    selectable: false,
+    evented: false
 });
         img.layerType = "frame";
 
