@@ -9,17 +9,16 @@ const TEXT_STYLE = {
     A: {
         frame1: {
             name: {
-   　　　　　left: 82,
-    　　　　 top: 62,
-   　　　　　angle: -30,
-
-   　　　　　fontFamily: "A_NameFont",
-    　　　　 fontSize: 28,
-    　　　　 fontWeight: "normal",
-    　　　　 fill: "#E4D3A7",
-    　　　　 stroke: null,
-    　　　　 strokeWidth: 0
-　　　　　}
+                left: 82,
+                top: 62,
+                angle: -30,
+                fontFamily: "A_NameFont",
+                fontSize: 28,
+                fontWeight: "normal",
+                fill: "#E4D3A7",
+                stroke: null,
+                strokeWidth: 0
+            },
             costume: {
                 fontFamily: "A_CostumeFont",
                 fontSize: 28,
