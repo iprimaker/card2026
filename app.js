@@ -17,6 +17,7 @@ export function startApp(){
 
     cardTypeSelect.value = config.type;
 
+    preloadImages();
     initCanvas();
     initImages();
     initFrame();
