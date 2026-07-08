@@ -1,4 +1,3 @@
-import { preloadImages } from "./preload.js";
 import { initCanvas, getCanvas, CARD_WIDTH, CARD_HEIGHT } from "./canvas.js";
 import { initImages } from "./image.js";
 import { initFrame } from "./frame.js";
@@ -11,7 +10,6 @@ import { initBuzzPower } from "./buzzPower.js";
 import { getCurrentCardType, setCurrentCardType } from "./config.js";
 
 export function startApp(){
-    preloadImages();
 
     const config = getCurrentCardType();
     const cardTypeSelect = document.getElementById("cardType");
