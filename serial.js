@@ -38,11 +38,12 @@ export function initSerial(){
         if(randomMode){
 
             if(serialModeText){
-                serialModeText.textContent = "現在シリアル番号を自動設定中";
+                serialModeText.textContent = "現在シリアル番号「自動設定中」";
             }
 
             if(serialModeButton){
                 serialModeButton.textContent = "手動設定に切り替え";
+　　　　　　　　  serialModeButton.classList.remove("manual");
             }
 
             if(serialManualArea){
@@ -54,11 +55,12 @@ export function initSerial(){
         }else{
 
             if(serialModeText){
-                serialModeText.textContent = "現在シリアル番号を手動設定中";
+                serialModeText.textContent = "現在シリアル番号「手動設定中」";
             }
 
             if(serialModeButton){
-                serialModeButton.textContent = "自動設定に切り替え";
+               serialModeButton.textContent = "自動設定に切り替え";
+　　　　　　　　serialModeButton.classList.add("manual");
             }
 
             if(serialManualArea){
