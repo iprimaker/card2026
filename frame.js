@@ -3,8 +3,10 @@ import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
 import { updateTextStyle } from "./text.js";
 import { cloneCachedImage } from "./preload.js";
+import { updateBuzzPowerForFrame } from "./buzzPower.js";
 
 let frameObject = null;
+let frameRequestId = 0;
 
 const FRAME_LIST = {
     A: [
@@ -34,21 +36,20 @@ export function initFrame(){
 
     frames.forEach(frame => {
         const option = document.createElement("option");
-
         option.value = frame.id;
         option.textContent = frame.name;
-
         frameSelect.appendChild(option);
     });
 
-    frameSelect.addEventListener("change", () => {
+    frameSelect.onchange = () => {
         const selected = frames.find(frame => frame.id === frameSelect.value);
 
         if(selected){
             drawFrame(selected.path);
             updateTextStyle();
+            updateBuzzPowerForFrame();
         }
-    });
+    };
 
     if(frames.length > 0){
         frameSelect.value = frames[0].id;
@@ -62,31 +63,42 @@ function drawFrame(path){
 
     if(!canvas) return;
 
-    if(frameObject){
-        canvas.remove(frameObject);
-        frameObject = null;
-    }
+    frameRequestId++;
+    const currentRequestId = frameRequestId;
+
+    canvas.getObjects().forEach(obj => {
+        if(obj.layerType === "frame"){
+            canvas.remove(obj);
+        }
+    });
+
+    frameObject = null;
 
     cloneCachedImage(path, img => {
+
+        if(currentRequestId !== frameRequestId) return;
+
+        canvas.getObjects().forEach(obj => {
+            if(obj.layerType === "frame"){
+                canvas.remove(obj);
+            }
+        });
 
         img.set({
             left: 697 / 2,
             top: 1016 / 2,
             originX: "center",
             originY: "center",
-
             selectable: false,
             evented: false
         });
 
         img.layerType = "frame";
-
         frameObject = img;
 
         canvas.add(frameObject);
 
         sortLayers();
         canvas.requestRenderAll();
-
     });
 }
