@@ -7,26 +7,26 @@ let costumeLetters = [];
 let currentCostumeStyle = null;
 
 const COSTUME_PATH_A = [
-    { x:195, y:949, angle:0 },
-    { x:216, y:948, angle:-1 },
-    { x:237, y:947, angle:-2 },
-    { x:258, y:946, angle:-3 },
+    { x:195, y:951, angle:0 },
+    { x:216, y:950, angle:-1 },
+    { x:237, y:949, angle:-2 },
+    { x:258, y:947, angle:-3 },
     { x:279, y:945, angle:-4 },
     { x:300, y:943, angle:-5 },
-    { x:321, y:941, angle:-6 },
-    { x:342, y:939, angle:-7 },
-    { x:363, y:936, angle:-8 },
-    { x:384, y:933, angle:-9 },
-    { x:405, y:930, angle:-10 },
-    { x:426, y:926, angle:-11 },
-    { x:447, y:922, angle:-12 },
-    { x:468, y:918, angle:-13 },
-    { x:489, y:913, angle:-14 },
-    { x:510, y:907, angle:-15 },
-    { x:531, y:902, angle:-16 },
-    { x:552, y:894, angle:-17 },
-    { x:573, y:888, angle:-18 },
-    { x:594, y:882, angle:-19 }
+    { x:321, y:940, angle:-6 },
+    { x:342, y:937, angle:-7 },
+    { x:363, y:934, angle:-8 },
+    { x:384, y:931, angle:-10 },
+    { x:405, y:928, angle:-12 },
+    { x:426, y:924, angle:-13 },
+    { x:447, y:920, angle:-14 },
+    { x:468, y:916, angle:-15 },
+    { x:489, y:910, angle:-17 },
+    { x:510, y:904, angle:-19 },
+    { x:531, y:897, angle:-20 },
+    { x:552, y:890, angle:-22 },
+    { x:573, y:883, angle:-24 },
+    { x:594, y:876, angle:26 }
 ];
 
 const TEXT_STYLE = {
