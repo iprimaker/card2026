@@ -582,3 +582,64 @@ header h1{
     }
 
 }
+
+
+#loadingScreen{
+    position:fixed;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#fff4fb,#eef6ff);
+    z-index:99999;
+    transition:.35s;
+}
+
+#loadingScreen.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+.loadingBox{
+    width:420px;
+    max-width:86%;
+    text-align:center;
+    padding:34px;
+    border-radius:28px;
+    background:rgba(255,255,255,.75);
+    box-shadow:0 20px 60px rgba(120,90,160,.18);
+}
+
+.loadingBox h1{
+    margin-bottom:20px;
+    color:#3d3450;
+}
+
+.loadingBox p{
+    margin-bottom:18px;
+    font-weight:bold;
+    color:#6a5c7a;
+}
+
+.loadingBar{
+    width:100%;
+    height:18px;
+    overflow:hidden;
+    border-radius:999px;
+    background:white;
+    box-shadow:inset 0 0 0 1px #eadff3;
+}
+
+#loadingProgress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff7cab,#ffb47c,#8fc7ff);
+    transition:.2s;
+}
+
+#loadingPercent{
+    margin-top:12px;
+    font-size:18px;
+    font-weight:bold;
+    color:#5a5270;
+}
