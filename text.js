@@ -64,10 +64,9 @@ const COSTUME_PATH_A = [
     { x:468, y:911, angle:-15 },
     { x:489, y:905, angle:-17 },
     { x:510, y:899, angle:-19 },
-    { x:531, y:893, angle:-20 },
-    { x:552, y:887, angle:-22 },
-    { x:573, y:880, angle:-24 },
-    { x:594, y:872, angle:-26 }
+    { x:531, y:892, angle:-20 },
+    { x:552, y:884, angle:-22 },
+    { x:573, y:875, angle:-24 }
 ];
 
 /* ===========================
@@ -93,8 +92,7 @@ const COSTUME_PATH_B = [
     { x:505, y:920, angle:1 },
     { x:526, y:918, angle:2 },
     { x:547, y:916, angle:2 },
-    { x:568, y:914, angle:3 },
-    { x:589, y:912, angle:3 }
+    { x:568, y:914, angle:3 }
 ];
 
 const TEXT_STYLE = {
@@ -323,12 +321,12 @@ export function initText(){
     const costumeInput = document.getElementById("costumeName");
 
     if(nameInput){
-        nameInput.maxLength = config.maxName || 8;
+        nameInput.maxLength = config.maxName || 5;
         nameInput.value = nameInput.value || DEFAULT_NAME;
     }
 
     if(costumeInput){
-        costumeInput.maxLength = 20;
+        costumeInput.maxLength = 19;
         costumeInput.value = costumeInput.value || DEFAULT_COSTUME;
     }
 
@@ -519,7 +517,7 @@ function drawCostumeLetters(text, style){
         text: text,
         style: style,
         path: path,
-        maxLength: 20
+        maxLength: 19
     });
 }
 
