@@ -1,5 +1,6 @@
 import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
+import { cloneCachedImage } from "./preload.js";
 
 let backgroundObject = null;
 let characterObject = null;
@@ -60,8 +61,10 @@ function setupBackgroundSelect(backgroundSelect){
 
     BACKGROUND_LIST.forEach(bg => {
         const option = document.createElement("option");
+
         option.value = bg.id;
         option.textContent = bg.name;
+
         backgroundSelect.appendChild(option);
     });
 }
@@ -77,13 +80,14 @@ function drawBackground(path){
         backgroundObject = null;
     }
 
-    fabric.Image.fromURL(path, img => {
+    cloneCachedImage(path, img => {
 
         img.set({
             left: CARD_WIDTH / 2,
             top: CARD_HEIGHT / 2,
             originX: "center",
             originY: "center",
+
             selectable: false,
             evented: false,
             hasControls: false,
@@ -96,9 +100,9 @@ function drawBackground(path){
         backgroundObject = img;
 
         canvas.add(backgroundObject);
+
         sortLayers();
         canvas.requestRenderAll();
-
     });
 }
 
@@ -159,8 +163,9 @@ function uploadCharacter(e){
             canvas.setActiveObject(characterObject);
 
             sortLayers();
-            startHideSelectionTimer();
+            canvas.requestRenderAll();
 
+            startHideSelectionTimer();
         });
     };
 
@@ -191,7 +196,8 @@ function enableTouchZoom(){
 
     let lastDistance = null;
 
-    canvas.upperCanvasEl.addEventListener("touchstart", (e) => {
+    canvas.upperCanvasEl.addEventListener("touchstart", e => {
+
         if(e.touches.length === 2){
             e.preventDefault();
 
@@ -200,9 +206,10 @@ function enableTouchZoom(){
 
             lastDistance = Math.sqrt(dx * dx + dy * dy);
         }
+
     }, { passive:false });
 
-    canvas.upperCanvasEl.addEventListener("touchmove", (e) => {
+    canvas.upperCanvasEl.addEventListener("touchmove", e => {
 
         if(e.touches.length !== 2) return;
 
@@ -220,8 +227,15 @@ function enableTouchZoom(){
         if(lastDistance){
             const scaleChange = distance / lastDistance;
 
-            activeObject.scaleX = Math.max(0.1, Math.min(activeObject.scaleX * scaleChange, 5));
-            activeObject.scaleY = Math.max(0.1, Math.min(activeObject.scaleY * scaleChange, 5));
+            activeObject.scaleX = Math.max(
+                0.1,
+                Math.min(activeObject.scaleX * scaleChange, 5)
+            );
+
+            activeObject.scaleY = Math.max(
+                0.1,
+                Math.min(activeObject.scaleY * scaleChange, 5)
+            );
 
             activeObject.setCoords();
             canvas.requestRenderAll();
