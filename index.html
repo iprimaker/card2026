@@ -155,22 +155,26 @@
         </div>
 
         <div class="item" id="serialArea">
-            <label id="serialModeText">現在シリアル番号「自動設定中」</label>
+    <label id="serialModeText">自動設定中</label>
 
-            <button id="serialModeButton" type="button">
-                手動設定に切り替え
-            </button>
+    <label class="serialSwitch">
+        <input type="checkbox" id="serialModeToggle" checked>
+        <span class="serialSlider">
+            <span class="serialLabel auto">自動</span>
+            <span class="serialLabel manual">手動</span>
+        </span>
+    </label>
 
-            <div id="serialManualArea" style="display:none;margin-top:10px;">
-                <label>シリアル番号（例：ABC-123）</label>
-                <input
-                    id="serialManual"
-                    type="text"
-                    maxlength="7"
-                    placeholder="ABC-123"
-                >
-            </div>
-        </div>
+    <div id="serialManualArea" style="display:none;margin-top:10px;">
+        <label>シリアル番号（例：ABC-123）</label>
+        <input
+            id="serialManual"
+            type="text"
+            maxlength="7"
+            placeholder="ABC-123"
+        >
+    </div>
+</div>
 
     </aside>
 
