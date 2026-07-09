@@ -60,6 +60,26 @@ export function rebuildEditor(){
 
     const canvas = getCanvas();
 
+    const characterInput = document.getElementById("character");
+    if(characterInput){
+        characterInput.value = "";
+    }
+
+    const nameInput = document.getElementById("cardName");
+    if(nameInput){
+        nameInput.value = "";
+    }
+
+    const costumeInput = document.getElementById("costumeName");
+    if(costumeInput){
+        costumeInput.value = "";
+    }
+
+    const serialManual = document.getElementById("serialManual");
+    if(serialManual){
+        serialManual.value = "";
+    }
+
     if(canvas){
         canvas.discardActiveObject();
         canvas.clear();
