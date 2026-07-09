@@ -451,6 +451,37 @@ header h1{
     background:linear-gradient(135deg,#999,#666);
 }
 
+#serialModeButton{
+    margin-top:12px;
+    width:100%;
+
+    padding:10px 14px;
+
+    border:none;
+    border-radius:999px;
+
+    background:linear-gradient(135deg,#7ec9ff,#8c8bff);
+    color:#fff;
+
+    font-size:14px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:0 6px 14px rgba(120,140,255,.22);
+}
+
+#serialModeButton:hover{
+    transform:translateY(-2px);
+    opacity:.95;
+}
+
+#serialModeButton:active{
+    transform:translateY(0);
+}
+
 @media(max-width:900px){
 
     .floatingButtons{
