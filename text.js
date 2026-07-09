@@ -45,7 +45,7 @@ const TEXT_STYLE = {
             },
             costume: {
                 fontFamily: "Dela Gothic One",
-                fontSize: 34,
+                fontSize: 32,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
