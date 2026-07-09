@@ -1,41 +1,19 @@
 import { startApp } from "./app.js";
+import { preloadImages } from "./preload.js";
 
-window.addEventListener("DOMContentLoaded", async () => {
-
-    if(document.fonts){
-        await document.fonts.ready;
-    }
-
-    const PRELOAD_IMAGES = [
-
-    /* =========================
-       背景
-    ========================= */
-
-    "./backA1.png", 
+const PRELOAD_IMAGES = [
+    "./backA1.png",
     "./backA1_1.png",
     "./backA2.png",
-
-    /* =========================
-       フレーム A
-    ========================= */
 
     "./flameA1.png",
     "./flameA2.png",
     "./flameA3.png",
 
-    /* =========================
-       フレーム B
-    ========================= */
-
     "./flameB1_2.png",
     "./flameB2_2.png",
     "./flameB3_2.png",
     "./flameB4_2.png",
-
-    /* =========================
-       属性 A
-    ========================= */
 
     "./attributeA_1.png",
     "./attributeA_2.png",
@@ -48,92 +26,75 @@ window.addEventListener("DOMContentLoaded", async () => {
     "./attributeA_9.png",
     "./attributeA_10.png",
 
-    /* =========================
-       属性 B
-    ========================= */
+    "./A900.png",
+    "./A950.png",
+    "./A1000.png",
+    "./A1050.png",
+    "./A1100.png",
+    "./A1150.png",
+    "./A1200.png",
+    "./A1250.png",
+    "./A1300.png",
+    "./A1320.png",
+    "./A1350.png",
+    "./A1400.png",
 
-    /* =========================
-   A バズパワー
-========================= */
+    "./B_suki_900.png",
+    "./B_suki_950.png",
+    "./B_suki_1000.png",
+    "./B_suki_1050.png",
+    "./B_suki_1100.png",
+    "./B_suki_1150.png",
+    "./B_suki_1200.png",
+    "./B_suki_1250.png",
+    "./B_suki_1300.png",
+    "./B_suki_1350.png",
+    "./B_suki_1400.png",
 
-"./A900.png",
-"./A950.png",
-"./A1000.png",
-"./A1050.png",
-"./A1100.png",
-"./A1150.png",
-"./A1200.png",
-"./A1250.png",
-"./A1300.png",
-"./A1320.png",
-"./A1350.png",
-"./A1400.png",
-        
-   /* =========================
-   B すき
-========================= */
+    "./B_yujo_900.png",
+    "./B_yujo_950.png",
+    "./B_yujo_1000.png",
+    "./B_yujo_1050.png",
+    "./B_yujo_1100.png",
+    "./B_yujo_1150.png",
+    "./B_yujo_1200.png",
+    "./B_yujo_1250.png",
+    "./B_yujo_1300.png",
+    "./B_yujo_1350.png",
+    "./B_yujo_1400.png",
 
-"./B_suki_900.png",
-"./B_suki_950.png",
-"./B_suki_1000.png",
-"./B_suki_1050.png",
-"./B_suki_1100.png",
-"./B_suki_1150.png",
-"./B_suki_1200.png",
-"./B_suki_1250.png",
-"./B_suki_1300.png",
-"./B_suki_1350.png",
-"./B_suki_1400.png",
+    "./B_yuki_900.png",
+    "./B_yuki_950.png",
+    "./B_yuki_1000.png",
+    "./B_yuki_1050.png",
+    "./B_yuki_1100.png",
+    "./B_yuki_1150.png",
+    "./B_yuki_1200.png",
+    "./B_yuki_1250.png",
+    "./B_yuki_1300.png",
+    "./B_yuki_1350.png",
+    "./B_yuki_1400.png",
 
-/* =========================
-   B ゆうじょう
-========================= */
-
-"./B_yujo_900.png",
-"./B_yujo_950.png",
-"./B_yujo_1000.png",
-"./B_yujo_1050.png",
-"./B_yujo_1100.png",
-"./B_yujo_1150.png",
-"./B_yujo_1200.png",
-"./B_yujo_1250.png",
-"./B_yujo_1300.png",
-"./B_yujo_1350.png",
-"./B_yujo_1400.png",
-
-/* =========================
-   B ゆうき
-========================= */
-
-"./B_yuki_900.png",
-"./B_yuki_950.png",
-"./B_yuki_1000.png",
-"./B_yuki_1050.png",
-"./B_yuki_1100.png",
-"./B_yuki_1150.png",
-"./B_yuki_1200.png",
-"./B_yuki_1250.png",
-"./B_yuki_1300.png",
-"./B_yuki_1350.png",
-"./B_yuki_1400.png",
-
-/* =========================
-   B ゆめ
-========================= */
-
-"./B_yume_900.png",
-"./B_yume_950.png",
-"./B_yume_1000.png",
-"./B_yume_1050.png",
-"./B_yume_1100.png",
-"./B_yume_1150.png",
-"./B_yume_1200.png",
-"./B_yume_1250.png",
-"./B_yume_1300.png",
-"./B_yume_1350.png",
-"./B_yume_1400.png"
-
+    "./B_yume_900.png",
+    "./B_yume_950.png",
+    "./B_yume_1000.png",
+    "./B_yume_1050.png",
+    "./B_yume_1100.png",
+    "./B_yume_1150.png",
+    "./B_yume_1200.png",
+    "./B_yume_1250.png",
+    "./B_yume_1300.png",
+    "./B_yume_1350.png",
+    "./B_yume_1400.png"
 ];
+
+window.addEventListener("DOMContentLoaded", async () => {
+
+    if(document.fonts){
+        await document.fonts.ready;
+    }
+
+    await preloadImages(PRELOAD_IMAGES);
 
     startApp();
 
@@ -153,33 +114,33 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 
     // お知らせ
-const NEWS_VERSION = "20260709-3";
+    const NEWS_VERSION = "20260709-3";
 
-const newsButton = document.getElementById("newsButton");
-const newsModal = document.getElementById("newsModal");
-const closeNewsModal = document.getElementById("closeNewsModal");
+    const newsButton = document.getElementById("newsButton");
+    const newsModal = document.getElementById("newsModal");
+    const closeNewsModal = document.getElementById("closeNewsModal");
 
-if(newsButton && newsModal && closeNewsModal){
+    if(newsButton && newsModal && closeNewsModal){
 
-    const readVersion = localStorage.getItem("newsReadVersion");
+        const readVersion = localStorage.getItem("newsReadVersion");
 
-    if(readVersion === NEWS_VERSION){
-        newsButton.classList.add("read");
-    }else{
-        newsButton.classList.remove("read");
+        if(readVersion === NEWS_VERSION){
+            newsButton.classList.add("read");
+        }else{
+            newsButton.classList.remove("read");
+        }
+
+        newsButton.addEventListener("click", () => {
+            newsModal.classList.add("show");
+
+            localStorage.setItem("newsReadVersion", NEWS_VERSION);
+            newsButton.classList.add("read");
+        });
+
+        closeNewsModal.addEventListener("click", () => {
+            newsModal.classList.remove("show");
+        });
     }
-
-    newsButton.addEventListener("click", () => {
-        newsModal.classList.add("show");
-
-        localStorage.setItem("newsReadVersion", NEWS_VERSION);
-        newsButton.classList.add("read");
-    });
-
-    closeNewsModal.addEventListener("click", () => {
-        newsModal.classList.remove("show");
-    });
-}
 
     // 使い方ガイド
     const guideButton = document.getElementById("guideButton");
