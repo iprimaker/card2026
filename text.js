@@ -462,13 +462,6 @@ function applyCurrentTextVisibility(){
     const visible = textVisible ? textVisible.checked : false;
     const config = getCurrentCardType();
 
-    const textModeText = document.getElementById("textModeText");
-
-    if(textModeText){
-        textModeText.textContent =
-            visible ? "テキスト表示中" : "テキスト非表示";
-    }
-
     if(nameTextA){
         nameTextA.visible = visible && config.type === "A";
     }
