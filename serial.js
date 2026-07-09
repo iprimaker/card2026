@@ -9,7 +9,6 @@ export function initSerial(){
     const canvas = getCanvas();
     const config = getCurrentCardType();
 
-    const serialModeText = document.getElementById("serialModeText");
     const serialModeToggle = document.getElementById("serialModeToggle");
     const serialManual = document.getElementById("serialManual");
     const serialManualArea = document.getElementById("serialManualArea");
@@ -38,10 +37,6 @@ export function initSerial(){
 
         if(randomMode){
 
-            if(serialModeText){
-                serialModeText.textContent = "自動設定中";
-            }
-
             if(serialManualArea){
                 serialManualArea.style.display = "none";
             }
@@ -49,10 +44,6 @@ export function initSerial(){
             serialText.text = generateRandomSerial(config.type);
 
         }else{
-
-            if(serialModeText){
-                serialModeText.textContent = "手動設定中";
-            }
 
             if(serialManualArea){
                 serialManualArea.style.display = "block";
