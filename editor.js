@@ -1,6 +1,10 @@
 import { startApp } from "./app.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", async () => {
+
+    if(document.fonts){
+        await document.fonts.ready;
+    }
 
     startApp();
 
