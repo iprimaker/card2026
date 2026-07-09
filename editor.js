@@ -6,6 +6,135 @@ window.addEventListener("DOMContentLoaded", async () => {
         await document.fonts.ready;
     }
 
+    const PRELOAD_IMAGES = [
+
+    /* =========================
+       背景
+    ========================= */
+
+    "./backA1.png", 
+    "./backA1_1.png",
+    "./backA2.png",
+
+    /* =========================
+       フレーム A
+    ========================= */
+
+    "./flameA1.png",
+    "./flameA2.png",
+    "./flameA3.png",
+
+    /* =========================
+       フレーム B
+    ========================= */
+
+    "./flameB1_2.png",
+    "./flameB2_2.png",
+    "./flameB3_2.png",
+    "./flameB4_2.png",
+
+    /* =========================
+       属性 A
+    ========================= */
+
+    "./attributeA_1.png",
+    "./attributeA_2.png",
+    "./attributeA_3.png",
+    "./attributeA_4.png",
+    "./attributeA_5.png",
+    "./attributeA_6.png",
+    "./attributeA_7.png",
+    "./attributeA_8.png",
+    "./attributeA_9.png",
+    "./attributeA_10.png",
+
+    /* =========================
+       属性 B
+    ========================= */
+
+    /* =========================
+   A バズパワー
+========================= */
+
+"./A900.png",
+"./A950.png",
+"./A1000.png",
+"./A1050.png",
+"./A1100.png",
+"./A1150.png",
+"./A1200.png",
+"./A1250.png",
+"./A1300.png",
+"./A1320.png",
+"./A1350.png",
+"./A1400.png",
+        
+   /* =========================
+   B すき
+========================= */
+
+"./B_suki_900.png",
+"./B_suki_950.png",
+"./B_suki_1000.png",
+"./B_suki_1050.png",
+"./B_suki_1100.png",
+"./B_suki_1150.png",
+"./B_suki_1200.png",
+"./B_suki_1250.png",
+"./B_suki_1300.png",
+"./B_suki_1350.png",
+"./B_suki_1400.png",
+
+/* =========================
+   B ゆうじょう
+========================= */
+
+"./B_yujo_900.png",
+"./B_yujo_950.png",
+"./B_yujo_1000.png",
+"./B_yujo_1050.png",
+"./B_yujo_1100.png",
+"./B_yujo_1150.png",
+"./B_yujo_1200.png",
+"./B_yujo_1250.png",
+"./B_yujo_1300.png",
+"./B_yujo_1350.png",
+"./B_yujo_1400.png",
+
+/* =========================
+   B ゆうき
+========================= */
+
+"./B_yuki_900.png",
+"./B_yuki_950.png",
+"./B_yuki_1000.png",
+"./B_yuki_1050.png",
+"./B_yuki_1100.png",
+"./B_yuki_1150.png",
+"./B_yuki_1200.png",
+"./B_yuki_1250.png",
+"./B_yuki_1300.png",
+"./B_yuki_1350.png",
+"./B_yuki_1400.png",
+
+/* =========================
+   B ゆめ
+========================= */
+
+"./B_yume_900.png",
+"./B_yume_950.png",
+"./B_yume_1000.png",
+"./B_yume_1050.png",
+"./B_yume_1100.png",
+"./B_yume_1150.png",
+"./B_yume_1200.png",
+"./B_yume_1250.png",
+"./B_yume_1300.png",
+"./B_yume_1350.png",
+"./B_yume_1400.png"
+
+];
+
     startApp();
 
     // 利用にあたって
