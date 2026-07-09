@@ -10,8 +10,8 @@ const CARD_HEIGHT = 1016;
 
 const BACKGROUND_LIST = [
     { id: "background1", name: "ひみつ　A-☆2タイプ", path: "./backA1_1.png" },
-    { id: "background1", name: "ひみつ　A-☆3タイプ", path: "./backA1.png" },
-    { id: "background2", name: "おねがい　Bタイプ", path: "./backB2.png" }
+    { id: "background2", name: "ひみつ　A-☆3タイプ", path: "./backA1.png" },
+    { id: "background3", name: "おねがい　Bタイプ", path: "./backB2.png" }
 ];
 
 export function initImages(){
