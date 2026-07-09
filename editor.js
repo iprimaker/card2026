@@ -94,11 +94,13 @@ window.addEventListener("DOMContentLoaded", async () => {
         await document.fonts.ready;
     }
 
+    // preload.js 側で初回のみ読み込み、
+    // 2回目以降はキャッシュを利用
     await preloadImages(PRELOAD_IMAGES);
 
     startApp();
 
-    // 利用にあたって
+    // ---------- 利用にあたって ----------
     const noticeButton = document.getElementById("noticeButton");
     const noticeModal = document.getElementById("noticeModal");
     const closeModal = document.getElementById("closeModal");
@@ -113,7 +115,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // お知らせ
+    // ---------- お知らせ ----------
     const NEWS_VERSION = "20260709-3";
 
     const newsButton = document.getElementById("newsButton");
@@ -142,7 +144,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         });
     }
 
-    // 使い方ガイド
+    // ---------- 使い方 ----------
     const guideButton = document.getElementById("guideButton");
     const guideModal = document.getElementById("guideModal");
     const closeGuideModal = document.getElementById("closeGuideModal");
