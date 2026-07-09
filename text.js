@@ -7,26 +7,26 @@ let costumeLetters = [];
 let currentCostumeStyle = null;
 
 const COSTUME_PATH_A = [
-    { x:185, y:946, angle:0 },
-    { x:206, y:943, angle:-1 },
-    { x:227, y:940, angle:-2 },
-    { x:248, y:937, angle:-3 },
-    { x:269, y:934, angle:-4 },
-    { x:290, y:931, angle:-5 },
-    { x:311, y:928, angle:-6 },
-    { x:332, y:925, angle:-7 },
-    { x:353, y:922, angle:-8 },
-    { x:374, y:919, angle:-9 },
-    { x:395, y:916, angle:-10 },
-    { x:416, y:913, angle:-11 },
-    { x:437, y:910, angle:-12 },
-    { x:458, y:907, angle:-13 },
-    { x:479, y:904, angle:-14 },
-    { x:500, y:901, angle:-15 },
-    { x:521, y:898, angle:-16 },
-    { x:542, y:895, angle:-17 },
-    { x:563, y:892, angle:-18 },
-    { x:584, y:889, angle:-19 }
+    { x:185, y:949, angle:0 },
+    { x:206, y:948, angle:-1 },
+    { x:227, y:947, angle:-2 },
+    { x:248, y:946, angle:-3 },
+    { x:269, y:945, angle:-4 },
+    { x:290, y:943, angle:-5 },
+    { x:311, y:941, angle:-6 },
+    { x:332, y:939, angle:-7 },
+    { x:353, y:936, angle:-8 },
+    { x:374, y:933, angle:-9 },
+    { x:395, y:930, angle:-10 },
+    { x:416, y:926, angle:-11 },
+    { x:437, y:922, angle:-12 },
+    { x:458, y:918, angle:-13 },
+    { x:479, y:914, angle:-14 },
+    { x:500, y:910, angle:-15 },
+    { x:521, y:905, angle:-16 },
+    { x:542, y:900, angle:-17 },
+    { x:563, y:895, angle:-18 },
+    { x:584, y:890, angle:-19 }
 ];
 
 const TEXT_STYLE = {
@@ -45,13 +45,13 @@ const TEXT_STYLE = {
             },
             costume: {
                 fontFamily: "Dela Gothic One",
-                fontSize: 30,
+                fontSize: 34,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
                 scaleX: 0.62,
-                scaleY: 1.38,
+                scaleY: 1.45,
                 shadow: new fabric.Shadow({
                     color: "#2D5FA8",
                     blur: 4,
