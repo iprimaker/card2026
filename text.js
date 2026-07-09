@@ -335,7 +335,7 @@ export function initText(){
     }
 
     if(textVisible){
-        textVisible.checked = false;
+        textVisible.checked = true;
         textVisible.disabled = false;
     }
 
