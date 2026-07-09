@@ -33,12 +33,12 @@ const A_NAME_FIXED = {
 =========================== */
 
 const NAME_PATH_B = [
-    { x: 220, y: 870, angle: -3 },
-    { x: 250, y: 871, angle: -4 },
-    { x: 280, y: 873, angle: -5 },
-    { x: 310, y: 870, angle: -6 },
-    { x: 340, y: 866, angle: -7 },
-    { x: 255, y: 931, angle: -9 },
+    { x: 220, y: 900, angle: -3 },
+    { x: 250, y: 897, angle: -4 },
+    { x: 280, y: 894, angle: -5 },
+    { x: 310, y: 891, angle: -6 },
+    { x: 340, y: 888, angle: -7 },
+    { x: 255, y: 885, angle: -9 },
     { x: 270, y: 934, angle: -10 },
     { x: 285, y: 938, angle: -12 }
 ];
