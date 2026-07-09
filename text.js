@@ -33,14 +33,14 @@ const A_NAME_FIXED = {
 =========================== */
 
 const NAME_PATH_B = [
-    { x: 220, y: 900, angle: -3 },
-    { x: 250, y: 897, angle: -4 },
-    { x: 280, y: 894, angle: -5 },
-    { x: 310, y: 891, angle: -6 },
-    { x: 340, y: 888, angle: -7 },
-    { x: 255, y: 885, angle: -9 },
-    { x: 270, y: 934, angle: -10 },
-    { x: 285, y: 938, angle: -12 }
+    { x: 220, y: 899, angle: -3 },
+    { x: 250, y: 896, angle: -4 },
+    { x: 280, y: 892, angle: -5 },
+    { x: 310, y: 887, angle: -6 },
+    { x: 340, y: 881, angle: -7 },
+    { x: 255, y: 875, angle: -9 },
+    { x: 270, y: 969, angle: -10 },
+    { x: 285, y: 963, angle: -12 }
 ];
 
 /* ===========================
@@ -189,7 +189,7 @@ const TEXT_STYLE = {
         frame1: {
             name: {
                 fontFamily: "Dela Gothic One",
-                fontSize: 30,
+                fontSize: 28,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: "#DA136F",
@@ -201,7 +201,7 @@ const TEXT_STYLE = {
             },
             costume: {
                 fontFamily: "Dela Gothic One",
-                fontSize: 32,
+                fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
                 stroke: "#DA136F",
