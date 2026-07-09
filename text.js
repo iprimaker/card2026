@@ -374,7 +374,7 @@ export function initText(){
 
         // ひらがな・カタカナ・長音符のみ許可
         costumeInput.value = costumeInput.value.replace(
-            /[^ぁ-ゖァ-ヶー]/g,
+           /[^ぁ-ゖァ-ヶー0-9０-９]/g,
             ""
         );
 
