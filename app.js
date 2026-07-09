@@ -56,7 +56,7 @@ function buildEditor(){
     resizePreview();
 }
 
-function rebuildEditor(){
+export function rebuildEditor(){
 
     const canvas = getCanvas();
 
