@@ -9,33 +9,64 @@ import { initReset } from "./reset.js";
 import { initBuzzPower } from "./buzzPower.js";
 import { getCurrentCardType, setCurrentCardType } from "./config.js";
 
+let initialized = false;
+
 export function startApp(){
 
     const config = getCurrentCardType();
     const cardTypeSelect = document.getElementById("cardType");
 
-    cardTypeSelect.value = config.type;
+    if(cardTypeSelect){
+        cardTypeSelect.value = config.type;
+    }
 
     initCanvas();
+
+    buildEditor();
+
+    initSave();
+    initReset();
+
+    resizePreview();
+
+    if(cardTypeSelect){
+        cardTypeSelect.addEventListener("change", () => {
+            setCurrentCardType(cardTypeSelect.value);
+            rebuildEditor();
+        });
+    }
+
+    if(!initialized){
+        window.addEventListener("resize", resizePreview);
+        initialized = true;
+    }
+
+    console.log("Original Card Maker 起動");
+}
+
+function buildEditor(){
+
     initImages();
     initFrame();
     initAttribute();
     initText();
     initSerial();
-    initSave();
     initBuzzPower();
-    initReset();
 
     resizePreview();
+}
 
-    cardTypeSelect.addEventListener("change", () => {
-        setCurrentCardType(cardTypeSelect.value);
-        location.reload();
-    });
+function rebuildEditor(){
 
-    window.addEventListener("resize", resizePreview);
+    const canvas = getCanvas();
 
-    console.log("Original Card Maker 起動");
+    if(canvas){
+        canvas.discardActiveObject();
+        canvas.clear();
+        canvas.requestRenderAll();
+    }
+
+    buildEditor();
 }
 
 function resizePreview(){
