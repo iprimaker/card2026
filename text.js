@@ -341,7 +341,7 @@ export function initText(){
 
     updateTextStyle();
 
-    function applyTextVisible(){
+        function applyTextVisible(){
         const visible = textVisible ? textVisible.checked : true;
 
         if(nameTextA){
@@ -359,9 +359,9 @@ export function initText(){
         if(nameArea) nameArea.style.display = visible ? "block" : "none";
         if(costumeArea) costumeArea.style.display = visible ? "block" : "none";
 
-       sortLayers();
-canvas.requestRenderAll();
-
+        sortLayers();
+        canvas.requestRenderAll();
+    }
 if(document.fonts){
     document.fonts.ready.then(() => {
         canvas.requestRenderAll();
