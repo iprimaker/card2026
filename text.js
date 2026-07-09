@@ -341,27 +341,45 @@ export function initText(){
 
     updateTextStyle();
 
-        function applyTextVisible(){
-        const visible = textVisible ? textVisible.checked : true;
+      function applyTextVisible(){
 
-        if(nameTextA){
-            nameTextA.visible = visible && getCurrentCardType().type === "A";
-        }
+    const visible = textVisible ? textVisible.checked : false;
 
-        nameLettersB.forEach(letter => {
-            letter.visible = visible && getCurrentCardType().type === "B";
-        });
+    const textModeText = document.getElementById("textModeText");
 
-        costumeLetters.forEach(letter => {
-            letter.visible = visible;
-        });
-
-        if(nameArea) nameArea.style.display = visible ? "block" : "none";
-        if(costumeArea) costumeArea.style.display = visible ? "block" : "none";
-
-        sortLayers();
-        canvas.requestRenderAll();
+    if(textModeText){
+        textModeText.textContent =
+            visible ? "テキスト表示中" : "テキスト非表示";
     }
+
+    if(nameTextA){
+        nameTextA.visible =
+            visible && getCurrentCardType().type === "A";
+    }
+
+    nameLettersB.forEach(letter=>{
+        letter.visible =
+            visible && getCurrentCardType().type === "B";
+    });
+
+    costumeLetters.forEach(letter=>{
+        letter.visible = visible;
+    });
+
+    if(nameArea){
+        nameArea.style.display =
+            visible ? "block" : "none";
+    }
+
+    if(costumeArea){
+        costumeArea.style.display =
+            visible ? "block" : "none";
+    }
+
+    sortLayers();
+    canvas.requestRenderAll();
+}
+   
 if(document.fonts){
     document.fonts.ready.then(() => {
         canvas.requestRenderAll();
