@@ -267,7 +267,7 @@ export function initText(){
         textVisible.disabled = false;
     }
 
-    nameText = new fabric.Text("NAME", NAME_BASE);
+    nameText = new fabric.Text("♥なまえ♥", NAME_BASE);
     nameText.layerType = "text";
 
     canvas.add(nameText);
@@ -306,7 +306,7 @@ export function initText(){
     if(costumeInput){
         costumeInput.addEventListener("input", () => {
             drawCostumeLetters(
-                costumeInput.value || "COSTUME",
+                costumeInput.value || "コスチューム",
                 currentCostumeStyle
             );
 
