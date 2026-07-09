@@ -74,25 +74,25 @@ const COSTUME_PATH_A = [
 =========================== */
 
 const COSTUME_PATH_B = [
-    { x:190, y:950, angle:-6 },
-    { x:211, y:948, angle:-6 },
-    { x:232, y:946, angle:-5 },
-    { x:253, y:944, angle:-5 },
-    { x:274, y:942, angle:-4 },
-    { x:295, y:940, angle:-4 },
-    { x:316, y:938, angle:-3 },
-    { x:337, y:936, angle:-3 },
-    { x:358, y:934, angle:-2 },
-    { x:379, y:932, angle:-2 },
-    { x:400, y:930, angle:-1 },
-    { x:421, y:928, angle:-1 },
-    { x:442, y:926, angle:0 },
-    { x:463, y:924, angle:0 },
-    { x:484, y:922, angle:1 },
-    { x:505, y:920, angle:1 },
-    { x:526, y:918, angle:2 },
-    { x:547, y:916, angle:2 },
-    { x:568, y:914, angle:3 }
+    { x:200, y:938, angle:-1 },
+    { x:221, y:937, angle:-1 },
+    { x:242, y:936, angle:-2 },
+    { x:263, y:934, angle:-2 },
+    { x:284, y:932, angle:-3 },
+    { x:305, y:930, angle:-3 },
+    { x:326, y:928, angle:-4 },
+    { x:347, y:925, angle:-4 },
+    { x:368, y:922, angle:-5 },
+    { x:389, y:919, angle:-5 },
+    { x:400, y:916, angle:-6 },
+    { x:421, y:912, angle:-6 },
+    { x:442, y:908, angle:-7 },
+    { x:463, y:904, angle:-7 },
+    { x:484, y:900, angle:-8 },
+    { x:505, y:896, angle:-8 },
+    { x:526, y:891, angle:-9 },
+    { x:547, y:886, angle:-9 },
+    { x:568, y:880, angle:-10 }
 ];
 
 const TEXT_STYLE = {
