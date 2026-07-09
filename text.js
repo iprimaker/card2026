@@ -216,3 +216,370 @@ const TEXT_STYLE = {
                 })
             }
         },
+       
+         frame2: {
+            name: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 28,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: "#7AC8FF",
+                strokeWidth: 2,
+                scaleX: 0.8,
+                scaleY: 1.25
+            },
+            costume: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 30,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+                scaleX: 0.65,
+                scaleY: 1.4,
+                shadow: new fabric.Shadow({
+                    color: "#2059D1",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
+            }
+        },
+
+        frame3: {
+            name: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 28,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: "#FFB36B",
+                strokeWidth: 2,
+                scaleX: 0.8,
+                scaleY: 1.25
+            },
+            costume: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 30,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+                scaleX: 0.65,
+                scaleY: 1.4,
+                shadow: new fabric.Shadow({
+                    color: "#2D5FA8",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
+            }
+        },
+
+        frame4: {
+            name: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 28,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: "#FFB36B",
+                strokeWidth: 2,
+                scaleX: 0.8,
+                scaleY: 1.25
+            },
+            costume: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 30,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: null,
+                strokeWidth: 0,
+                scaleX: 0.65,
+                scaleY: 1.4,
+                shadow: new fabric.Shadow({
+                    color: "#2D5FA8",
+                    blur: 4,
+                    offsetX: 1,
+                    offsetY: 2
+                })
+            }
+        }
+    }
+};
+
+/* ===========================
+   初期化
+=========================== */
+
+export function initText(){
+
+    const canvas = getCanvas();
+    const config = getCurrentCardType();
+
+    const textVisible = document.getElementById("textVisible");
+    const nameArea = document.getElementById("nameArea");
+    const costumeArea = document.getElementById("costumeArea");
+
+    const nameInput = document.getElementById("cardName");
+    const costumeInput = document.getElementById("costumeName");
+
+    if(nameInput){
+        nameInput.maxLength = config.maxName || 8;
+        nameInput.value = nameInput.value || DEFAULT_NAME;
+    }
+
+    if(costumeInput){
+        costumeInput.maxLength = 20;
+        costumeInput.value = costumeInput.value || DEFAULT_COSTUME;
+    }
+
+    if(textVisible){
+        textVisible.checked = true;
+        textVisible.disabled = false;
+    }
+
+    nameTextA = new fabric.Text(DEFAULT_NAME, A_NAME_FIXED);
+    nameTextA.layerType = "text";
+    canvas.add(nameTextA);
+
+    updateTextStyle();
+
+    function applyTextVisible(){
+        const visible = textVisible ? textVisible.checked : true;
+
+        if(nameTextA){
+            nameTextA.visible = visible && getCurrentCardType().type === "A";
+        }
+
+        nameLettersB.forEach(letter => {
+            letter.visible = visible && getCurrentCardType().type === "B";
+        });
+
+        costumeLetters.forEach(letter => {
+            letter.visible = visible;
+        });
+
+        if(nameArea) nameArea.style.display = visible ? "block" : "none";
+        if(costumeArea) costumeArea.style.display = visible ? "block" : "none";
+
+        sortLayers();
+        canvas.requestRenderAll();
+    }
+       applyTextVisible();
+
+    if(textVisible){
+        textVisible.addEventListener("change", applyTextVisible);
+    }
+
+    if(nameInput){
+        nameInput.addEventListener("input", () => {
+
+            const text = nameInput.value || DEFAULT_NAME;
+
+            if(getCurrentCardType().type === "A"){
+                drawNameA(text, currentNameStyle);
+            }else{
+                drawNameB(text, currentNameStyle);
+            }
+
+            applyTextVisible();
+        });
+    }
+
+    if(costumeInput){
+        costumeInput.addEventListener("input", () => {
+            drawCostumeLetters(
+                costumeInput.value || DEFAULT_COSTUME,
+                currentCostumeStyle
+            );
+
+            applyTextVisible();
+        });
+    }
+
+    sortLayers();
+}
+
+/* ===========================
+   スタイル更新
+=========================== */
+
+export function updateTextStyle(){
+
+    const canvas = getCanvas();
+    const config = getCurrentCardType();
+    const frameSelect = document.getElementById("frame");
+
+    const nameInput = document.getElementById("cardName");
+    const costumeInput = document.getElementById("costumeName");
+
+    if(!canvas) return;
+
+    const frameId = frameSelect ? frameSelect.value : "frame1";
+
+    const styleSet =
+        TEXT_STYLE[config.type]?.[frameId] ||
+        TEXT_STYLE[config.type]?.frame1 ||
+        TEXT_STYLE.A.frame1;
+
+    currentNameStyle = styleSet.name;
+    currentCostumeStyle = styleSet.costume;
+
+    if(config.type === "A"){
+        drawNameA(
+            nameInput?.value || DEFAULT_NAME,
+            currentNameStyle
+        );
+    }else{
+        drawNameB(
+            nameInput?.value || DEFAULT_NAME,
+            currentNameStyle
+        );
+    }
+
+    drawCostumeLetters(
+        costumeInput?.value || DEFAULT_COSTUME,
+        currentCostumeStyle
+    );
+
+    sortLayers();
+    canvas.requestRenderAll();
+}
+
+/* ===========================
+   name描画
+=========================== */
+
+function drawNameA(text, style){
+
+    const canvas = getCanvas();
+
+    if(!canvas || !style || !nameTextA) return;
+
+    nameLettersB.forEach(letter => {
+        canvas.remove(letter);
+    });
+
+    nameLettersB = [];
+
+    nameTextA.set({
+        text: text,
+
+        ...A_NAME_FIXED,
+
+        fontFamily: style.fontFamily || "Zen Maru Gothic",
+        fontSize: style.fontSize || 28,
+        fontWeight: style.fontWeight || 900,
+
+        fill: style.fill || "#E4D3A7",
+
+        stroke: style.stroke || null,
+        strokeWidth: style.strokeWidth || 0,
+
+        scaleX: style.scaleX ?? 1,
+        scaleY: style.scaleY ?? 1,
+
+        shadow: style.shadow || null,
+
+        visible: true
+    });
+
+    canvas.requestRenderAll();
+}
+
+function drawNameB(text, style){
+
+    const canvas = getCanvas();
+
+    if(!canvas || !style) return;
+
+    if(nameTextA){
+        nameTextA.visible = false;
+    }
+
+    nameLettersB = drawLetters({
+        oldLetters: nameLettersB,
+        text: text,
+        style: style,
+        path: NAME_PATH_B,
+        maxLength: NAME_PATH_B.length
+    });
+}
+
+/* ===========================
+   costume描画
+=========================== */
+
+function drawCostumeLetters(text, style){
+
+    const config = getCurrentCardType();
+    const path = config.type === "B" ? COSTUME_PATH_B : COSTUME_PATH_A;
+
+    costumeLetters = drawLetters({
+        oldLetters: costumeLetters,
+        text: text,
+        style: style,
+        path: path,
+        maxLength: 20
+    });
+}
+
+/* ===========================
+   共通：1文字ずつ描画
+=========================== */
+
+function drawLetters({ oldLetters, text, style, path, maxLength }){
+
+    const canvas = getCanvas();
+
+    if(!canvas || !style || !path) return [];
+
+    oldLetters.forEach(letter => {
+        canvas.remove(letter);
+    });
+
+    const newLetters = [];
+    const chars = [...text].slice(0, maxLength);
+
+    chars.forEach((char, index) => {
+
+        const point = path[index];
+
+        if(!point) return;
+
+        const letter = new fabric.Text(char, {
+            left: point.x,
+            top: point.y,
+            angle: point.angle,
+
+            originX: "center",
+            originY: "center",
+
+            fontFamily: style.fontFamily || "Dela Gothic One",
+            fontSize: style.fontSize || 24,
+            fontWeight: style.fontWeight || "normal",
+
+            fill: style.fill || "#FFFFFF",
+
+            stroke: style.stroke || null,
+            strokeWidth: style.strokeWidth || 0,
+
+            scaleX: style.scaleX ?? 1,
+            scaleY: style.scaleY ?? 1,
+
+            shadow: style.shadow || null,
+
+            selectable: false,
+            evented: false
+        });
+
+        letter.layerType = "text";
+
+        newLetters.push(letter);
+        canvas.add(letter);
+    });
+
+    sortLayers();
+    canvas.requestRenderAll();
+
+    return newLetters;
+}
