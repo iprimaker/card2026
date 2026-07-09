@@ -91,8 +91,8 @@ const COSTUME_PATH_B = [
     { x:494, y:904, angle:-8 },
     { x:515, y:901, angle:-8 },
     { x:536, y:898, angle:-9 },
-    { x:557, y:895, angle:-9 },
-    { x:578, y:891, angle:-10 }
+    { x:557, y:894, angle:-9 },
+    { x:578, y:889, angle:-10 }
 ];
 
 const TEXT_STYLE = {
