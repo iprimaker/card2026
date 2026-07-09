@@ -141,13 +141,13 @@ const TEXT_STYLE = {
                 fontFamily: "Dela Gothic One",
                 fontSize: 32,
                 fontWeight: "normal",
-                fill: "#FF1000",
+                fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
                 scaleX: 0.62,
                 scaleY: 1.45,
                 shadow: new fabric.Shadow({
-                    color: "#2059D1",
+                    color: "#C44700",
                     blur: 4,
                     offsetX: 1,
                     offsetY: 2
@@ -170,13 +170,13 @@ const TEXT_STYLE = {
                 fontFamily: "Dela Gothic One",
                 fontSize: 32,
                 fontWeight: "normal",
-                fill: "#00FF4D",
+                fill: "#FFFFFF",
                 stroke: null,
                 strokeWidth: 0,
                 scaleX: 0.62,
                 scaleY: 1.45,
                 shadow: new fabric.Shadow({
-                    color: "#2D5FA8",
+                    color: "#C44700",
                     blur: 4,
                     offsetX: 1,
                     offsetY: 2
