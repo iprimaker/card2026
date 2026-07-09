@@ -1,6 +1,7 @@
 import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
+import { cloneCachedImage } from "./preload.js";
 
 let buzzPowerObject = null;
 
@@ -63,7 +64,7 @@ const BUZZ_POWER_LIST = {
             { id: "buzz11", name: "1400", path: "./B_yujo_1400.png" }
         ],
 
-          frame4: [
+        frame4: [
             { id: "buzz1", name: "900", path: "./B_yuki_900.png" },
             { id: "buzz2", name: "950", path: "./B_yuki_950.png" },
             { id: "buzz3", name: "1000", path: "./B_yuki_1000.png" },
@@ -86,17 +87,28 @@ export function initBuzzPower(){
     const frameSelect = document.getElementById("frame");
     const config = getCurrentCardType();
 
+    if(!buzzPowerSelect || !buzzPowerArea) return;
+
     let buzzPowers = [];
 
     if(config.type === "A"){
         buzzPowers = BUZZ_POWER_LIST.A;
     }else{
-        const frame = frameSelect.value;
+        const frame = frameSelect ? frameSelect.value : "frame1";
         buzzPowers = BUZZ_POWER_LIST.B[frame] || [];
     }
 
     if(buzzPowers.length === 0){
         buzzPowerArea.style.display = "none";
+
+        const canvas = getCanvas();
+
+        if(canvas && buzzPowerObject){
+            canvas.remove(buzzPowerObject);
+            buzzPowerObject = null;
+            canvas.requestRenderAll();
+        }
+
         return;
     }
 
@@ -118,31 +130,38 @@ export function initBuzzPower(){
         }
     };
 
-    if(config.type === "B"){
-        frameSelect.onchange = () => {
-            initBuzzPower();
-        };
-    }
-
+    buzzPowerSelect.value = buzzPowers[0].id;
     drawBuzzPower(buzzPowers[0].path);
+}
+
+export function updateBuzzPowerForFrame(){
+
+    const config = getCurrentCardType();
+
+    if(config.type !== "B") return;
+
+    initBuzzPower();
 }
 
 function drawBuzzPower(path){
 
     const canvas = getCanvas();
 
+    if(!canvas) return;
+
     if(buzzPowerObject){
         canvas.remove(buzzPowerObject);
         buzzPowerObject = null;
     }
 
-    fabric.Image.fromURL(path, img => {
+    cloneCachedImage(path, img => {
 
         img.set({
             left: 697 / 2,
             top: 1016 / 2,
             originX: "center",
             originY: "center",
+
             selectable: false,
             evented: false
         });
@@ -152,8 +171,8 @@ function drawBuzzPower(path){
         buzzPowerObject = img;
 
         canvas.add(buzzPowerObject);
-        sortLayers();
-        canvas.renderAll();
-    });
 
+        sortLayers();
+        canvas.requestRenderAll();
+    });
 }
