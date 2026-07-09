@@ -17,12 +17,12 @@ export function initSerial(){
 
     serialText = new fabric.Text("", {
         left: 635,
-        top: 27,
+        top: 25,
         originX: "center",
 
         fontFamily: "Zen Maru Gothic",
-        fontSize: 18,
-        fontWeight: 700,
+        fontSize: 20,
+        fontWeight: 900,
 
         fill: "#ffffff",
 
