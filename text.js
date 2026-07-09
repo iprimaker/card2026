@@ -22,7 +22,7 @@ const COSTUME_PATH_A = [
     { x:447, y:922, angle:-12 },
     { x:468, y:918, angle:-13 },
     { x:489, y:913, angle:-14 },
-    { x:610, y:907, angle:-15 },
+    { x:510, y:907, angle:-15 },
     { x:531, y:902, angle:-16 },
     { x:552, y:894, angle:-17 },
     { x:573, y:888, angle:-18 },
