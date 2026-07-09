@@ -1,6 +1,7 @@
 import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
+import { cloneCachedImage } from "./preload.js";
 
 let attributeObject = null;
 
@@ -17,6 +18,7 @@ const ATTRIBUTE_LIST = {
         { id: "attribute9", name: "メロディ（バズリウム）", path: "./attributeA_9.png" },
         { id: "attribute10", name: "プリンセス（バズリウム）", path: "./attributeA_10.png" }
     ],
+
     B: []
 };
 
@@ -26,66 +28,80 @@ export function initAttribute(){
     const attributeSelect = document.getElementById("attribute");
     const config = getCurrentCardType();
 
-    const attribute = ATTRIBUTE_LIST[config.type] || [];
+    if(!attributeArea || !attributeSelect) return;
 
-    if(attribute.length === 0){
+    const attributes = ATTRIBUTE_LIST[config.type] || [];
+
+    if(attributes.length === 0){
         attributeArea.style.display = "none";
+
+        if(attributeObject){
+            const canvas = getCanvas();
+
+            if(canvas){
+                canvas.remove(attributeObject);
+                attributeObject = null;
+                canvas.requestRenderAll();
+            }
+        }
+
         return;
     }
 
     attributeArea.style.display = "block";
     attributeSelect.innerHTML = "";
 
-    attribute.forEach(attribute => {
-
+    attributes.forEach(attribute => {
         const option = document.createElement("option");
 
         option.value = attribute.id;
         option.textContent = attribute.name;
 
         attributeSelect.appendChild(option);
-
     });
 
     attributeSelect.addEventListener("change", () => {
-
-        const selected = attribute.find(attribute => attribute.id === attributeSelect.value);
+        const selected = attributes.find(attribute => attribute.id === attributeSelect.value);
 
         if(selected){
             drawAttribute(selected.path);
         }
-
     });
 
-    drawAttribute(attribute[0].path);
-
+    attributeSelect.value = attributes[0].id;
+    drawAttribute(attributes[0].path);
 }
 
 function drawAttribute(path){
+
     const canvas = getCanvas();
+
+    if(!canvas) return;
 
     if(attributeObject){
         canvas.remove(attributeObject);
         attributeObject = null;
     }
 
-    fabric.Image.fromURL(path, img => {
+    cloneCachedImage(path, img => {
 
         img.set({
-    left: 697 / 2,
-    top: 1016 / 2,
-    originX: "center",
-    originY: "center",
-    selectable: false,
-    evented: false
-});
+            left: 697 / 2,
+            top: 1016 / 2,
+            originX: "center",
+            originY: "center",
+
+            selectable: false,
+            evented: false
+        });
 
         img.layerType = "attribute";
 
         attributeObject = img;
 
         canvas.add(attributeObject);
+
         sortLayers();
-        canvas.renderAll();
+        canvas.requestRenderAll();
     });
 }
