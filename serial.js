@@ -3,13 +3,15 @@ import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
 
 let serialText = null;
+let randomMode = true;
 
 export function initSerial(){
 
     const canvas = getCanvas();
     const config = getCurrentCardType();
 
-    const serialRandom = document.getElementById("serialRandom");
+    const serialModeText = document.getElementById("serialModeText");
+    const serialModeButton = document.getElementById("serialModeButton");
     const serialManual = document.getElementById("serialManual");
     const serialManualArea = document.getElementById("serialManualArea");
 
@@ -17,8 +19,13 @@ export function initSerial(){
         left: 635,
         top: 27,
         originX: "center",
+
+        fontFamily: "Zen Maru Gothic",
         fontSize: 18,
+        fontWeight: 700,
+
         fill: "#ffffff",
+
         selectable: false,
         evented: false
     });
@@ -28,13 +35,38 @@ export function initSerial(){
 
     function updateSerial(){
 
-        if(serialRandom && serialRandom.checked){
-            if(serialManualArea) serialManualArea.style.display = "none";
+        if(randomMode){
+
+            if(serialModeText){
+                serialModeText.textContent = "現在シリアル番号を自動設定中";
+            }
+
+            if(serialModeButton){
+                serialModeButton.textContent = "手動設定に切り替え";
+            }
+
+            if(serialManualArea){
+                serialManualArea.style.display = "none";
+            }
+
             serialText.text = generateRandomSerial(config.type);
+
         }else{
-            if(serialManualArea) serialManualArea.style.display = "block";
+
+            if(serialModeText){
+                serialModeText.textContent = "現在シリアル番号を手動設定中";
+            }
+
+            if(serialModeButton){
+                serialModeButton.textContent = "自動設定に切り替え";
+            }
+
+            if(serialManualArea){
+                serialManualArea.style.display = "block";
+            }
 
             const value = serialManual ? serialManual.value.toUpperCase() : "";
+
             serialText.text = isValidSerial(value) ? value : "ABC-123";
         }
 
@@ -42,8 +74,11 @@ export function initSerial(){
         canvas.requestRenderAll();
     }
 
-    if(serialRandom){
-        serialRandom.addEventListener("change", updateSerial);
+    if(serialModeButton){
+        serialModeButton.addEventListener("click", () => {
+            randomMode = !randomMode;
+            updateSerial();
+        });
     }
 
     if(serialManual){
