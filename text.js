@@ -359,9 +359,14 @@ export function initText(){
         if(nameArea) nameArea.style.display = visible ? "block" : "none";
         if(costumeArea) costumeArea.style.display = visible ? "block" : "none";
 
-        sortLayers();
+       sortLayers();
+canvas.requestRenderAll();
+
+if(document.fonts){
+    document.fonts.ready.then(() => {
         canvas.requestRenderAll();
-    }
+    });
+}
        applyTextVisible();
 
     if(textVisible){
