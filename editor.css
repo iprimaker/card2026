@@ -166,8 +166,13 @@ header h1{
 }
 
 #saveButton{
-    background:linear-gradient(135deg,#ff78b6,#7aa7ff);
-    margin-top:10px;
+    margin:0;
+    background:linear-gradient(
+        135deg,
+        #FF5D8F 0%,
+        #FF7A7A 45%,
+        #FFA36C 100%
+    );
 }
 
 #resetButton:hover,
