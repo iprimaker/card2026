@@ -1,28 +1,18 @@
+import { rebuildEditor } from "./app.js";
+
 export function initReset(){
 
     const resetButton = document.getElementById("resetButton");
 
     if(!resetButton) return;
 
-    resetButton.addEventListener("click", resetEditor);
+    resetButton.addEventListener("click", () => {
 
-}
+        const result = confirm("新しいカードを作成しますか？\n現在の編集内容はリセットされます。");
 
-function resetEditor(){
+        if(!result) return;
 
-    const result = confirm("現在のカードデザインをリセットしますか？");
+        rebuildEditor();
 
-    if(!result){
-        return;
-    }
-
-    // カード設定のみリセット
-    localStorage.removeItem("cardType");
-    localStorage.removeItem("background");
-    localStorage.removeItem("frame");
-    localStorage.removeItem("attribute");
-    localStorage.removeItem("buzzPower");
-
-    location.reload();
-
+    });
 }
