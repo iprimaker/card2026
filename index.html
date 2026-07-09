@@ -84,7 +84,7 @@
         <h3>キャラクター画像の挿入</h3>
         <ul>
             <li>ドラッグで移動、角の丸いハンドルで拡大・縮小、上のハンドルで画像を回転できます。スマホではピンチイン・ピンチアウトで拡大縮小できます。</li>
-            <li>画像の再挿入は別のファイルを選択するか、一回すべてをリセットして下さい。</li>
+            <li>画像の再挿入は別のファイルを選択するか、一回すべてをリセットしてください。</li>
         </ul>
 
         <h3>カード構成物</h3>
@@ -118,7 +118,7 @@
         </div>
 
         <div class="item">
-            <label>キャラクター画像を挿入　（最大1枚）</label>
+            <label>キャラクター画像を挿入（最大1枚）</label>
             <input type="file" id="character" accept="image/*">
         </div>
 
@@ -140,36 +140,37 @@
         <div class="item disabledItem">
             <label>
                 <input type="checkbox" id="textVisible" checked disabled>
-                テキスト類を表示　　※現在調整中※
+                テキスト類を表示　※現在調整中※
             </label>
         </div>
 
         <div class="item" id="nameArea">
             <label>名前（最大5文字）</label>
-            <input id="cardName" type="text" maxlength="4" placeholder="例：♥ みつき ♥">
+            <input id="cardName" type="text" maxlength="5" placeholder="例：♥みつき♥">
         </div>
 
         <div class="item" id="costumeArea">
             <label>衣装名（最大19文字・漢字/英語 非対応）</label>
-            <input id="costumeName" type="text" maxlength="15" placeholder="アイプリバースポッピンハートプリンセス">
+            <input id="costumeName" type="text" maxlength="19" placeholder="アイプリバースポッピンハート">
         </div>
 
         <div class="item" id="serialArea">
-    <label>
-        <input type="checkbox" id="serialRandom" checked>
-        シリアル番号をランダム生成
-    </label>
+            <label id="serialModeText">現在シリアル番号を自動設定中</label>
 
-    <div id="serialManualArea" style="display:none; margin-top:10px;">
-        <label>シリアル番号（例：ABC-123）</label>
-        <input
-            id="serialManual"
-            type="text"
-            maxlength="7"
-            placeholder="ABC-123"
-        >
-    </div>
-</div>
+            <button id="serialModeButton" type="button">
+                手動設定に切り替え
+            </button>
+
+            <div id="serialManualArea" style="display:none;margin-top:10px;">
+                <label>シリアル番号（例：ABC-123）</label>
+                <input
+                    id="serialManual"
+                    type="text"
+                    maxlength="7"
+                    placeholder="ABC-123"
+                >
+            </div>
+        </div>
 
     </aside>
 
@@ -185,11 +186,6 @@
     <button id="saveButton" title="保存">保存</button>
     <button id="resetButton" title="新規作成">新規</button>
 </div>
-
-<script type="module" src="./editor.js"></script>
-
-</body>
-</html>
 
 <script type="module" src="./editor.js"></script>
 
