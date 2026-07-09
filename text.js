@@ -390,7 +390,7 @@ export function initText(){
 
         // ひらがな・カタカナ・長音符・中黒・数字のみ許可
         costumeInput.value = costumeInput.value
-            .replace(/[^ぁ-ゖァ-ヶー0-9０-９ー・]/g, "")
+            .replace(/[^a-zA-Zぁ-ゖァ-ヶー0-9０-９ー・]/g, "")
             .slice(0, 19);
 
         drawCostumeLetters(
