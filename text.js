@@ -331,7 +331,7 @@ export function initText(){
     }
 
     if(textVisible){
-        textVisible.checked = true;
+        textVisible.checked = false;
         textVisible.disabled = false;
     }
 
@@ -341,51 +341,14 @@ export function initText(){
 
     updateTextStyle();
 
-      function applyTextVisible(){
+    function applyTextVisible(){
+        applyCurrentTextVisibility();
 
-    const visible = textVisible ? textVisible.checked : false;
-
-    const textModeText = document.getElementById("textModeText");
-
-    if(textModeText){
-        textModeText.textContent =
-            visible ? "テキスト表示中" : "テキスト非表示";
-    }
-
-    if(nameTextA){
-        nameTextA.visible =
-            visible && getCurrentCardType().type === "A";
-    }
-
-    nameLettersB.forEach(letter=>{
-        letter.visible =
-            visible && getCurrentCardType().type === "B";
-    });
-
-    costumeLetters.forEach(letter=>{
-        letter.visible = visible;
-    });
-
-    if(nameArea){
-        nameArea.style.display =
-            visible ? "block" : "none";
-    }
-
-    if(costumeArea){
-        costumeArea.style.display =
-            visible ? "block" : "none";
-    }
-
-    sortLayers();
-    canvas.requestRenderAll();
-}
-   
-if(document.fonts){
-    document.fonts.ready.then(() => {
+        sortLayers();
         canvas.requestRenderAll();
-    });
-}
-       applyTextVisible();
+    }
+
+    applyTextVisible();
 
     if(textVisible){
         textVisible.addEventListener("change", applyTextVisible);
@@ -417,7 +380,15 @@ if(document.fonts){
         });
     }
 
+    if(document.fonts){
+        document.fonts.ready.then(() => {
+            updateTextStyle();
+            applyTextVisible();
+        });
+    }
+
     sortLayers();
+    canvas.requestRenderAll();
 }
 
 /* ===========================
@@ -462,8 +433,57 @@ export function updateTextStyle(){
         currentCostumeStyle
     );
 
+    applyCurrentTextVisibility();
+
     sortLayers();
     canvas.requestRenderAll();
+
+    if(document.fonts){
+        document.fonts.ready.then(() => {
+            canvas.requestRenderAll();
+        });
+    }
+}
+
+/* ===========================
+   表示・非表示状態の反映
+=========================== */
+
+function applyCurrentTextVisibility(){
+
+    const textVisible = document.getElementById("textVisible");
+    const visible = textVisible ? textVisible.checked : false;
+    const config = getCurrentCardType();
+
+    const textModeText = document.getElementById("textModeText");
+
+    if(textModeText){
+        textModeText.textContent =
+            visible ? "テキスト表示中" : "テキスト非表示";
+    }
+
+    if(nameTextA){
+        nameTextA.visible = visible && config.type === "A";
+    }
+
+    nameLettersB.forEach(letter => {
+        letter.visible = visible && config.type === "B";
+    });
+
+    costumeLetters.forEach(letter => {
+        letter.visible = visible;
+    });
+
+    const nameArea = document.getElementById("nameArea");
+    const costumeArea = document.getElementById("costumeArea");
+
+    if(nameArea){
+        nameArea.style.display = visible ? "block" : "none";
+    }
+
+    if(costumeArea){
+        costumeArea.style.display = visible ? "block" : "none";
+    }
 }
 
 /* ===========================
@@ -499,9 +519,7 @@ function drawNameA(text, style){
         scaleX: style.scaleX ?? 1,
         scaleY: style.scaleY ?? 1,
 
-        shadow: style.shadow || null,
-
-        visible: true
+        shadow: style.shadow || null
     });
 
     canvas.requestRenderAll();
