@@ -189,13 +189,15 @@ const TEXT_STYLE = {
         frame1: {
             name: {
                 fontFamily: "Dela Gothic One",
-                fontSize: 28,
+                fontSize: 30,
                 fontWeight: "normal",
-                fill: "#E4D3A7",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.8,
-                scaleY: 1.25
+                fill: "#FFFFFF",
+                stroke: "#2D5FA8",
+                strokeWidth: 2,
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45
             },
             costume: {
                 fontFamily: "Dela Gothic One",
