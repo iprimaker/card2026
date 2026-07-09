@@ -452,15 +452,8 @@ header h1{
 }
 
 /* ===========================
-   シリアル切替スイッチ
+   シリアル・テキスト切替スイッチ
 =========================== */
-
-#serialModeText{
-    display:block;
-    margin-bottom:10px;
-    font-weight:bold;
-    color:#5a5270;
-}
 
 .serialSwitch{
     display:block;
@@ -475,14 +468,12 @@ header h1{
 
 .serialSlider{
     position:relative;
+
     display:flex;
     align-items:center;
-    justify-content:space-between;
 
     width:100%;
     height:100%;
-
-    padding:0 18px;
 
     border-radius:999px;
 
@@ -494,7 +485,6 @@ header h1{
     );
 
     cursor:pointer;
-
     overflow:hidden;
 
     box-shadow:
@@ -505,54 +495,49 @@ header h1{
 }
 
 .serialSlider::before{
-
     content:"";
-
     position:absolute;
 
     top:4px;
     left:4px;
 
-    width:calc(50% - 4px);
+    width:calc(50% - 8px);
     height:36px;
 
     border-radius:999px;
-
     background:white;
 
-    box-shadow:
-        0 4px 12px rgba(120,90,160,.18);
+    box-shadow:0 4px 12px rgba(120,90,160,.18);
 
     transition:.25s;
-
     z-index:1;
 }
-
-/* ON（自動設定中） */
 
 .serialSwitch input:checked + .serialSlider::before{
     transform:translateX(0);
 }
 
-/* OFF（手動設定中） */
-
 .serialSwitch input:not(:checked) + .serialSlider::before{
-    transform:translateX(calc(100% - 4px));
+    transform:translateX(calc(100% + 8px));
 }
 
 .serialLabel{
+    flex:1;
 
-    width:50%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     text-align:center;
 
     font-size:13px;
-
     font-weight:bold;
 
     z-index:2;
-
     user-select:none;
+    pointer-events:none;
 
     transition:.25s;
 }
@@ -566,7 +551,6 @@ header h1{
 }
 
 .serialSwitch:hover .serialSlider{
-
     filter:brightness(1.03);
 
     box-shadow:
