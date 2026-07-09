@@ -9,7 +9,7 @@ let costumeLetters = [];
 let currentNameStyle = null;
 let currentCostumeStyle = null;
 
-const DEFAULT_NAME = "♥なまえ♥";
+const DEFAULT_NAME = "みつき";
 const DEFAULT_COSTUME = "アイドルプリンセスポッピンハートライト";
 
 /* ===========================
