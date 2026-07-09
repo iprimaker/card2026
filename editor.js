@@ -4,7 +4,7 @@ import { preloadImages } from "./preload.js";
 const PRELOAD_IMAGES = [
     "./backA1.png",
     "./backA1_1.png",
-    "./backA2.png",
+    "./backB2.png",
 
     "./flameA1.png",
     "./flameA2.png",
