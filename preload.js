@@ -4,6 +4,26 @@ export function getCachedImage(path){
     return imageCache.get(path);
 }
 
+export function cloneCachedImage(path, callback){
+
+    const cached = imageCache.get(path);
+
+    if(cached){
+        cached.clone(cloned => {
+            callback(cloned);
+        });
+        return;
+    }
+
+    fabric.Image.fromURL(path, img => {
+        imageCache.set(path, img);
+
+        img.clone(cloned => {
+            callback(cloned);
+        });
+    });
+}
+
 export async function preloadImages(paths){
 
     const progress = document.getElementById("loadingProgress");
@@ -17,43 +37,24 @@ export async function preloadImages(paths){
     const total = uniquePaths.length;
 
     function updateProgress(){
+        const value = total === 0 ? 100 : Math.floor((loaded / total) * 100);
 
-        const value =
-            total === 0 ? 100 :
-            Math.floor((loaded / total) * 100);
-
-        if(progress){
-            progress.style.width = value + "%";
-        }
-
-        if(percent){
-            percent.textContent = value + "%";
-        }
+        if(progress) progress.style.width = value + "%";
+        if(percent) percent.textContent = value + "%";
     }
 
     updateProgress();
 
-    if(unloadedPaths.length){
-
-        await Promise.all(unloadedPaths.map(path => {
-
-            return new Promise(resolve => {
-
-                fabric.Image.fromURL(path, img => {
-
-                    imageCache.set(path, img);
-
-                    loaded++;
-                    updateProgress();
-
-                    resolve();
-
-                });
-
+    await Promise.all(unloadedPaths.map(path => {
+        return new Promise(resolve => {
+            fabric.Image.fromURL(path, img => {
+                imageCache.set(path, img);
+                loaded++;
+                updateProgress();
+                resolve();
             });
-
-        }));
-    }
+        });
+    }));
 
     hideLoadingScreen(loadingScreen);
 }
@@ -64,7 +65,7 @@ function hideLoadingScreen(loadingScreen){
 
     loadingScreen.classList.add("hide");
 
-    setTimeout(()=>{
+    setTimeout(() => {
         loadingScreen.remove();
-    },400);
+    }, 400);
 }
