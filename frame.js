@@ -2,6 +2,7 @@ import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
 import { updateTextStyle } from "./text.js";
+import { cloneCachedImage } from "./preload.js";
 
 let frameObject = null;
 
@@ -11,6 +12,7 @@ const FRAME_LIST = {
         { id: "frame2", name: "ダンス（あか）", path: "./flameA2.png" },
         { id: "frame3", name: "ファッション（きいろ）", path: "./flameA3.png" }
     ],
+
     B: [
         { id: "frame1", name: "すき（ピンク）", path: "./flameB1_2.png" },
         { id: "frame2", name: "ゆめ（あお）", path: "./flameB2_2.png" },
@@ -19,108 +21,72 @@ const FRAME_LIST = {
     ]
 };
 
-export function initFrame() {
+export function initFrame(){
 
     const frameSelect = document.getElementById("frame");
     const config = getCurrentCardType();
+
+    if(!frameSelect) return;
 
     const frames = FRAME_LIST[config.type] || [];
 
     frameSelect.innerHTML = "";
 
     frames.forEach(frame => {
-
         const option = document.createElement("option");
 
         option.value = frame.id;
         option.textContent = frame.name;
 
         frameSelect.appendChild(option);
-
     });
 
     frameSelect.addEventListener("change", () => {
-    const selected = frames.find(frame => frame.id === frameSelect.value);
+        const selected = frames.find(frame => frame.id === frameSelect.value);
 
-    if(selected){
-        drawFrame(selected.path);
-        updateTextStyle();
-    }
-});
+        if(selected){
+            drawFrame(selected.path);
+            updateTextStyle();
+        }
+    });
 
-    if (frames.length > 0) {
+    if(frames.length > 0){
+        frameSelect.value = frames[0].id;
         drawFrame(frames[0].path);
     }
-
 }
 
 function drawFrame(path){
-    function drawFrame(path){
-
-    console.log("フレーム読込開始:", path);
 
     const canvas = getCanvas();
 
-    if(frameObject){
-        console.log("古いフレーム削除");
-        canvas.remove(frameObject);
-        frameObject = null;
-    }
-
-    fabric.Image.fromURL(path, img => {
-
-        console.log("フレーム画像読込成功", img.width, img.height);
-
-       img.set({
-    left: 697 / 2,
-    top: 1016 / 2,
-    originX: "center",
-    originY: "center",
-    selectable: false,
-    evented: false
-});
-
-        img.layerType = "frame";
-
-        frameObject = img;
-
-        canvas.add(frameObject);
-
-        console.log("フレーム追加完了");
-
-        sortLayers();
-        canvas.renderAll();
-
-    }, () => {
-
-        console.error("フレーム画像読込失敗:", path);
-
-    });
-
-}
-    const canvas = getCanvas();
+    if(!canvas) return;
 
     if(frameObject){
         canvas.remove(frameObject);
         frameObject = null;
     }
 
-    fabric.Image.fromURL(path, img => {
+    cloneCachedImage(path, img => {
 
         img.set({
-    left: 697 / 2,
-    top: 1016 / 2,
-    originX: "center",
-    originY: "center",
-    selectable: false,
-    evented: false
-});
+            left: 697 / 2,
+            top: 1016 / 2,
+            originX: "center",
+            originY: "center",
+
+            selectable: false,
+            evented: false
+        });
+
         img.layerType = "frame";
 
         frameObject = img;
 
         canvas.add(frameObject);
+
         sortLayers();
-        canvas.renderAll();
+        canvas.requestRenderAll();
+
     });
 }
