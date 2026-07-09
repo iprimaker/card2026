@@ -225,54 +225,62 @@ const TEXT_STYLE = {
                 fontSize: 28,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: "#7AC8FF",
+                stroke: "#0EC6FF",
                 strokeWidth: 2,
-                scaleX: 0.8,
-                scaleY: 1.25
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45
             },
             costume: {
                 fontFamily: "Dela Gothic One",
                 fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.65,
-                scaleY: 1.4,
+                stroke: "#0EC6FF",
+                strokeWidth: 2,
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45,
                 shadow: new fabric.Shadow({
-                    color: "#2059D1",
-                    blur: 4,
+                    color: "#FFFFFF",
+                    blur:2 ,
                     offsetX: 1,
-                    offsetY: 2
+                    offsetY: 1
                 })
             }
         },
 
         frame3: {
             name: {
-                fontFamily: "Dela Gothic One",
+               fontFamily: "Dela Gothic One",
                 fontSize: 28,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: "#FFB36B",
+                stroke: "#008052",
                 strokeWidth: 2,
-                scaleX: 0.8,
-                scaleY: 1.25
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45
             },
             costume: {
                 fontFamily: "Dela Gothic One",
                 fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.65,
-                scaleY: 1.4,
+                stroke: "#008052",
+                strokeWidth: 2,
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45,
                 shadow: new fabric.Shadow({
-                    color: "#2D5FA8",
-                    blur: 4,
+                    color: "#FFFFFF",
+                    blur:2 ,
                     offsetX: 1,
-                    offsetY: 2
+                    offsetY: 1
                 })
             }
         },
@@ -283,25 +291,29 @@ const TEXT_STYLE = {
                 fontSize: 28,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: "#FFB36B",
+                stroke: "#DF871F",
                 strokeWidth: 2,
-                scaleX: 0.8,
-                scaleY: 1.25
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45
             },
             costume: {
                 fontFamily: "Dela Gothic One",
                 fontSize: 30,
                 fontWeight: "normal",
                 fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.65,
-                scaleY: 1.4,
+                stroke: "#DF871F",
+                strokeWidth: 2,
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45,
                 shadow: new fabric.Shadow({
-                    color: "#2D5FA8",
-                    blur: 4,
+                    color: "#FFFFFF",
+                    blur:2 ,
                     offsetX: 1,
-                    offsetY: 2
+                    offsetY: 1
                 })
             }
         }
