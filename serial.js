@@ -3,7 +3,6 @@ import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
 
 let serialText = null;
-let randomMode = true;
 
 export function initSerial(){
 
@@ -11,7 +10,7 @@ export function initSerial(){
     const config = getCurrentCardType();
 
     const serialModeText = document.getElementById("serialModeText");
-    const serialModeButton = document.getElementById("serialModeButton");
+    const serialModeToggle = document.getElementById("serialModeToggle");
     const serialManual = document.getElementById("serialManual");
     const serialManualArea = document.getElementById("serialManualArea");
 
@@ -35,15 +34,12 @@ export function initSerial(){
 
     function updateSerial(){
 
+        const randomMode = serialModeToggle ? serialModeToggle.checked : true;
+
         if(randomMode){
 
             if(serialModeText){
-                serialModeText.textContent = "現在シリアル番号「自動設定中」";
-            }
-
-            if(serialModeButton){
-                serialModeButton.textContent = "手動設定に切り替え";
-　　　　　　　　  serialModeButton.classList.remove("manual");
+                serialModeText.textContent = "自動設定中";
             }
 
             if(serialManualArea){
@@ -55,12 +51,7 @@ export function initSerial(){
         }else{
 
             if(serialModeText){
-                serialModeText.textContent = "現在シリアル番号「手動設定中」";
-            }
-
-            if(serialModeButton){
-               serialModeButton.textContent = "自動設定に切り替え";
-　　　　　　　　serialModeButton.classList.add("manual");
+                serialModeText.textContent = "手動設定中";
             }
 
             if(serialManualArea){
@@ -76,11 +67,8 @@ export function initSerial(){
         canvas.requestRenderAll();
     }
 
-    if(serialModeButton){
-        serialModeButton.addEventListener("click", () => {
-            randomMode = !randomMode;
-            updateSerial();
-        });
+    if(serialModeToggle){
+        serialModeToggle.addEventListener("change", updateSerial);
     }
 
     if(serialManual){
