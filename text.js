@@ -388,30 +388,25 @@ export function initText(){
     if(costumeInput){
     costumeInput.addEventListener("input", () => {
 
-        // ひらがな・カタカナ・長音符のみ許可
-        costumeInput.value = costumeInput.value.replace(
-           /[^ぁ-ゖァ-ヶー0-9０-９]/g,
-            ""
-        );
+        // ひらがな・カタカナ・長音符・中黒・数字のみ許可
+        costumeInput.value = costumeInput.value
+            .replace(/[^ぁ-ゖァ-ヶー0-9０-９ー・]/g, "")
+            .slice(0, 19);
 
         drawCostumeLetters(
             costumeInput.value || DEFAULT_COSTUME,
             currentCostumeStyle
         );
 
-        applyTextVisible();
+        applyCurrentTextVisibility();
+
+        sortLayers();
+        canvas.requestRenderAll();
     });
 }
 
-    if(document.fonts){
-        document.fonts.ready.then(() => {
-            updateTextStyle();
-            applyTextVisible();
-        });
-    }
-
-    sortLayers();
-    canvas.requestRenderAll();
+sortLayers();
+canvas.requestRenderAll();
 }
 
 /* ===========================
