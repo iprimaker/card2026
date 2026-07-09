@@ -341,7 +341,7 @@ export function updateTextStyle(){
     currentCostumeStyle = styleSet.costume;
 
     drawCostumeLetters(
-        costumeInput?.value || "COSTUME",
+        costumeInput?.value || "アイドルプリンセスポッピンハートキュート",
         currentCostumeStyle
     );
 
