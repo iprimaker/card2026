@@ -460,22 +460,33 @@ header h1{
     border:none;
     border-radius:999px;
 
-    background:linear-gradient(135deg,#7ec9ff,#8c8bff);
-    color:#fff;
+    background:linear-gradient(
+        135deg,
+        #FFB7D9 0%,
+        #F7A8E7 45%,
+        #D7B7FF 100%
+    );
+
+    color:#ffffff;
 
     font-size:14px;
     font-weight:bold;
 
     cursor:pointer;
 
-    transition:.2s;
+    transition:.25s;
 
-    box-shadow:0 6px 14px rgba(120,140,255,.22);
+    box-shadow:
+        0 8px 18px rgba(255,170,210,.28),
+        inset 0 1px 0 rgba(255,255,255,.35);
 }
-
 #serialModeButton:hover{
     transform:translateY(-2px);
-    opacity:.95;
+    filter:brightness(1.05);
+
+    box-shadow:
+        0 12px 24px rgba(255,170,210,.38),
+        inset 0 1px 0 rgba(255,255,255,.45);
 }
 
 #serialModeButton:active{
