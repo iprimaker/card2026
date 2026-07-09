@@ -137,13 +137,23 @@
             <select id="buzzPower"></select>
         </div>
 
-        <div class="item disabledItem">
-            <label>
-                <input type="checkbox" id="textVisible" checked disabled>
-                テキスト類を表示　※現在調整中※
-            </label>
-        </div>
+      <div class="item" id="textArea">
 
+    <label id="textModeText">
+        テキスト非表示
+    </label>
+
+    <label class="serialSwitch">
+        <input type="checkbox" id="textVisible">
+
+        <span class="serialSlider">
+            <span class="serialLabel auto">表示</span>
+            <span class="serialLabel manual">非表示</span>
+        </span>
+    </label>
+
+</div>
+        
         <div class="item" id="nameArea">
             <label>名前（最大5文字）</label>
             <input id="cardName" type="text" maxlength="5" placeholder="例：♥みつき♥">
