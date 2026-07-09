@@ -10,7 +10,7 @@ let currentNameStyle = null;
 let currentCostumeStyle = null;
 
 const DEFAULT_NAME = "♥なまえ♥";
-const DEFAULT_COSTUME = "アイドルプリンセスポッピンハートキュート";
+const DEFAULT_COSTUME = "アイドルプリンセスポッピンハートライト";
 
 /* ===========================
    Aタイプ name 固定位置
