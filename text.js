@@ -633,3 +633,24 @@ function drawLetters({ oldLetters, text, style, path, maxLength }){
 
     return newLetters;
 }
+
+const watermarkText = new fabric.Text("ipricardmaker", {
+    left: 680,
+    top: 1000,
+
+    originX: "right",
+    originY: "bottom",
+
+    fontSize: 12,
+    fontFamily: "Arial",
+
+    fill: "#ffffff",
+    opacity: 0.85,
+
+    selectable: false,
+    evented: false
+});
+
+watermarkText.layerType = "watermark";
+
+canvas.add(watermarkText);
