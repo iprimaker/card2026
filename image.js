@@ -251,3 +251,109 @@ function enableTouchZoom(){
         lastDistance = null;
     });
 }
+
+export function getCharacterState(){
+
+    if(!characterObject) return null;
+
+    return {
+        src: characterObject.getSrc(),
+
+        left: characterObject.left,
+        top: characterObject.top,
+
+        scaleX: characterObject.scaleX,
+        scaleY: characterObject.scaleY,
+
+        angle: characterObject.angle,
+
+        flipX: characterObject.flipX,
+        flipY: characterObject.flipY,
+
+        skewX: characterObject.skewX,
+        skewY: characterObject.skewY,
+
+        opacity: characterObject.opacity
+    };
+}
+
+export function restoreCharacterState(state){
+
+    if(!state || !state.src) return;
+
+    const canvas = getCanvas();
+
+    if(!canvas) return;
+
+    fabric.Image.fromURL(state.src, img => {
+
+        if(characterObject){
+            canvas.remove(characterObject);
+        }
+
+        img.set({
+            left: state.left ?? CARD_WIDTH / 2,
+            top: state.top ?? CARD_HEIGHT / 2,
+
+            originX: "center",
+            originY: "center",
+
+            scaleX: state.scaleX ?? 1,
+            scaleY: state.scaleY ?? 1,
+
+            angle: state.angle ?? 0,
+
+            flipX: state.flipX ?? false,
+            flipY: state.flipY ?? false,
+
+            skewX: state.skewX ?? 0,
+            skewY: state.skewY ?? 0,
+
+            opacity: state.opacity ?? 1,
+
+            selectable: true,
+            evented: true,
+
+            hasControls: true,
+            hasBorders: true,
+
+            lockRotation: false,
+
+            cornerStyle: "circle",
+            transparentCorners: false,
+
+            cornerSize: 18,
+            padding: 8,
+
+            borderColor: "#ff5fc0",
+            cornerColor: "#ff5fc0",
+            cornerStrokeColor: "#ffffff",
+            borderScaleFactor: 3,
+
+            rotatingPointOffset: 40
+        });
+
+        img.layerType = "character";
+
+        characterObject = img;
+
+        canvas.add(characterObject);
+        canvas.setActiveObject(characterObject);
+
+        sortLayers();
+        canvas.requestRenderAll();
+
+        startHideSelectionTimer();
+    });
+}
+
+export function clearImageReferences(){
+
+    backgroundObject = null;
+    characterObject = null;
+
+    if(hideSelectionTimer){
+        clearTimeout(hideSelectionTimer);
+        hideSelectionTimer = null;
+    }
+}
