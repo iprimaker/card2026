@@ -101,12 +101,15 @@ export function initRarity(){
         updateCurrentAttribute();
     };
 
-    raritySelect.value = rarities[0].id;
+  raritySelect.value = "star3";
 
-    if(rarities[0].path){
-        drawRarity(rarities[0].path);
-    }
+const defaultRarity = rarities.find(
+    rarity => rarity.id === "star3"
+);
 
+if(defaultRarity?.path){
+    drawRarity(defaultRarity.path);
+}
     // 初期星数の属性素材を反映
     updateCurrentAttribute();
 }
