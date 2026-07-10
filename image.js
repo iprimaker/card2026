@@ -221,28 +221,41 @@ function enableTouchZoom(){
         const dx = e.touches[0].clientX - e.touches[1].clientX;
         const dy = e.touches[0].clientY - e.touches[1].clientY;
 
-        const distance = Math.sqrt(dx * dx + dy * dy);
+       const distance = Math.sqrt(dx * dx + dy * dy);
 
-        if(lastDistance){
-            const scaleChange = distance / lastDistance;
+if(lastDistance){
 
-            activeObject.scaleX = Math.max(
-                0.1,
-                Math.min(activeObject.scaleX * scaleChange, 5)
-            );
-
-            activeObject.scaleY = Math.max(
-                0.1,
-                Math.min(activeObject.scaleY * scaleChange, 5)
-            );
-
-            activeObject.setCoords();
-            canvas.requestRenderAll();
-
-            startHideSelectionTimer();
-        }
-
+    // 小さな指ブレは無視
+    if(Math.abs(distance - lastDistance) < 2){
         lastDistance = distance;
+        return;
+    }
+
+    const rawScaleChange = distance / lastDistance;
+
+    // 感度（0.15～0.25がおすすめ）
+    const sensitivity = 0.18;
+
+    const scaleChange =
+        1 + (rawScaleChange - 1) * sensitivity;
+
+    activeObject.scaleX = Math.max(
+        0.1,
+        Math.min(activeObject.scaleX * scaleChange, 5)
+    );
+
+    activeObject.scaleY = Math.max(
+        0.1,
+        Math.min(activeObject.scaleY * scaleChange, 5)
+    );
+
+    activeObject.setCoords();
+    canvas.requestRenderAll();
+
+    startHideSelectionTimer();
+}
+
+lastDistance = distance;
 
     }, { passive:false });
 
