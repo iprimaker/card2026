@@ -38,34 +38,50 @@ const RARITY_LIST = {
     ]
 };
 
+/* ===========================
+   初期化
+=========================== */
+
 export function initRarity(){
 
-    const rarityArea = document.getElementById("rarityArea");
-    const raritySelect = document.getElementById("rarity");
+    const rarityArea =
+        document.getElementById("rarityArea");
+
+    const raritySelect =
+        document.getElementById("rarity");
+
     const config = getCurrentCardType();
 
     if(!rarityArea || !raritySelect){
-        console.error("星数選択のHTML要素が見つかりません");
+        console.error(
+            "星数選択のHTML要素が見つかりません"
+        );
         return;
     }
 
-    const rarities = RARITY_LIST[config.type] || [];
+    const rarities =
+        RARITY_LIST[config.type] || [];
 
     raritySelect.onchange = null;
     raritySelect.innerHTML = "";
     raritySelect.disabled = false;
 
     if(rarities.length === 0){
+
         rarityArea.style.display = "none";
+
         cancelRarityRequest();
         removeAllRarityObjects();
+
         return;
     }
 
     rarityArea.style.display = "block";
 
     rarities.forEach(rarity => {
-        const option = document.createElement("option");
+
+        const option =
+            document.createElement("option");
 
         option.value = rarity.id;
         option.textContent = rarity.name;
@@ -73,7 +89,12 @@ export function initRarity(){
         raritySelect.appendChild(option);
     });
 
+    /* ===========================
+       Bタイプは準備中
+    =========================== */
+
     if(config.type === "B"){
+
         raritySelect.value = "preparing";
         raritySelect.disabled = true;
 
@@ -83,48 +104,70 @@ export function initRarity(){
         return;
     }
 
+    /* ===========================
+       星数変更
+    =========================== */
+
     raritySelect.onchange = () => {
 
-    const selected = rarities.find(
-        rarity => rarity.id === raritySelect.value
-    );
-
-    if(!selected){
-        console.error(
-            "選択されたレアリティが見つかりません:",
-            raritySelect.value
+        const selected = rarities.find(
+            rarity =>
+                rarity.id === raritySelect.value
         );
-        return;
-    }
 
-    console.log(
-        "レアリティ変更:",
-        selected.id,
-        selected.path
-    );
+        if(!selected){
 
-    if(selected.path){
-        drawRarity(selected.path);
-    }else{
-        cancelRarityRequest();
-        removeAllRarityObjects();
-    }
+            console.error(
+                "選択されたレアリティが見つかりません:",
+                raritySelect.value
+            );
 
-    updateCurrentAttribute();
-};
-    // 初期値は星3
-    raritySelect.value = "star3";
+            return;
+        }
+
+        console.log(
+            "レアリティ変更:",
+            selected.id,
+            selected.path
+        );
+
+        /*
+         * 先に属性を更新する。
+         * その後レアリティを読み込み、
+         * レアリティが最前面になりやすくする。
+         */
+        updateCurrentAttribute();
+
+        if(selected.path){
+            drawRarity(selected.path);
+        }else{
+            cancelRarityRequest();
+            removeAllRarityObjects();
+        }
+    };
+
+    /* ===========================
+       初期値は星3
+    =========================== */
+
+    const defaultRarityId = "star3";
+
+    raritySelect.value = defaultRarityId;
 
     const defaultRarity = rarities.find(
-        rarity => rarity.id === "star3"
+        rarity => rarity.id === defaultRarityId
     );
+
+    updateCurrentAttribute();
 
     if(defaultRarity?.path){
         drawRarity(defaultRarity.path);
     }
-
-    updateCurrentAttribute();
 }
+
+/* ===========================
+   レアリティ画像描画
+=========================== */
 
 function drawRarity(path){
 
@@ -133,19 +176,39 @@ function drawRarity(path){
     if(!canvas || !path) return;
 
     rarityRequestId++;
-    const currentRequestId = rarityRequestId;
 
-    // ここではリクエスト番号を増やさず、表示中の素材だけ削除
+    const currentRequestId =
+        rarityRequestId;
+
     removeAllRarityObjects();
+
+    console.log(
+        "レアリティ素材読込開始:",
+        path
+    );
 
     cloneCachedImage(path, img => {
 
+        /*
+         * 過去の読込結果なら無視
+         */
         if(currentRequestId !== rarityRequestId){
+
+            console.log(
+                "古いレアリティ読込を無視:",
+                path
+            );
+
             return;
         }
 
         if(!img){
-            console.error("星数素材の読み込みに失敗しました:", path);
+
+            console.error(
+                "レアリティ素材の読み込みに失敗:",
+                path
+            );
+
             return;
         }
 
@@ -162,24 +225,48 @@ function drawRarity(path){
             evented: false,
 
             hasControls: false,
-            hasBorders: false
+            hasBorders: false,
+
+            visible: true,
+            opacity: 1
         });
 
         img.layerType = "rarity";
+
         rarityObject = img;
 
         canvas.add(rarityObject);
 
         sortLayers();
+
+        /*
+         * 念のため最前面へ
+         */
         rarityObject.bringToFront();
 
         canvas.requestRenderAll();
+
+        console.log(
+            "レアリティ素材表示完了:",
+            path,
+            img.width,
+            img.height
+        );
     });
 }
 
+/* ===========================
+   読込キャンセル
+=========================== */
+
 function cancelRarityRequest(){
+
     rarityRequestId++;
 }
+
+/* ===========================
+   レアリティ素材全削除
+=========================== */
 
 function removeAllRarityObjects(){
 
@@ -187,10 +274,14 @@ function removeAllRarityObjects(){
 
     if(!canvas) return;
 
-    canvas.getObjects().forEach(object => {
-        if(object.layerType === "rarity"){
-            canvas.remove(object);
-        }
+    const rarityObjects =
+        canvas.getObjects().filter(
+            object =>
+                object.layerType === "rarity"
+        );
+
+    rarityObjects.forEach(object => {
+        canvas.remove(object);
     });
 
     rarityObject = null;
