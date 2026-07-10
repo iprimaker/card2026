@@ -40,6 +40,15 @@ const PRELOAD_IMAGES = [
     "./attributeA_9.png",
     "./attributeA_10.png",
 
+    // ☆4属性素材　ひみつ
+　　"./attributeA2_4.png",
+　　"./attributeA2_5.png",
+　　"./attributeA2_6.png",
+　　"./attributeA2_7.png",
+　　"./attributeA2_8.png",
+　　"./attributeA2_9.png",
+　　"./attributeA2_10.png",
+
     // バズパワー素材：ひみつ
     "./A900.png",
     "./A950.png",
