@@ -123,12 +123,22 @@
 
     <aside class="menu">
 
-      <div class="item">
+     <div class="item" id="cardTypeArea">
     <label>カードタイプ</label>
-    <select id="cardType">
-        <option value="A">ひみつのアイプリ</option>
-        <option value="B">おねがいアイプリ</option>
-    </select>
+
+    <label class="cardTypeSwitch">
+        <input type="checkbox" id="cardTypeToggle">
+
+        <span class="cardTypeSlider">
+            <span class="cardTypeLabel typeA">
+                ひみつ
+            </span>
+
+            <span class="cardTypeLabel typeB">
+                おねがい
+            </span>
+        </span>
+    </label>
 </div>
 
         <div class="item" id="backgroundSelectArea">
