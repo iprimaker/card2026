@@ -775,3 +775,12 @@ body.modalOpen{
     height:100vh;
     touch-action:none;
 }
+
+@media(max-width:900px){
+
+    .canvas-container,
+    .upper-canvas,
+    .lower-canvas{
+        touch-action:pan-y;
+    }
+}
