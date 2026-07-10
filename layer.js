@@ -8,7 +8,8 @@ const LAYER_ORDER = {
     buzzPower: 40,
     text: 50,
     serial: 60,
-    rarity: 100
+    rarity: 70,
+    watermark: 999
 };
 
 export function sortLayers(){
