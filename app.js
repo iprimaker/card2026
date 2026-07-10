@@ -81,11 +81,11 @@ function buildEditor(){
 
     initImages();
     initFrame();
+    initRarity();
     initAttribute();
     initText();
     initSerial();
     initBuzzPower();
-    initRarity();
 
     resizePreview();
 }
