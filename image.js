@@ -34,7 +34,7 @@ export function initImages(){
         if(selected){
             drawBackground(selected.path);
         }
-    });
+    };
 
     characterInput.addEventListener("change", uploadCharacter);
 
