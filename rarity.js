@@ -85,22 +85,33 @@ export function initRarity(){
 
     raritySelect.onchange = () => {
 
-        const selected = rarities.find(
-            rarity => rarity.id === raritySelect.value
+    const selected = rarities.find(
+        rarity => rarity.id === raritySelect.value
+    );
+
+    if(!selected){
+        console.error(
+            "選択されたレアリティが見つかりません:",
+            raritySelect.value
         );
+        return;
+    }
 
-        if(!selected) return;
+    console.log(
+        "レアリティ変更:",
+        selected.id,
+        selected.path
+    );
 
-        if(selected.path){
-            drawRarity(selected.path);
-        }else{
-            cancelRarityRequest();
-            removeAllRarityObjects();
-        }
+    if(selected.path){
+        drawRarity(selected.path);
+    }else{
+        cancelRarityRequest();
+        removeAllRarityObjects();
+    }
 
-        updateCurrentAttribute();
-    };
-
+    updateCurrentAttribute();
+};
     // 初期値は星3
     raritySelect.value = "star3";
 
