@@ -6,18 +6,54 @@ import { cloneCachedImage } from "./preload.js";
 let attributeObject = null;
 let attributeRequestId = 0;
 
+const NORMAL_ATTRIBUTE_BY_FRAME = {
+    frame1: "./attributeA_1.png", // うた
+    frame2: "./attributeA_2.png", // ダンス
+    frame3: "./attributeA_3.png"  // ファッション
+};
+
 const ATTRIBUTE_LIST = {
     A: [
-        { id: "attribute1", name: "うた（通常）", path: "./attributeA_1.png" },
-        { id: "attribute2", name: "ダンス（通常）", path: "./attributeA_2.png" },
-        { id: "attribute3", name: "ファッション（通常）", path: "./attributeA_3.png" },
-        { id: "attribute4", name: "ネオン（バズリウム）", path: "./attributeA_4.png" },
-        { id: "attribute5", name: "ジュエル（バズリウム）", path: "./attributeA_5.png" },
-        { id: "attribute6", name: "スペース（バズリウム）", path: "./attributeA_6.png" },
-        { id: "attribute7", name: "アニマル（バズリウム）", path: "./attributeA_7.png" },
-        { id: "attribute8", name: "フラワー（バズリウム）", path: "./attributeA_8.png" },
-        { id: "attribute9", name: "メロディ（バズリウム）", path: "./attributeA_9.png" },
-        { id: "attribute10", name: "プリンセス（バズリウム）", path: "./attributeA_10.png" }
+        {
+            id: "normal",
+            name: "通常",
+            path: null
+        },
+        {
+            id: "attribute4",
+            name: "ネオン（バズリウム）",
+            path: "./attributeA_4.png"
+        },
+        {
+            id: "attribute5",
+            name: "ジュエル（バズリウム）",
+            path: "./attributeA_5.png"
+        },
+        {
+            id: "attribute6",
+            name: "スペース（バズリウム）",
+            path: "./attributeA_6.png"
+        },
+        {
+            id: "attribute7",
+            name: "アニマル（バズリウム）",
+            path: "./attributeA_7.png"
+        },
+        {
+            id: "attribute8",
+            name: "フラワー（バズリウム）",
+            path: "./attributeA_8.png"
+        },
+        {
+            id: "attribute9",
+            name: "メロディ（バズリウム）",
+            path: "./attributeA_9.png"
+        },
+        {
+            id: "attribute10",
+            name: "プリンセス（バズリウム）",
+            path: "./attributeA_10.png"
+        }
     ],
 
     B: []
@@ -33,15 +69,12 @@ export function initAttribute(){
 
     const attributes = ATTRIBUTE_LIST[config.type] || [];
 
-    // 前回のイベントを上書きして重複防止
     attributeSelect.onchange = null;
     attributeSelect.innerHTML = "";
 
     if(attributes.length === 0){
-
         attributeArea.style.display = "none";
         removeAllAttributeObjects();
-
         return;
     }
 
@@ -57,17 +90,59 @@ export function initAttribute(){
     });
 
     attributeSelect.onchange = () => {
-        const selected = attributes.find(
-            attribute => attribute.id === attributeSelect.value
-        );
-
-        if(selected){
-            drawAttribute(selected.path);
-        }
+        updateCurrentAttribute();
     };
 
-    attributeSelect.value = attributes[0].id;
-    drawAttribute(attributes[0].path);
+    attributeSelect.value = "normal";
+    updateCurrentAttribute();
+}
+
+export function updateAttributeForFrame(){
+
+    const config = getCurrentCardType();
+
+    if(config.type !== "A") return;
+
+    const attributeSelect = document.getElementById("attribute");
+
+    if(!attributeSelect) return;
+
+    // 通常を選択している場合だけ、フレームに合わせて変更
+    if(attributeSelect.value === "normal"){
+        updateCurrentAttribute();
+    }
+}
+
+function updateCurrentAttribute(){
+
+    const config = getCurrentCardType();
+    const attributeSelect = document.getElementById("attribute");
+    const frameSelect = document.getElementById("frame");
+
+    if(!attributeSelect) return;
+
+    const attributes = ATTRIBUTE_LIST[config.type] || [];
+
+    const selected = attributes.find(
+        attribute => attribute.id === attributeSelect.value
+    );
+
+    if(!selected) return;
+
+    let path = selected.path;
+
+    // Aタイプの「通常」はフレームに応じて画像を決定
+    if(config.type === "A" && selected.id === "normal"){
+        const frameId = frameSelect ? frameSelect.value : "frame1";
+
+        path =
+            NORMAL_ATTRIBUTE_BY_FRAME[frameId] ||
+            NORMAL_ATTRIBUTE_BY_FRAME.frame1;
+    }
+
+    if(path){
+        drawAttribute(path);
+    }
 }
 
 function drawAttribute(path){
@@ -76,31 +151,29 @@ function drawAttribute(path){
 
     if(!canvas) return;
 
-    // 今回の読み込み番号
     attributeRequestId++;
     const currentRequestId = attributeRequestId;
 
-    // 現在Canvas上にある属性を全部削除
     removeAllAttributeObjects();
 
     cloneCachedImage(path, img => {
 
-        // 古い読み込み結果なら追加しない
         if(currentRequestId !== attributeRequestId){
             return;
         }
 
-        // 念のため、追加直前にも古い属性を全削除
         removeAllAttributeObjects();
 
         img.set({
             left: 697 / 2,
             top: 1016 / 2,
+
             originX: "center",
             originY: "center",
 
             selectable: false,
             evented: false,
+
             hasControls: false,
             hasBorders: false
         });
