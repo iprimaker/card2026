@@ -36,8 +36,7 @@ export function initImages(){
         }
     };
 
-    characterInput.addEventListener("change", uploadCharacter);
-
+    characterInput.onchange = uploadCharacter;
     backgroundSelectArea.style.display = "block";
 
     backgroundSelect.value = BACKGROUND_LIST[0].id;
