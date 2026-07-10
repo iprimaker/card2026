@@ -13,13 +13,13 @@ const NORMAL_ATTRIBUTE_BY_FRAME = {
 };
 
 const STAR4_ATTRIBUTE_MAP = {
-    attribute4: "./attributeA_star4_4.png",
-    attribute5: "./attributeA_star4_5.png",
-    attribute6: "./attributeA_star4_6.png",
-    attribute7: "./attributeA_star4_7.png",
-    attribute8: "./attributeA_star4_8.png",
-    attribute9: "./attributeA_star4_9.png",
-    attribute10: "./attributeA_star4_10.png"
+    attribute4: "./attributeA2_4.png",
+    attribute5: "./attributeA2_5.png",
+    attribute6: "./attributeA2_6.png",
+    attribute7: "./attributeA2_7.png",
+    attribute8: "./attributeA2_8.png",
+    attribute9: "./attributeA2_9.png",
+    attribute10: "./attributeA2_10.png"
 };
 
 const ATTRIBUTE_LIST = {
