@@ -12,7 +12,6 @@ import {
     clearImageReferences
 } from "./image.js";
 
-import { initWatermark } from "./watermark.js";
 import { initFrame } from "./frame.js";
 import { initRarity } from "./rarity.js";
 import { initAttribute } from "./attribute.js";
@@ -87,8 +86,6 @@ function buildEditor(){
     initText();
     initSerial();
     initBuzzPower();
-
-    initWatermark();
 
     resizePreview();
 }
