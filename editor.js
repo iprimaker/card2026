@@ -6,16 +6,19 @@ const PRELOAD_IMAGES = [
     "./backA1.png",
     "./backA1_1.png",
     "./backB2.png",
-　　 // フレーム素材ひみつ
+
+    // フレーム素材：ひみつ
     "./flameA1.png",
     "./flameA2.png",
     "./flameA3.png",
-　　 // フレーム素材おねがい
+
+    // フレーム素材：おねがい
     "./flameB1_2.png",
     "./flameB2_2.png",
     "./flameB3_2.png",
     "./flameB4_2.png",
-　　 // 属性素材ひみつ
+
+    // 属性素材：ひみつ
     "./attributeA_1.png",
     "./attributeA_2.png",
     "./attributeA_3.png",
@@ -26,7 +29,8 @@ const PRELOAD_IMAGES = [
     "./attributeA_8.png",
     "./attributeA_9.png",
     "./attributeA_10.png",
-　　 // バズパワー素材ひみつ
+
+    // バズパワー素材：ひみつ
     "./A900.png",
     "./A950.png",
     "./A1000.png",
@@ -39,7 +43,8 @@ const PRELOAD_IMAGES = [
     "./A1320.png",
     "./A1350.png",
     "./A1400.png",
-　　 //　バズパワー素材おねがい（すき）
+
+    // バズパワー素材：おねがい（すき）
     "./B_suki_900.png",
     "./B_suki_950.png",
     "./B_suki_1000.png",
@@ -51,7 +56,8 @@ const PRELOAD_IMAGES = [
     "./B_suki_1300.png",
     "./B_suki_1350.png",
     "./B_suki_1400.png",
-　　 //　バズパワー素材おねがい（ゆうじょう）
+
+    // バズパワー素材：おねがい（ゆうじょう）
     "./B_yujo_900.png",
     "./B_yujo_950.png",
     "./B_yujo_1000.png",
@@ -63,7 +69,8 @@ const PRELOAD_IMAGES = [
     "./B_yujo_1300.png",
     "./B_yujo_1350.png",
     "./B_yujo_1400.png",
-　　 //　バズパワー素材おねがい（ゆうき）
+
+    // バズパワー素材：おねがい（ゆうき）
     "./B_yuki_900.png",
     "./B_yuki_950.png",
     "./B_yuki_1000.png",
@@ -75,7 +82,8 @@ const PRELOAD_IMAGES = [
     "./B_yuki_1300.png",
     "./B_yuki_1350.png",
     "./B_yuki_1400.png",
-　　 //　バズパワー素材おねがい（ゆめ）
+
+    // バズパワー素材：おねがい（ゆめ）
     "./B_yume_900.png",
     "./B_yume_950.png",
     "./B_yume_1000.png",
@@ -91,13 +99,33 @@ const PRELOAD_IMAGES = [
 
 window.addEventListener("DOMContentLoaded", async () => {
 
-    if(document.fonts){
-        await document.fonts.ready;
-    }
+    try{
+        console.log("フォント読み込み開始");
 
-    // preload.js 側で初回のみ読み込み、
-    // 2回目以降はキャッシュを利用
-    await preloadImages(PRELOAD_IMAGES);
+        if(document.fonts){
+            await document.fonts.ready;
+        }
+
+        console.log("素材プリロード開始");
+
+        await preloadImages(PRELOAD_IMAGES);
+
+        console.log("素材プリロード完了");
+
+    }catch(error){
+        console.error("プリロード中にエラーが発生しました", error);
+
+        // エラー時もローディング画面を閉じる
+        const loadingScreen = document.getElementById("loadingScreen");
+
+        if(loadingScreen){
+            loadingScreen.classList.add("hide");
+
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 400);
+        }
+    }
 
     startApp();
 
@@ -107,14 +135,15 @@ window.addEventListener("DOMContentLoaded", async () => {
     const closeModal = document.getElementById("closeModal");
 
     if(noticeButton && noticeModal && closeModal){
-    noticeButton.addEventListener("click", () => {
-        openModal(noticeModal);
-    });
 
-    closeModal.addEventListener("click", () => {
-        closeModalWindow(noticeModal);
-    });
-}
+        noticeButton.onclick = () => {
+            openModal(noticeModal);
+        };
+
+        closeModal.onclick = () => {
+            closeModalWindow(noticeModal);
+        };
+    }
 
     // ---------- お知らせ ----------
     const NEWS_VERSION = "20260709-3";
@@ -123,37 +152,30 @@ window.addEventListener("DOMContentLoaded", async () => {
     const newsModal = document.getElementById("newsModal");
     const closeNewsModal = document.getElementById("closeNewsModal");
 
-   if(newsButton && newsModal && closeNewsModal){
+    if(newsButton && newsModal && closeNewsModal){
 
-    const readVersion = localStorage.getItem("newsReadVersion");
+        const readVersion = localStorage.getItem("newsReadVersion");
 
-    if(readVersion === NEWS_VERSION){
-        newsButton.classList.add("read");
-    }else{
-        newsButton.classList.remove("read");
-    }
-
-    newsButton.addEventListener("click", () => {
-        openModal(newsModal);
-
-        localStorage.setItem("newsReadVersion", NEWS_VERSION);
-        newsButton.classList.add("read");
-    });
-
-    closeNewsModal.addEventListener("click", () => {
-        closeModalWindow(newsModal);
-    });
-}
-        newsButton.addEventListener("click", () => {
-            newsModal.classList.add("show");
-
-            localStorage.setItem("newsReadVersion", NEWS_VERSION);
+        if(readVersion === NEWS_VERSION){
             newsButton.classList.add("read");
-        });
+        }else{
+            newsButton.classList.remove("read");
+        }
 
-        closeNewsModal.addEventListener("click", () => {
-            newsModal.classList.remove("show");
-        });
+        newsButton.onclick = () => {
+            openModal(newsModal);
+
+            localStorage.setItem(
+                "newsReadVersion",
+                NEWS_VERSION
+            );
+
+            newsButton.classList.add("read");
+        };
+
+        closeNewsModal.onclick = () => {
+            closeModalWindow(newsModal);
+        };
     }
 
     // ---------- 使い方 ----------
@@ -163,23 +185,23 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if(guideButton && guideModal && closeGuideModal){
 
-    if(localStorage.getItem("guideRead") !== "true"){
-        openModal(guideModal);
+        if(localStorage.getItem("guideRead") !== "true"){
+            openModal(guideModal);
+        }
+
+        guideButton.onclick = () => {
+            openModal(guideModal);
+        };
+
+        closeGuideModal.onclick = () => {
+            closeModalWindow(guideModal);
+            localStorage.setItem("guideRead", "true");
+        };
     }
-
-    guideButton.addEventListener("click", () => {
-        openModal(guideModal);
-    });
-
-    closeGuideModal.addEventListener("click", () => {
-        closeModalWindow(guideModal);
-        localStorage.setItem("guideRead", "true");
-    });
-}
-
 });
 
 function openModal(modal){
+
     if(!modal) return;
 
     modal.classList.add("show");
@@ -187,11 +209,13 @@ function openModal(modal){
 }
 
 function closeModalWindow(modal){
+
     if(!modal) return;
 
     modal.classList.remove("show");
 
-    const openedModal = document.querySelector(".modal.show");
+    const openedModal =
+        document.querySelector(".modal.show");
 
     if(!openedModal){
         document.body.classList.remove("modalOpen");
