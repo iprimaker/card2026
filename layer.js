@@ -1,14 +1,14 @@
 import { getCanvas } from "./canvas.js";
 
 const LAYER_ORDER = {
-    background: 1,
-    character: 2,
-    frame: 3,
-    attribute: 4,
-    text: 5,
-    serial: 6,
-    buzzPower: 7,
-    rarity: 8
+    background: 0,
+    character: 10,
+    frame: 20,
+    attribute: 30,
+    buzzPower: 40,
+    text: 50,
+    serial: 60,
+    rarity: 100
 };
 
 export function sortLayers(){
