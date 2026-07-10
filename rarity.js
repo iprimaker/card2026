@@ -10,30 +10,39 @@ const CARD_WIDTH = 697;
 const CARD_HEIGHT = 1016;
 
 const RARITY_LIST = {
-    const RANK_LIST = {
     A: [
         {
-            id: "rank2",
+            id: "star2",
             name: "☆2",
-            path: "./A_rank2.png"
+            path: "./A_star2.png"
         },
         {
-            id: "rank3",
+            id: "star3",
             name: "☆3",
-            path: "./A_rank3.png"
+            path: "./A_star3.png"
         },
         {
-            id: "rank4",
+            id: "star4",
             name: "☆4",
-            path: "./A_rank4.png"
+            path: "./A_star4.png"
         }
     ],
 
     B: [
         {
-            id: "rank2",
-            name: "只今準備中です",
-            path: "./B_rank2.png"
+            id: "star2",
+            name: "☆2",
+            path: "./B_star2.png"
+        },
+        {
+            id: "star3",
+            name: "☆3",
+            path: "./B_star3.png"
+        },
+        {
+            id: "star4",
+            name: "☆4",
+            path: "./B_star4.png"
         }
     ]
 };
