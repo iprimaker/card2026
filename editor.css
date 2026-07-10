@@ -414,6 +414,7 @@ header h1{
 
 .floatingButtons{
     position:fixed;
+
     right:24px;
     bottom:24px;
 
@@ -421,7 +422,11 @@ header h1{
     flex-direction:column;
     gap:14px;
 
-    z-index:999;
+    z-index:99999;
+
+    /* 親要素やスクロールの影響を受けにくくする */
+    transform:translateZ(0);
+    isolation:isolate;
 }
 
 .floatingButtons button{
@@ -594,8 +599,12 @@ header h1{
 @media(max-width:900px){
 
     .floatingButtons{
+        position:fixed;
+
         right:16px;
         bottom:16px;
+
+        z-index:99999;
     }
 
     .floatingButtons button{
@@ -603,7 +612,6 @@ header h1{
         height:58px;
         font-size:12px;
     }
-
 }
 
 
