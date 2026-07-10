@@ -2,19 +2,20 @@ import { startApp } from "./app.js";
 import { preloadImages } from "./preload.js";
 
 const PRELOAD_IMAGES = [
+    // 背景素材
     "./backA1.png",
     "./backA1_1.png",
     "./backB2.png",
-
+　　 // フレーム素材ひみつ
     "./flameA1.png",
     "./flameA2.png",
     "./flameA3.png",
-
+　　 // フレーム素材おねがい
     "./flameB1_2.png",
     "./flameB2_2.png",
     "./flameB3_2.png",
     "./flameB4_2.png",
-
+　　 // 属性素材ひみつ
     "./attributeA_1.png",
     "./attributeA_2.png",
     "./attributeA_3.png",
@@ -25,7 +26,7 @@ const PRELOAD_IMAGES = [
     "./attributeA_8.png",
     "./attributeA_9.png",
     "./attributeA_10.png",
-
+　　 // バズパワー素材ひみつ
     "./A900.png",
     "./A950.png",
     "./A1000.png",
@@ -38,7 +39,7 @@ const PRELOAD_IMAGES = [
     "./A1320.png",
     "./A1350.png",
     "./A1400.png",
-
+　　 //　バズパワー素材おねがい（すき）
     "./B_suki_900.png",
     "./B_suki_950.png",
     "./B_suki_1000.png",
@@ -50,7 +51,7 @@ const PRELOAD_IMAGES = [
     "./B_suki_1300.png",
     "./B_suki_1350.png",
     "./B_suki_1400.png",
-
+　　 //　バズパワー素材おねがい（ゆうじょう）
     "./B_yujo_900.png",
     "./B_yujo_950.png",
     "./B_yujo_1000.png",
@@ -62,7 +63,7 @@ const PRELOAD_IMAGES = [
     "./B_yujo_1300.png",
     "./B_yujo_1350.png",
     "./B_yujo_1400.png",
-
+　　 //　バズパワー素材おねがい（ゆうき）
     "./B_yuki_900.png",
     "./B_yuki_950.png",
     "./B_yuki_1000.png",
@@ -74,7 +75,7 @@ const PRELOAD_IMAGES = [
     "./B_yuki_1300.png",
     "./B_yuki_1350.png",
     "./B_yuki_1400.png",
-
+　　 //　バズパワー素材おねがい（ゆめ）
     "./B_yume_900.png",
     "./B_yume_950.png",
     "./B_yume_1000.png",
@@ -106,14 +107,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     const closeModal = document.getElementById("closeModal");
 
     if(noticeButton && noticeModal && closeModal){
-        noticeButton.addEventListener("click", () => {
-            noticeModal.classList.add("show");
-        });
+    noticeButton.addEventListener("click", () => {
+        openModal(noticeModal);
+    });
 
-        closeModal.addEventListener("click", () => {
-            noticeModal.classList.remove("show");
-        });
-    }
+    closeModal.addEventListener("click", () => {
+        closeModalWindow(noticeModal);
+    });
+}
 
     // ---------- お知らせ ----------
     const NEWS_VERSION = "20260709-3";
@@ -122,16 +123,27 @@ window.addEventListener("DOMContentLoaded", async () => {
     const newsModal = document.getElementById("newsModal");
     const closeNewsModal = document.getElementById("closeNewsModal");
 
-    if(newsButton && newsModal && closeNewsModal){
+   if(newsButton && newsModal && closeNewsModal){
 
-        const readVersion = localStorage.getItem("newsReadVersion");
+    const readVersion = localStorage.getItem("newsReadVersion");
 
-        if(readVersion === NEWS_VERSION){
-            newsButton.classList.add("read");
-        }else{
-            newsButton.classList.remove("read");
-        }
+    if(readVersion === NEWS_VERSION){
+        newsButton.classList.add("read");
+    }else{
+        newsButton.classList.remove("read");
+    }
 
+    newsButton.addEventListener("click", () => {
+        openModal(newsModal);
+
+        localStorage.setItem("newsReadVersion", NEWS_VERSION);
+        newsButton.classList.add("read");
+    });
+
+    closeNewsModal.addEventListener("click", () => {
+        closeModalWindow(newsModal);
+    });
+}
         newsButton.addEventListener("click", () => {
             newsModal.classList.add("show");
 
@@ -151,18 +163,37 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     if(guideButton && guideModal && closeGuideModal){
 
-        if(localStorage.getItem("guideRead") !== "true"){
-            guideModal.classList.add("show");
-        }
-
-        guideButton.addEventListener("click", () => {
-            guideModal.classList.add("show");
-        });
-
-        closeGuideModal.addEventListener("click", () => {
-            guideModal.classList.remove("show");
-            localStorage.setItem("guideRead", "true");
-        });
+    if(localStorage.getItem("guideRead") !== "true"){
+        openModal(guideModal);
     }
 
+    guideButton.addEventListener("click", () => {
+        openModal(guideModal);
+    });
+
+    closeGuideModal.addEventListener("click", () => {
+        closeModalWindow(guideModal);
+        localStorage.setItem("guideRead", "true");
+    });
+}
+
 });
+
+function openModal(modal){
+    if(!modal) return;
+
+    modal.classList.add("show");
+    document.body.classList.add("modalOpen");
+}
+
+function closeModalWindow(modal){
+    if(!modal) return;
+
+    modal.classList.remove("show");
+
+    const openedModal = document.querySelector(".modal.show");
+
+    if(!openedModal){
+        document.body.classList.remove("modalOpen");
+    }
+}
