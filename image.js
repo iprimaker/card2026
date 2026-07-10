@@ -28,7 +28,7 @@ export function initImages(){
 
     setupBackgroundSelect(backgroundSelect);
 
-    backgroundSelect.addEventListener("change", () => {
+    backgroundSelect.onchange = () => {
         const selected = BACKGROUND_LIST.find(bg => bg.id === backgroundSelect.value);
 
         if(selected){
