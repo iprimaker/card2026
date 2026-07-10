@@ -18,12 +18,12 @@ const RARITY_LIST = {
         },
         {
             id: "star3",
-            name: "★★ 3",
+            name: "★★★ 3",
             path: "./A_rank3.png"
         },
         {
             id: "star4",
-            name: "★★ 4",
+            name: "★★★★ 4",
             path: "./A_rank4.png"
         }
     ],
