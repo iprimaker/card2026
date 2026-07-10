@@ -14,35 +14,25 @@ const RARITY_LIST = {
         {
             id: "star2",
             name: "☆2",
-            path: "./A_star2.png"
+            path: "./A_rank2.png"
         },
         {
             id: "star3",
             name: "☆3",
-            path: "./A_star3.png"
+            path: "./A_rank3.png"
         },
         {
             id: "star4",
             name: "☆4",
-            path: "./A_star4.png"
+            path: "./A_rank4.png"
         }
     ],
 
     B: [
         {
             id: "star2",
-            name: "☆2",
+            name: "只今準備中です",
             path: "./B_star2.png"
-        },
-        {
-            id: "star3",
-            name: "☆3",
-            path: "./B_star3.png"
-        },
-        {
-            id: "star4",
-            name: "☆4",
-            path: "./B_star4.png"
         }
     ]
 };
