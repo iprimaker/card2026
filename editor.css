@@ -776,11 +776,3 @@ body.modalOpen{
     touch-action:none;
 }
 
-@media(max-width:900px){
-
-    .canvas-container,
-    .upper-canvas,
-    .lower-canvas{
-        touch-action:pan-y;
-    }
-}
