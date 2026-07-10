@@ -19,7 +19,7 @@ export function initWatermark(){
         originX: "right",
         originY: "bottom",
 
-        fontSize: 12,
+        fontSize: 0,
         fontFamily: "Arial",
         fontWeight: "bold",
 
