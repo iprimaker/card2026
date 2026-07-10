@@ -71,9 +71,9 @@ const ATTRIBUTE_LIST = {
 
 function getCurrentStar(){
 
-    const starSelect = document.getElementById("star");
+    const raritySelect = document.getElementById("rarity");
 
-    return starSelect ? starSelect.value : "star2";
+    return raritySelect ? raritySelect.value : "star2";
 }
 
 export function initAttribute(){
