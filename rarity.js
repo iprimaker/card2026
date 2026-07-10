@@ -10,39 +10,40 @@ const CARD_WIDTH = 697;
 const CARD_HEIGHT = 1016;
 
 const RARITY_LIST = {
+    const RANK_LIST = {
     A: [
         {
-            id: "star2",
+            id: "rank2",
             name: "☆2",
-            path: "./A_star2.png"
+            path: "./A_rank2.png"
         },
         {
-            id: "star3",
+            id: "rank3",
             name: "☆3",
-            path: "./A_star3.png"
+            path: "./A_rank3.png"
         },
         {
-            id: "star4",
+            id: "rank4",
             name: "☆4",
-            path: "./A_star4.png"
+            path: "./A_rank4.png"
         }
     ],
 
     B: [
         {
-            id: "star2",
+            id: "rank2",
             name: "☆2",
-            path: "./B_star2.png"
+            path: "./B_rank2.png"
         },
         {
-            id: "star3",
+            id: "rank3",
             name: "☆3",
-            path: "./B_star3.png"
+            path: "./B_rank3.png"
         },
         {
-            id: "star4",
+            id: "rank4",
             name: "☆4",
-            path: "./B_star4.png"
+            path: "./B_rank4.png"
         }
     ]
 };
