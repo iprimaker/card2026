@@ -13,6 +13,7 @@ import {
 } from "./image.js";
 
 import { initFrame } from "./frame.js";
+import { initRarity } from "./rarity.js";
 import { initAttribute } from "./attribute.js";
 import { initText } from "./text.js";
 import { initSerial } from "./serial.js";
@@ -84,6 +85,7 @@ function buildEditor(){
     initText();
     initSerial();
     initBuzzPower();
+    initRarity();
 
     resizePreview();
 }
