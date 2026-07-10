@@ -6,13 +6,16 @@ export function initReset(){
 
     if(!resetButton) return;
 
-    resetButton.addEventListener("click", () => {
+    resetButton.onclick = () => {
 
-        const result = confirm("新しいカードを作成しますか？\n現在の編集内容はリセットされます。");
+        const result = confirm(
+            "新しいカードを作成しますか？\n現在の編集内容はリセットされます。"
+        );
 
         if(!result) return;
 
+        // 引数なし = 完全リセット
         rebuildEditor();
 
-    });
+    };
 }
