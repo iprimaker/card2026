@@ -17,6 +17,16 @@ const PRELOAD_IMAGES = [
     "./flameB2_2.png",
     "./flameB3_2.png",
     "./flameB4_2.png",
+    
+    // レアリティ素材：ひみつ
+    "./A_rank2.png",
+    "./A_rank3.png",
+    "./A_rank4.png",
+    
+    //レアリティ素材：おねがい
+    "./B_rank2.png",
+    "./B_rank3.png",
+    "./B_rank4.png",
 
     // 属性素材：ひみつ
     "./attributeA_1.png",
