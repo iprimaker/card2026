@@ -24,9 +24,7 @@ const PRELOAD_IMAGES = [
     "./A_rank4.png",
     
     //レアリティ素材：おねがい
-    "./B_rank2.png",
-    "./B_rank3.png",
-    "./B_rank4.png",
+    
 
     // 属性素材：ひみつ
     "./attributeA_1.png",
@@ -40,14 +38,14 @@ const PRELOAD_IMAGES = [
     "./attributeA_9.png",
     "./attributeA_10.png",
 
-    // ☆4属性素材　ひみつ
-　　"./attributeA2_4.png",
-　　"./attributeA2_5.png",
-　　"./attributeA2_6.png",
-　　"./attributeA2_7.png",
-　　"./attributeA2_8.png",
-　　"./attributeA2_9.png",
-　　"./attributeA2_10.png",
+        // ☆4属性素材：ひみつ
+    "./attributeA2_4.png",
+    "./attributeA2_5.png",
+    "./attributeA2_6.png",
+    "./attributeA2_7.png",
+    "./attributeA2_8.png",
+    "./attributeA2_9.png",
+    "./attributeA2_10.png",
 
     // バズパワー素材：ひみつ
     "./A900.png",
