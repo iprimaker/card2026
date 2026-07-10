@@ -552,12 +552,35 @@ header h1{
     transition:.25s;
 }
 
-.serialLabel.auto{
-    color:#ff6aa8;
+.serialLabel{
+    color:#aaa3b2;
 }
 
+/* チェックあり側を選択中にする */
+.serialSwitch input:checked
++ .serialSlider
+.serialLabel.auto{
+    color:#ff5f9f;
+}
+
+/* チェックなし側を選択中にする */
+.serialSwitch input:not(:checked)
++ .serialSlider
 .serialLabel.manual{
-    color:#7d74ff;
+    color:#7668e8;
+}
+
+/* 未選択側はグレー */
+.serialSwitch input:checked
++ .serialSlider
+.serialLabel.manual{
+    color:#aaa3b2;
+}
+
+.serialSwitch input:not(:checked)
++ .serialSlider
+.serialLabel.auto{
+    color:#aaa3b2;
 }
 
 .serialSwitch:hover .serialSlider{
