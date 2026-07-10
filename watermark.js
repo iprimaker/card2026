@@ -13,13 +13,13 @@ export function initWatermark(){
     }
 
     watermarkObject = new fabric.Text("ipricardmaker", {
-        left: 680,
-        top: 1000,
+        left: 650,
+        top: 1020,
 
         originX: "right",
         originY: "bottom",
 
-        fontSize: 11,
+        fontSize: 12,
         fontFamily: "Arial",
         fontWeight: "bold",
 
