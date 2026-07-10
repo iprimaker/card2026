@@ -4,6 +4,7 @@ import { getCurrentCardType } from "./config.js";
 import { updateTextStyle } from "./text.js";
 import { cloneCachedImage } from "./preload.js";
 import { updateBuzzPowerForFrame } from "./buzzPower.js";
+import { updateAttributeForFrame } from "./attribute.js";
 
 let frameObject = null;
 let frameRequestId = 0;
@@ -32,23 +33,37 @@ export function initFrame(){
 
     const frames = FRAME_LIST[config.type] || [];
 
+    // イベント重複防止
+    frameSelect.onchange = null;
     frameSelect.innerHTML = "";
 
     frames.forEach(frame => {
         const option = document.createElement("option");
+
         option.value = frame.id;
         option.textContent = frame.name;
+
         frameSelect.appendChild(option);
     });
 
     frameSelect.onchange = () => {
-        const selected = frames.find(frame => frame.id === frameSelect.value);
+        const selected = frames.find(
+            frame => frame.id === frameSelect.value
+        );
 
-        if(selected){
-            drawFrame(selected.path);
-            updateTextStyle();
-            updateBuzzPowerForFrame();
-        }
+        if(!selected) return;
+
+        drawFrame(selected.path);
+
+        // フレームごとのテキスト装飾を更新
+        updateTextStyle();
+
+        // Bタイプのバズパワー候補を更新
+        updateBuzzPowerForFrame();
+
+        // Aタイプで「通常」選択中なら、
+        // フレームに対応する通常属性へ更新
+        updateAttributeForFrame();
     };
 
     if(frames.length > 0){
@@ -66,34 +81,34 @@ function drawFrame(path){
     frameRequestId++;
     const currentRequestId = frameRequestId;
 
-    canvas.getObjects().forEach(obj => {
-        if(obj.layerType === "frame"){
-            canvas.remove(obj);
-        }
-    });
-
-    frameObject = null;
+    removeAllFrameObjects();
 
     cloneCachedImage(path, img => {
 
-        if(currentRequestId !== frameRequestId) return;
+        // 古い非同期処理の結果なら追加しない
+        if(currentRequestId !== frameRequestId){
+            return;
+        }
 
-        canvas.getObjects().forEach(obj => {
-            if(obj.layerType === "frame"){
-                canvas.remove(obj);
-            }
-        });
+        // 念のため追加直前にも削除
+        removeAllFrameObjects();
 
         img.set({
             left: 697 / 2,
             top: 1016 / 2,
+
             originX: "center",
             originY: "center",
+
             selectable: false,
-            evented: false
+            evented: false,
+
+            hasControls: false,
+            hasBorders: false
         });
 
         img.layerType = "frame";
+
         frameObject = img;
 
         canvas.add(frameObject);
@@ -101,4 +116,19 @@ function drawFrame(path){
         sortLayers();
         canvas.requestRenderAll();
     });
+}
+
+function removeAllFrameObjects(){
+
+    const canvas = getCanvas();
+
+    if(!canvas) return;
+
+    canvas.getObjects().forEach(object => {
+        if(object.layerType === "frame"){
+            canvas.remove(object);
+        }
+    });
+
+    frameObject = null;
 }
