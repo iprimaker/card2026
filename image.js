@@ -234,7 +234,7 @@ if(lastDistance){
     const rawScaleChange = distance / lastDistance;
 
     // 感度（0.15～0.25がおすすめ）
-    const sensitivity = 0.5;
+    const sensitivity = 0.8;
 
     const scaleChange =
         1 + (rawScaleChange - 1) * sensitivity;
