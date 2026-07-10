@@ -12,6 +12,16 @@ const NORMAL_ATTRIBUTE_BY_FRAME = {
     frame3: "./attributeA_3.png"  // ファッション
 };
 
+const STAR4_ATTRIBUTE_MAP = {
+    attribute4: "./attributeA_star4_4.png",
+    attribute5: "./attributeA_star4_5.png",
+    attribute6: "./attributeA_star4_6.png",
+    attribute7: "./attributeA_star4_7.png",
+    attribute8: "./attributeA_star4_8.png",
+    attribute9: "./attributeA_star4_9.png",
+    attribute10: "./attributeA_star4_10.png"
+};
+
 const ATTRIBUTE_LIST = {
     A: [
         {
@@ -58,6 +68,13 @@ const ATTRIBUTE_LIST = {
 
     B: []
 };
+
+function getCurrentStar(){
+
+    const starSelect = document.getElementById("star");
+
+    return starSelect ? starSelect.value : "star2";
+}
 
 export function initAttribute(){
 
@@ -107,13 +124,12 @@ export function updateAttributeForFrame(){
 
     if(!attributeSelect) return;
 
-    // 通常を選択している場合だけ、フレームに合わせて変更
     if(attributeSelect.value === "normal"){
         updateCurrentAttribute();
     }
 }
 
-function updateCurrentAttribute(){
+export function updateCurrentAttribute(){
 
     const config = getCurrentCardType();
     const attributeSelect = document.getElementById("attribute");
@@ -131,13 +147,26 @@ function updateCurrentAttribute(){
 
     let path = selected.path;
 
-    // Aタイプの「通常」はフレームに応じて画像を決定
-    if(config.type === "A" && selected.id === "normal"){
-        const frameId = frameSelect ? frameSelect.value : "frame1";
+    if(config.type === "A"){
 
-        path =
-            NORMAL_ATTRIBUTE_BY_FRAME[frameId] ||
-            NORMAL_ATTRIBUTE_BY_FRAME.frame1;
+        const star = getCurrentStar();
+
+        // 通常は☆2・☆3・☆4すべて共通
+        if(selected.id === "normal"){
+
+            const frameId = frameSelect ? frameSelect.value : "frame1";
+
+            path =
+                NORMAL_ATTRIBUTE_BY_FRAME[frameId] ||
+                NORMAL_ATTRIBUTE_BY_FRAME.frame1;
+
+        // 通常以外は☆4だけ専用素材
+        }else if(star === "star4"){
+
+            path =
+                STAR4_ATTRIBUTE_MAP[selected.id] ||
+                selected.path;
+        }
     }
 
     if(path){
