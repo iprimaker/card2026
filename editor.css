@@ -769,3 +769,9 @@ header h1{
 .cardTypeLabel.typeB{
     color:#477de5;
 }
+
+body.modalOpen{
+    overflow:hidden;
+    height:100vh;
+    touch-action:none;
+}
