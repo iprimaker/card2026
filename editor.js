@@ -17,6 +17,7 @@ const PRELOAD_IMAGES = [
     "./flameB2_2.png",
     "./flameB3_2.png",
     "./flameB4_2.png",
+    "./flameB5_2.png",
     
     // レアリティ素材：ひみつ
     "./A_rank2.png",
@@ -99,6 +100,9 @@ const PRELOAD_IMAGES = [
     "./B_yuki_1300.png",
     "./B_yuki_1350.png",
     "./B_yuki_1400.png",
+
+     // バズパワー素材：おねがい（じょうねつ）
+    "./B_jounetu_1400.png",
 
     // バズパワー素材：おねがい（ゆめ）
     "./B_yume_900.png",
