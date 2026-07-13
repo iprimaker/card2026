@@ -14,8 +14,9 @@ export function initReset(){
 
         if(!result) return;
 
-        // 引数なし = 完全リセット
-        rebuildEditor();
-
+        rebuildEditor({
+            preserveCharacter: false,
+            preserveText: false
+        });
     };
 }
