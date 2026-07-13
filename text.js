@@ -316,6 +316,39 @@ const TEXT_STYLE = {
                     offsetY: 1
                 })
             }
+        },
+
+         frame5: {
+            name: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 28,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: "#C91C27",
+                strokeWidth: 2,
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45
+            },
+            costume: {
+                fontFamily: "Dela Gothic One",
+                fontSize: 30,
+                fontWeight: "normal",
+                fill: "#FFFFFF",
+                stroke: "#C91C27",
+                strokeWidth: 2,
+                strokeLineJoin: "round",
+                paintFirst: "stroke",
+                scaleX: 0.62,
+                scaleY: 1.45,
+                shadow: new fabric.Shadow({
+                    color: "#FFFFFF",
+                    blur:2 ,
+                    offsetX: 1,
+                    offsetY: 1
+                })
+            }
         }
     }
 };
