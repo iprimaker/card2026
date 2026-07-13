@@ -169,6 +169,28 @@ export function rebuildEditor(options = {}){
 
     buildEditor();
 
+    if(!preserveText){
+
+    const nameInput = document.getElementById("cardName");
+    const costumeInput = document.getElementById("costumeName");
+    const textVisible = document.getElementById("textVisible");
+
+    if(nameInput){
+        nameInput.value = "";
+        nameInput.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    if(costumeInput){
+        costumeInput.value = "";
+        costumeInput.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    if(textVisible){
+        textVisible.checked = false;
+        textVisible.dispatchEvent(new Event("change", { bubbles: true }));
+    }
+}
+
     if(savedState.character){
         restoreCharacterState(savedState.character);
     }
