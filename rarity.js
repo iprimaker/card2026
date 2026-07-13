@@ -32,8 +32,8 @@ const RARITY_LIST = {
     B: [
         {
             id: "preparing",
-            name: "只今準備中です（常時★★★３）",
-            path: null
+            name: "★★★ ３",
+            path: "./B_rank3.png"
         }
     ]
 };
