@@ -76,6 +76,10 @@ const BUZZ_POWER_LIST = {
             { id: "buzz9", name: "1300", path: "./B_yuki_1300.png" },
             { id: "buzz10", name: "1350", path: "./B_yuki_1350.png" },
             { id: "buzz11", name: "1400", path: "./B_yuki_1400.png" }
+        ],
+
+        frame5: [
+            { id: "buzz11", name: "1400", path: "./B_jounetu_1400.png" }
         ]
     }
 };
