@@ -97,261 +97,264 @@ const COSTUME_PATH_B = [
 
 const TEXT_STYLE = {
     A: {
-        frame1: {
-            name: {
-                fontFamily: "Zen Maru Gothic",
-                fontSize: 28,
-                fontWeight: 900,
-                fill: "#E4D3A7",
-                stroke: "#E4D3A7",
-                strokeWidth: 1,
-                scaleX: 1,
-                scaleY: 1
+        /* ===========================
+           ★2・★3
+        =========================== */
+        normal: {
+            frame1: {
+                name: {
+                    fontFamily: "Zen Maru Gothic",
+                    fontSize: 28,
+                    fontWeight: 900,
+                    fill: "#E4D3A7",
+                    stroke: "#E4D3A7",
+                    strokeWidth: 1,
+                    scaleX: 1,
+                    scaleY: 1
+                },
+                costume: {
+                    fontFamily: "Dela Gothic One",
+                    fontSize: 32,
+                    fontWeight: "normal",
+                    fill: "#FFFFFF",
+                    stroke: null,
+                    strokeWidth: 0,
+                    scaleX: 0.62,
+                    scaleY: 1.45,
+                    shadow: new fabric.Shadow({
+                        color: "#2D5FA8",
+                        blur: 4,
+                        offsetX: 1,
+                        offsetY: 2
+                    })
+                }
             },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 32,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#2D5FA8",
-                    blur: 4,
-                    offsetX: 1,
-                    offsetY: 2
-                })
+
+            frame2: {
+                name: {
+                    fontFamily: "Zen Maru Gothic",
+                    fontSize: 28,
+                    fontWeight: 900,
+                    fill: "#E4D3A7",
+                    stroke: "#E4D3A7",
+                    strokeWidth: 1,
+                    scaleX: 1,
+                    scaleY: 1
+                },
+                costume: {
+                    fontFamily: "Dela Gothic One",
+                    fontSize: 32,
+                    fontWeight: "normal",
+                    fill: "#FFFFFF",
+                    stroke: null,
+                    strokeWidth: 0,
+                    scaleX: 0.62,
+                    scaleY: 1.45,
+                    shadow: new fabric.Shadow({
+                        color: "#C44700",
+                        blur: 4,
+                        offsetX: 1,
+                        offsetY: 2
+                    })
+                }
+            },
+
+            frame3: {
+                name: {
+                    fontFamily: "Zen Maru Gothic",
+                    fontSize: 28,
+                    fontWeight: 900,
+                    fill: "#E4D3A7",
+                    stroke: "#E4D3A7",
+                    strokeWidth: 1,
+                    scaleX: 1,
+                    scaleY: 1
+                },
+                costume: {
+                    fontFamily: "Dela Gothic One",
+                    fontSize: 32,
+                    fontWeight: "normal",
+                    fill: "#FFFFFF",
+                    stroke: null,
+                    strokeWidth: 0,
+                    scaleX: 0.62,
+                    scaleY: 1.45,
+                    shadow: new fabric.Shadow({
+                        color: "#C44700",
+                        blur: 4,
+                        offsetX: 1,
+                        offsetY: 2
+                    })
+                }
             }
         },
 
-        frame2: {
-            name: {
-                fontFamily: "Zen Maru Gothic",
-                fontSize: 28,
-                fontWeight: 900,
-                fill: "#E4D3A7",
-                stroke: "#E4D3A7",
-                strokeWidth: 1,
-                scaleX: 1,
-                scaleY: 1
+        /* ===========================
+           ★4
+        =========================== */
+        star4: {
+            frame1: {
+                name: {
+                    fontFamily: "Zen Maru Gothic",
+                    fontSize: 28,
+                    fontWeight: 900,
+                    fill: "#FFFFFF",
+                    stroke: "#C5A4FF",
+                    strokeWidth: 1,
+                    scaleX: 1,
+                    scaleY: 1
+                },
+                costume: {
+                    fontFamily: "Dela Gothic One",
+                    fontSize: 32,
+                    fontWeight: "normal",
+                    fill: "#FFFFFF",
+                    stroke: null,
+                    strokeWidth: 0,
+                    scaleX: 0.62,
+                    scaleY: 1.45,
+                    shadow: new fabric.Shadow({
+                        color: "#6A34A8",
+                        blur: 5,
+                        offsetX: 1,
+                        offsetY: 2
+                    })
+                }
             },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 32,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#C44700",
-                    blur: 4,
-                    offsetX: 1,
-                    offsetY: 2
-                })
-            }
-        },
 
-        frame3: {
-            name: {
-                fontFamily: "Zen Maru Gothic",
-                fontSize: 28,
-                fontWeight: 900,
-                fill: "#E4D3A7",
-                stroke: "#E4D3A7",
-                strokeWidth: 1,
-                scaleX: 1,
-                scaleY: 1
+            frame2: {
+                name: {
+                    fontFamily: "Zen Maru Gothic",
+                    fontSize: 28,
+                    fontWeight: 900,
+                    fill: "#FFFFFF",
+                    stroke: "#FF9CB6",
+                    strokeWidth: 1,
+                    scaleX: 1,
+                    scaleY: 1
+                },
+                costume: {
+                    fontFamily: "Dela Gothic One",
+                    fontSize: 32,
+                    fontWeight: "normal",
+                    fill: "#FFFFFF",
+                    stroke: null,
+                    strokeWidth: 0,
+                    scaleX: 0.62,
+                    scaleY: 1.45,
+                    shadow: new fabric.Shadow({
+                        color: "#9B244D",
+                        blur: 5,
+                        offsetX: 1,
+                        offsetY: 2
+                    })
+                }
             },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 32,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: null,
-                strokeWidth: 0,
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#C44700",
-                    blur: 4,
-                    offsetX: 1,
-                    offsetY: 2
-                })
+
+            frame3: {
+                name: {
+                    fontFamily: "Zen Maru Gothic",
+                    fontSize: 28,
+                    fontWeight: 900,
+                    fill: "#FFFFFF",
+                    stroke: "#FFD86A",
+                    strokeWidth: 1,
+                    scaleX: 1,
+                    scaleY: 1
+                },
+                costume: {
+                    fontFamily: "Dela Gothic One",
+                    fontSize: 32,
+                    fontWeight: "normal",
+                    fill: "#FFFFFF",
+                    stroke: null,
+                    strokeWidth: 0,
+                    scaleX: 0.62,
+                    scaleY: 1.45,
+                    shadow: new fabric.Shadow({
+                        color: "#9A6200",
+                        blur: 5,
+                        offsetX: 1,
+                        offsetY: 2
+                    })
+                }
             }
         }
     },
 
     B: {
-        frame1: {
-            name: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 28,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#DA136F",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45
-            },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 30,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#DA136F",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#FFFFFF",
-                    blur:2 ,
-                    offsetX: 1,
-                    offsetY: 1
-                })
-            }
-        },
-       
-         frame2: {
-            name: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 28,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#0EC6FF",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45
-            },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 30,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#0EC6FF",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#FFFFFF",
-                    blur:2 ,
-                    offsetX: 1,
-                    offsetY: 1
-                })
-            }
+        /* ===========================
+           現在のBタイプ
+        =========================== */
+        normal: {
+            frame1: createBTextStyle("#DA136F"),
+            frame2: createBTextStyle("#0EC6FF"),
+            frame3: createBTextStyle("#008052"),
+            frame4: createBTextStyle("#DF871F"),
+            frame5: createBTextStyle("#C91C27")
         },
 
-        frame3: {
-            name: {
-               fontFamily: "Dela Gothic One",
-                fontSize: 28,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#008052",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45
-            },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 30,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#008052",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#FFFFFF",
-                    blur:2 ,
-                    offsetX: 1,
-                    offsetY: 1
-                })
-            }
-        },
-
-        frame4: {
-            name: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 28,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#DF871F",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45
-            },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 30,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#DF871F",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#FFFFFF",
-                    blur:2 ,
-                    offsetX: 1,
-                    offsetY: 1
-                })
-            }
-        },
-
-         frame5: {
-            name: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 28,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#C91C27",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45
-            },
-            costume: {
-                fontFamily: "Dela Gothic One",
-                fontSize: 30,
-                fontWeight: "normal",
-                fill: "#FFFFFF",
-                stroke: "#C91C27",
-                strokeWidth: 2,
-                strokeLineJoin: "round",
-                paintFirst: "stroke",
-                scaleX: 0.62,
-                scaleY: 1.45,
-                shadow: new fabric.Shadow({
-                    color: "#FFFFFF",
-                    blur:2 ,
-                    offsetX: 1,
-                    offsetY: 1
-                })
-            }
+        /* ===========================
+           将来のBタイプ★4用
+           現在はnormalと同じ色
+        =========================== */
+        star4: {
+            frame1: createBTextStyle("#DA136F"),
+            frame2: createBTextStyle("#0EC6FF"),
+            frame3: createBTextStyle("#008052"),
+            frame4: createBTextStyle("#DF871F"),
+            frame5: createBTextStyle("#C91C27")
         }
     }
 };
+
+/* ===========================
+   Bタイプ共通スタイル生成
+=========================== */
+
+function createBTextStyle(color){
+
+    return {
+        name: {
+            fontFamily: "Dela Gothic One",
+            fontSize: 28,
+            fontWeight: "normal",
+
+            fill: "#FFFFFF",
+            stroke: color,
+            strokeWidth: 2,
+
+            strokeLineJoin: "round",
+            paintFirst: "stroke",
+
+            scaleX: 0.62,
+            scaleY: 1.45
+        },
+
+        costume: {
+            fontFamily: "Dela Gothic One",
+            fontSize: 30,
+            fontWeight: "normal",
+
+            fill: "#FFFFFF",
+            stroke: color,
+            strokeWidth: 2,
+
+            strokeLineJoin: "round",
+            paintFirst: "stroke",
+
+            scaleX: 0.62,
+            scaleY: 1.45,
+
+            shadow: new fabric.Shadow({
+                color: "#FFFFFF",
+                blur: 2,
+                offsetX: 1,
+                offsetY: 1
+            })
+        }
+    };
+}
 
 /* ===========================
    初期化
@@ -459,10 +462,29 @@ export function updateTextStyle(){
 
     const frameId = frameSelect ? frameSelect.value : "frame1";
 
-    const styleSet =
-        TEXT_STYLE[config.type]?.[frameId] ||
-        TEXT_STYLE[config.type]?.frame1 ||
-        TEXT_STYLE.A.frame1;
+   const raritySelect = document.getElementById("rarity");
+
+const rarityId = raritySelect
+    ? raritySelect.value
+    : "star3";
+
+const rarityGroup =
+    rarityId === "star4"
+        ? "star4"
+        : "normal";
+
+const typeStyles =
+    TEXT_STYLE[config.type] ||
+    TEXT_STYLE.A;
+
+const rarityStyles =
+    typeStyles[rarityGroup] ||
+    typeStyles.normal;
+
+const styleSet =
+    rarityStyles?.[frameId] ||
+    rarityStyles?.frame1 ||
+    TEXT_STYLE.A.normal.frame1;
 
     currentNameStyle = styleSet.name;
     currentCostumeStyle = styleSet.costume;
