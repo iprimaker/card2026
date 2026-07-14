@@ -73,23 +73,11 @@ export function initFrame(){
 
 export function updateFrameForRarity(){
 
-    const config = getCurrentCardType();
-
-    if(config.type !== "A") return;
-
-    /*
-     * 選択中の種類を維持する。
-     *
-     * 例：
-     * うた★3 → うた★4
-     * ダンス★4 → ダンス★2
-     */
     setupFrameSelect({
         preserveSelection: true,
         updateRelatedObjects: true
     });
 }
-
 /* ===========================
    選択欄の構築
 =========================== */
@@ -157,10 +145,6 @@ function getCurrentFrameList(){
 
     const config = getCurrentCardType();
 
-    if(config.type === "B"){
-        return FRAME_LIST.B;
-    }
-
     const raritySelect =
         document.getElementById("rarity");
 
@@ -169,11 +153,18 @@ function getCurrentFrameList(){
             ? raritySelect.value
             : "star3";
 
-    if(rarityId === "star4"){
-        return FRAME_LIST.A.star4;
+    const typeFrameList =
+        FRAME_LIST[config.type];
+
+    if(!typeFrameList){
+        return [];
     }
 
-    return FRAME_LIST.A.normal;
+    if(rarityId === "star4"){
+        return typeFrameList.star4 || typeFrameList.normal || [];
+    }
+
+    return typeFrameList.normal || [];
 }
 
 /* ===========================
