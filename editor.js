@@ -12,6 +12,11 @@ const PRELOAD_IMAGES = [
     "./flameA2.png",
     "./flameA3.png",
 
+    // フレーム素材：ひみつ（★4）
+　　"./flameA1_4.png",
+　　"./flameA2_4.png",
+　　"./flameA3_4.png",
+
     // フレーム素材：おねがい
     "./flameB1_2.png",
     "./flameB2_2.png",
