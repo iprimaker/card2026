@@ -9,36 +9,113 @@ import { updateAttributeForFrame } from "./attribute.js";
 let frameObject = null;
 let frameRequestId = 0;
 
-const FRAME_LIST = {
-    A: [
-        { id: "frame1", name: "うた（あお）", path: "./flameA1.png" },
-        { id: "frame2", name: "ダンス（あか）", path: "./flameA2.png" },
-        { id: "frame3", name: "ファッション（きいろ）", path: "./flameA3.png" }
-    ],
+const CARD_WIDTH = 697;
+const CARD_HEIGHT = 1016;
 
-    B: [
-        { id: "frame1", name: "すき（ピンク）", path: "./flameB1_2.png" },
-        { id: "frame2", name: "ゆめ（あお）", path: "./flameB2_2.png" },
-        { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3_2.png" },
-        { id: "frame4", name: "ゆうき（きいろ）", path: "./flameB4_2.png" },
-        { id: "frame5", name: "じょうねつ（あか） ※プレリリース", path: "./flameB5_2.png" }
-    ]
+/* ===========================
+   フレーム一覧
+=========================== */
+
+const FRAME_LIST = {
+    A: {
+        normal: [
+            { id: "frame1", name: "うた（あお）", path: "./flameA1.png" },
+            { id: "frame2", name: "ダンス（あか）", path: "./flameA2.png" },
+            { id: "frame3", name: "ファッション（きいろ）", path: "./flameA3.png" }
+        ],
+
+        star4: [
+            { id: "frame1", name: "うた（あお）", path: "./flameA2_1.png" },
+            { id: "frame2", name: "ダンス（あか）", path: "./flameA2_2.png" },
+            { id: "frame3", name: "ファッション（きいろ）", path: "./flameA2_3.png" }
+        ]
+    },
+
+    B: {
+        normal: [
+            { id: "frame1", name: "すき（ピンク）", path: "./flameB1_2.png" },
+            { id: "frame2", name: "ゆめ（あお）", path: "./flameB2_2.png" },
+            { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3_2.png" },
+            { id: "frame4", name: "ゆうき（きいろ）", path: "./flameB4_2.png" },
+            { id: "frame5", name: "じょうねつ（あか） ※プレリリース", path: "./flameB5_2.png" }
+        ],
+
+        star4: [
+            // 将来、Bタイプの★4素材ができたらここを差し替える
+            { id: "frame1", name: "すき（ピンク）", path: "./flameB1_2.png" },
+            { id: "frame2", name: "ゆめ（あお）", path: "./flameB2_2.png" },
+            { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3_2.png" },
+            { id: "frame4", name: "ゆうき（きいろ）", path: "./flameB4_2.png" },
+            { id: "frame5", name: "じょうねつ（あか） ※プレリリース", path: "./flameB5_2.png" }
+        ]
+    }
 };
+
+/* ===========================
+   初期化
+=========================== */
 
 export function initFrame(){
 
     const frameSelect = document.getElementById("frame");
-    const config = getCurrentCardType();
 
     if(!frameSelect) return;
 
-    const frames = FRAME_LIST[config.type] || [];
+    setupFrameSelect({
+        preserveSelection: false,
+        updateRelatedObjects: false
+    });
+}
 
-    // イベント重複防止
+/* ===========================
+   ランク変更時の更新
+=========================== */
+
+export function updateFrameForRarity(){
+
+    const config = getCurrentCardType();
+
+    if(config.type !== "A") return;
+
+    /*
+     * 選択中の種類を維持する。
+     *
+     * 例：
+     * うた★3 → うた★4
+     * ダンス★4 → ダンス★2
+     */
+    setupFrameSelect({
+        preserveSelection: true,
+        updateRelatedObjects: true
+    });
+}
+
+/* ===========================
+   選択欄の構築
+=========================== */
+
+function setupFrameSelect({
+    preserveSelection = true,
+    updateRelatedObjects = true
+} = {}){
+
+    const frameSelect = document.getElementById("frame");
+
+    if(!frameSelect) return;
+
+    const frames = getCurrentFrameList();
+
+    const previousFrameId =
+        preserveSelection
+            ? frameSelect.value
+            : "";
+
+    // イベントの重複を防止
     frameSelect.onchange = null;
     frameSelect.innerHTML = "";
 
     frames.forEach(frame => {
+
         const option = document.createElement("option");
 
         option.value = frame.id;
@@ -47,47 +124,123 @@ export function initFrame(){
         frameSelect.appendChild(option);
     });
 
+    if(frames.length === 0){
+        removeAllFrameObjects();
+        return;
+    }
+
+    const selectionExists = frames.some(
+        frame => frame.id === previousFrameId
+    );
+
+    frameSelect.value =
+        selectionExists
+            ? previousFrameId
+            : frames[0].id;
+
     frameSelect.onchange = () => {
-        const selected = frames.find(
-            frame => frame.id === frameSelect.value
-        );
-
-        if(!selected) return;
-
-        drawFrame(selected.path);
-
-        // フレームごとのテキスト装飾を更新
-        updateTextStyle();
-
-        // Bタイプのバズパワー候補を更新
-        updateBuzzPowerForFrame();
-
-        // Aタイプで「通常」選択中なら、
-        // フレームに対応する通常属性へ更新
-        updateAttributeForFrame();
+        applyCurrentFrame({
+            updateRelatedObjects: true
+        });
     };
 
-    if(frames.length > 0){
-        frameSelect.value = frames[0].id;
-        drawFrame(frames[0].path);
-    }
+    applyCurrentFrame({
+        updateRelatedObjects
+    });
 }
+
+/* ===========================
+   現在使用するフレーム一覧
+=========================== */
+
+function getCurrentFrameList(){
+
+    const config = getCurrentCardType();
+
+    if(config.type === "B"){
+        return FRAME_LIST.B;
+    }
+
+    const raritySelect =
+        document.getElementById("rarity");
+
+    const rarityId =
+        raritySelect
+            ? raritySelect.value
+            : "star3";
+
+    if(rarityId === "star4"){
+        return FRAME_LIST.A.star4;
+    }
+
+    return FRAME_LIST.A.normal;
+}
+
+/* ===========================
+   現在選択中のフレームを反映
+=========================== */
+
+function applyCurrentFrame({
+    updateRelatedObjects = true
+} = {}){
+
+    const frameSelect =
+        document.getElementById("frame");
+
+    if(!frameSelect) return;
+
+    const frames = getCurrentFrameList();
+
+    const selected = frames.find(
+        frame => frame.id === frameSelect.value
+    );
+
+    if(!selected) return;
+
+    drawFrame(selected.path);
+
+    if(!updateRelatedObjects) return;
+
+    // フレームごとの文字装飾を反映
+    updateTextStyle();
+
+    // Bタイプのバズパワー一覧を更新
+    updateBuzzPowerForFrame();
+
+    // Aタイプで通常属性選択中なら属性も更新
+    updateAttributeForFrame();
+}
+
+/* ===========================
+   フレーム描画
+=========================== */
 
 function drawFrame(path){
 
     const canvas = getCanvas();
 
-    if(!canvas) return;
+    if(!canvas || !path) return;
 
     frameRequestId++;
-    const currentRequestId = frameRequestId;
+
+    const currentRequestId =
+        frameRequestId;
 
     removeAllFrameObjects();
 
     cloneCachedImage(path, img => {
 
-        // 古い非同期処理の結果なら追加しない
+        // 過去の読み込み結果は無視
         if(currentRequestId !== frameRequestId){
+            return;
+        }
+
+        if(!img){
+            console.error(
+                "フレーム素材の読み込みに失敗しました:",
+                path
+            );
+
             return;
         }
 
@@ -95,8 +248,8 @@ function drawFrame(path){
         removeAllFrameObjects();
 
         img.set({
-            left: 697 / 2,
-            top: 1016 / 2,
+            left: CARD_WIDTH / 2,
+            top: CARD_HEIGHT / 2,
 
             originX: "center",
             originY: "center",
@@ -119,16 +272,24 @@ function drawFrame(path){
     });
 }
 
+/* ===========================
+   フレーム全削除
+=========================== */
+
 function removeAllFrameObjects(){
 
     const canvas = getCanvas();
 
     if(!canvas) return;
 
-    canvas.getObjects().forEach(object => {
-        if(object.layerType === "frame"){
-            canvas.remove(object);
-        }
+    const frameObjects = canvas
+        .getObjects()
+        .filter(object => {
+            return object.layerType === "frame";
+        });
+
+    frameObjects.forEach(object => {
+        canvas.remove(object);
     });
 
     frameObject = null;
