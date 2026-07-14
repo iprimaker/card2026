@@ -80,12 +80,17 @@ export function startApp(){
 function buildEditor(){
 
     initImages();
+
+    // 最初にレアリティ値を確定
     initRarity();
+
+    // レアリティを参照する機能を後から初期化
     initFrame();
     initAttribute();
     initText();
     initSerial();
     initBuzzPower();
+    initWatermark();
 
     resizePreview();
 }
