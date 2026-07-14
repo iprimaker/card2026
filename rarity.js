@@ -111,7 +111,7 @@ export function initRarity(){
        星数変更
     =========================== */
 
-  raritySelect.onchange = () => {
+ raritySelect.onchange = () => {
 
     const selected = rarities.find(
         rarity => rarity.id === raritySelect.value
@@ -126,12 +126,7 @@ export function initRarity(){
         removeAllRarityObjects();
     }
 
-    /*
-     * セレクトボックスの値が確定してから
-     * 関連素材を更新する
-     */
     requestAnimationFrame(() => {
-
         updateFrameForRarity();
 
         requestAnimationFrame(() => {
@@ -142,36 +137,20 @@ export function initRarity(){
     });
 };
 
-        if(selected.path){
-            drawRarity(selected.path);
-        }else{
-            cancelRarityRequest();
-            removeAllRarityObjects();
-        }
-    };
+// 初期値は星3
+raritySelect.value = "star3";
 
-   // 初期値は星3
-    raritySelect.value = "star3";
+const defaultRarity = rarities.find(
+    rarity => rarity.id === raritySelect.value
+);
 
-    const defaultRarity = rarities.find(
-        rarity => rarity.id === raritySelect.value
-    );
+if(defaultRarity?.path){
+    drawRarity(defaultRarity.path);
+}
 
-    if(defaultRarity?.path){
-        drawRarity(defaultRarity.path);
-    }
-
-    // 初期状態の関連素材も反映
-    requestAnimationFrame(() => {
-        updateFrameForRarity();
-
-        requestAnimationFrame(() => {
-            updateCurrentAttribute();
-            updateBuzzPowerForRarity();
-            updateTextStyle();
-        });
-    });
-
+// 初期状態では、ほかの機能は app.js 側で初期化されるため、
+// ここで再更新しなくてもよい
+}
 
 /* ===========================
    レアリティ画像描画
