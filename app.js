@@ -12,8 +12,8 @@ import {
     clearImageReferences
 } from "./image.js";
 
-import { initFrame } from "./frame.js";
 import { initRarity } from "./rarity.js";
+import { initFrame } from "./frame.js";
 import { initAttribute } from "./attribute.js";
 import { initText } from "./text.js";
 import { initSerial } from "./serial.js";
@@ -80,8 +80,8 @@ export function startApp(){
 function buildEditor(){
 
     initImages();
-    initFrame();
     initRarity();
+    initFrame();
     initAttribute();
     initText();
     initSerial();
