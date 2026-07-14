@@ -90,7 +90,6 @@ function buildEditor(){
     initText();
     initSerial();
     initBuzzPower();
-    initWatermark();
 
     resizePreview();
 }
