@@ -111,31 +111,7 @@ export function initRarity(){
        星数変更
     =========================== */
 
-    raritySelect.onchange = () => {
-
-        const selected = rarities.find(
-            rarity =>
-                rarity.id === raritySelect.value
-        );
-
-        if(!selected){
-
-            console.error(
-                "選択されたレアリティが見つかりません:",
-                raritySelect.value
-            );
-
-            return;
-        }
-
-        console.log(
-            "レアリティ変更:",
-            selected.id,
-            selected.path
-        );
-
-
-      raritySelect.onchange = () => {
+  raritySelect.onchange = () => {
 
     const selected = rarities.find(
         rarity => rarity.id === raritySelect.value
@@ -150,10 +126,20 @@ export function initRarity(){
         removeAllRarityObjects();
     }
 
-  updateFrameForRarity();
-　updateCurrentAttribute();
-　updateBuzzPowerForRarity();
-　updateTextStyle();
+    /*
+     * セレクトボックスの値が確定してから
+     * 関連素材を更新する
+     */
+    requestAnimationFrame(() => {
+
+        updateFrameForRarity();
+
+        requestAnimationFrame(() => {
+            updateCurrentAttribute();
+            updateBuzzPowerForRarity();
+            updateTextStyle();
+        });
+    });
 };
 
         if(selected.path){
@@ -164,23 +150,15 @@ export function initRarity(){
         }
     };
 
-    /* ===========================
-       初期値は星3
-    =========================== */
+  // 初期値は星3
+raritySelect.value = "star3";
 
-    const defaultRarityId = "star3";
+const defaultRarity = rarities.find(
+    rarity => rarity.id === raritySelect.value
+);
 
-    raritySelect.value = defaultRarityId;
-
-    const defaultRarity = rarities.find(
-        rarity => rarity.id === defaultRarityId
-    );
-
-    updateCurrentAttribute();
-
-    if(defaultRarity?.path){
-        drawRarity(defaultRarity.path);
-    }
+if(defaultRarity?.path){
+    drawRarity(defaultRarity.path);
 }
 
 /* ===========================
