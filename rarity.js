@@ -1,3 +1,4 @@
+import { updateBuzzPowerForRarity } from "./buzzPower.js";
 import { updateFrameForRarity } from "./frame.js";
 import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
@@ -133,7 +134,7 @@ export function initRarity(){
         );
 
 
-       raritySelect.onchange = () => {
+      raritySelect.onchange = () => {
 
     const selected = rarities.find(
         rarity => rarity.id === raritySelect.value
@@ -148,19 +149,10 @@ export function initRarity(){
         removeAllRarityObjects();
     }
 
-    // 選択中の種類を維持したまま、
-    // レアリティに対応するフレームへ変更
     updateFrameForRarity();
-
-    // レアリティに対応する属性へ変更
     updateCurrentAttribute();
+    updateBuzzPowerForRarity();
 };
-        /*
-         * 先に属性を更新する。
-         * その後レアリティを読み込み、
-         * レアリティが最前面になりやすくする。
-         */
-        updateCurrentAttribute();
 
         if(selected.path){
             drawRarity(selected.path);
