@@ -1,3 +1,4 @@
+import { updateTextStyle } from "./text.js";
 import { updateBuzzPowerForRarity } from "./buzzPower.js";
 import { updateFrameForRarity } from "./frame.js";
 import { getCanvas } from "./canvas.js";
@@ -149,9 +150,10 @@ export function initRarity(){
         removeAllRarityObjects();
     }
 
-    updateFrameForRarity();
-    updateCurrentAttribute();
-    updateBuzzPowerForRarity();
+  updateFrameForRarity();
+　updateCurrentAttribute();
+　updateBuzzPowerForRarity();
+　updateTextStyle();
 };
 
         if(selected.path){
