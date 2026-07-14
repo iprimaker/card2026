@@ -133,7 +133,7 @@ export function initRarity(){
         );
 
 
-        raritySelect.onchange = () => {
+       raritySelect.onchange = () => {
 
     const selected = rarities.find(
         rarity => rarity.id === raritySelect.value
@@ -148,10 +148,11 @@ export function initRarity(){
         removeAllRarityObjects();
     }
 
-    // 選択中の種類を維持したままフレーム素材を変更
+    // 選択中の種類を維持したまま、
+    // レアリティに対応するフレームへ変更
     updateFrameForRarity();
 
-    // レアリティに対応した属性素材へ変更
+    // レアリティに対応する属性へ変更
     updateCurrentAttribute();
 };
         /*
