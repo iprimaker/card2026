@@ -171,7 +171,7 @@ export function initRarity(){
             updateTextStyle();
         });
     });
-}
+
 
 /* ===========================
    レアリティ画像描画
