@@ -25,9 +25,9 @@ const FRAME_LIST = {
         ],
 
         star4: [
-            { id: "frame1", name: "うた（あお）", path: "./flameA2_1.png" },
-            { id: "frame2", name: "ダンス（あか）", path: "./flameA2_2.png" },
-            { id: "frame3", name: "ファッション（きいろ）", path: "./flameA2_3.png" }
+            { id: "frame1", name: "うた（あお）", path: "./flameA1_4.png" },
+            { id: "frame2", name: "ダンス（あか）", path: "./flameA2_4.png" },
+            { id: "frame3", name: "ファッション（きいろ）", path: "./flameA3_4.png" }
         ]
     },
 
