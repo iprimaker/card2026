@@ -150,15 +150,27 @@ export function initRarity(){
         }
     };
 
-  // 初期値は星3
-raritySelect.value = "star3";
+   // 初期値は星3
+    raritySelect.value = "star3";
 
-const defaultRarity = rarities.find(
-    rarity => rarity.id === raritySelect.value
-);
+    const defaultRarity = rarities.find(
+        rarity => rarity.id === raritySelect.value
+    );
 
-if(defaultRarity?.path){
-    drawRarity(defaultRarity.path);
+    if(defaultRarity?.path){
+        drawRarity(defaultRarity.path);
+    }
+
+    // 初期状態の関連素材も反映
+    requestAnimationFrame(() => {
+        updateFrameForRarity();
+
+        requestAnimationFrame(() => {
+            updateCurrentAttribute();
+            updateBuzzPowerForRarity();
+            updateTextStyle();
+        });
+    });
 }
 
 /* ===========================
