@@ -1,3 +1,4 @@
+import { updateFrameForRarity } from "./frame.js";
 import { getCanvas } from "./canvas.js";
 import { sortLayers } from "./layer.js";
 import { getCurrentCardType } from "./config.js";
@@ -131,6 +132,28 @@ export function initRarity(){
             selected.path
         );
 
+
+        raritySelect.onchange = () => {
+
+    const selected = rarities.find(
+        rarity => rarity.id === raritySelect.value
+    );
+
+    if(!selected) return;
+
+    if(selected.path){
+        drawRarity(selected.path);
+    }else{
+        cancelRarityRequest();
+        removeAllRarityObjects();
+    }
+
+    // 選択中の種類を維持したままフレーム素材を変更
+    updateFrameForRarity();
+
+    // レアリティに対応した属性素材へ変更
+    updateCurrentAttribute();
+};
         /*
          * 先に属性を更新する。
          * その後レアリティを読み込み、
