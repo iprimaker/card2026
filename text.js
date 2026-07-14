@@ -198,8 +198,8 @@ const TEXT_STYLE = {
                     fontFamily: "Zen Maru Gothic",
                     fontSize: 28,
                     fontWeight: 900,
-                    fill: "#FFFFFF",
-                    stroke: "#C5A4FF",
+                    fill: "#E4D3A7",
+                    stroke: "#E4D3A7",
                     strokeWidth: 1,
                     scaleX: 1,
                     scaleY: 1
@@ -208,14 +208,14 @@ const TEXT_STYLE = {
                     fontFamily: "Dela Gothic One",
                     fontSize: 32,
                     fontWeight: "normal",
-                    fill: "#FFFFFF",
+                    fill: "#FFE700",
                     stroke: null,
                     strokeWidth: 0,
                     scaleX: 0.62,
                     scaleY: 1.45,
                     shadow: new fabric.Shadow({
-                        color: "#6A34A8",
-                        blur: 5,
+                        color: "#2D5FA8",
+                        blur: 4,
                         offsetX: 1,
                         offsetY: 2
                     })
@@ -227,8 +227,8 @@ const TEXT_STYLE = {
                     fontFamily: "Zen Maru Gothic",
                     fontSize: 28,
                     fontWeight: 900,
-                    fill: "#FFFFFF",
-                    stroke: "#FF9CB6",
+                    fill: "#E4D3A7",
+                    stroke: "#E4D3A7",
                     strokeWidth: 1,
                     scaleX: 1,
                     scaleY: 1
@@ -237,14 +237,14 @@ const TEXT_STYLE = {
                     fontFamily: "Dela Gothic One",
                     fontSize: 32,
                     fontWeight: "normal",
-                    fill: "#FFFFFF",
+                    fill: "#FFE700",
                     stroke: null,
                     strokeWidth: 0,
                     scaleX: 0.62,
                     scaleY: 1.45,
                     shadow: new fabric.Shadow({
-                        color: "#9B244D",
-                        blur: 5,
+                        color: "#C44700",
+                        blur: 4,
                         offsetX: 1,
                         offsetY: 2
                     })
@@ -256,8 +256,8 @@ const TEXT_STYLE = {
                     fontFamily: "Zen Maru Gothic",
                     fontSize: 28,
                     fontWeight: 900,
-                    fill: "#FFFFFF",
-                    stroke: "#FFD86A",
+                    fill: "#E4D3A7",
+                    stroke: "#E4D3A7",
                     strokeWidth: 1,
                     scaleX: 1,
                     scaleY: 1
@@ -266,14 +266,14 @@ const TEXT_STYLE = {
                     fontFamily: "Dela Gothic One",
                     fontSize: 32,
                     fontWeight: "normal",
-                    fill: "#FFFFFF",
+                    fill: "#FFE700",
                     stroke: null,
                     strokeWidth: 0,
                     scaleX: 0.62,
                     scaleY: 1.45,
                     shadow: new fabric.Shadow({
-                        color: "#9A6200",
-                        blur: 5,
+                        color: "#C44700",
+                        blur: 4,
                         offsetX: 1,
                         offsetY: 2
                     })
