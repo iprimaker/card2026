@@ -81,7 +81,7 @@ export async function preloadImages(paths){
 
         if(loadingText){
             loadingText.textContent =
-                "只今メンテナンス中です";
+                "起動に失敗しました";
         }
 
         if(percent){
