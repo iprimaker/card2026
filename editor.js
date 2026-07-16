@@ -122,7 +122,30 @@ const PRELOAD_IMAGES = [
     "./B_yuki_1400.png",
 
      // バズパワー素材：おねがい（じょうねつ）
-    "./B_jounetu_1400.png",
+    "./B_jounetu_900.png",
+    "./B_jounetu_950.png",
+    "./B_jounetu_1000.png",
+    "./B_jounetu_1050.png",
+    "./B_jounetu_1100.png",
+    "./B_jounetu_1150.png",
+    "./B_jounetu_1200.png",
+    "./B_jounetu_1250.png",
+    "./B_jounetu_1300.png",
+    "./B_jounetu_1350.png",
+    "./B_jounetu_1400.png"
+
+     // バズパワー素材：おねがい（きぼう）
+    "./B_kibou_900.png",
+    "./B_kibou_950.png",
+    "./B_kibou_1000.png",
+    "./B_kibou_1050.png",
+    "./B_kibou_1100.png",
+    "./B_kibou_1150.png",
+    "./B_kibou_1200.png",
+    "./B_kibou_1250.png",
+    "./B_kibou_1300.png",
+    "./B_kibou_1350.png",
+    "./B_kibou_1400.png"
 
     // バズパワー素材：おねがい（ゆめ）
     "./B_yume_900.png",
