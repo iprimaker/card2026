@@ -37,7 +37,8 @@ const FRAME_LIST = {
             { id: "frame2", name: "ゆめ（あお）", path: "./flameB2_2.png" },
             { id: "frame3", name: "ゆうじょう（みどり）", path: "./flameB3_2.png" },
             { id: "frame4", name: "ゆうき（きいろ）", path: "./flameB4_2.png" },
-            { id: "frame5", name: "じょうねつ（あか） ※プレリリース", path: "./flameB5_2.png" }
+            { id: "frame5", name: "じょうねつ（あか） ", path: "./flameB5_2.png" }
+            { id: "frame5", name: "きぼう（むらさき）", path: "./flameB6_2.png" }
         ],
 
         star4: [
