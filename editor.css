@@ -856,3 +856,34 @@ body.modalOpen{
 body.isLoading .floatingButtons{
     display:none;
 }
+
+#loadingScreen.maintenanceMode{
+    background:
+        linear-gradient(
+            135deg,
+            #fff4f7,
+            #f4f0ff
+        );
+}
+
+#loadingScreen.maintenanceMode .loadingBox{
+    border:
+        2px solid rgba(255,120,155,.3);
+}
+
+#loadingProgress.maintenance{
+    background:#ff7898;
+}
+
+#loadingScreen.maintenanceMode
+.loadingBox p{
+    font-size:22px;
+    color:#d34f73;
+}
+
+#loadingScreen.maintenanceMode
+#loadingPercent{
+    font-size:14px;
+    color:#766b80;
+    line-height:1.7;
+}
