@@ -877,7 +877,7 @@ body.isLoading .floatingButtons{
 
 #loadingScreen.maintenanceMode
 .loadingBox p{
-    font-size:22px;
+    font-size:20px;
     color:#d34f73;
 }
 
