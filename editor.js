@@ -185,13 +185,17 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     startApp();
 
-    // 以下、モーダルなどの設定
-});
+    document.body.classList.remove("isLoading");
 
     // ---------- 利用にあたって ----------
-    const noticeButton = document.getElementById("noticeButton");
-    const noticeModal = document.getElementById("noticeModal");
-    const closeModal = document.getElementById("closeModal");
+    const noticeButton =
+        document.getElementById("noticeButton");
+
+    const noticeModal =
+        document.getElementById("noticeModal");
+
+    const closeModal =
+        document.getElementById("closeModal");
 
     if(noticeButton && noticeModal && closeModal){
 
@@ -207,13 +211,19 @@ window.addEventListener("DOMContentLoaded", async () => {
     // ---------- お知らせ ----------
     const NEWS_VERSION = "20260709-3";
 
-    const newsButton = document.getElementById("newsButton");
-    const newsModal = document.getElementById("newsModal");
-    const closeNewsModal = document.getElementById("closeNewsModal");
+    const newsButton =
+        document.getElementById("newsButton");
+
+    const newsModal =
+        document.getElementById("newsModal");
+
+    const closeNewsModal =
+        document.getElementById("closeNewsModal");
 
     if(newsButton && newsModal && closeNewsModal){
 
-        const readVersion = localStorage.getItem("newsReadVersion");
+        const readVersion =
+            localStorage.getItem("newsReadVersion");
 
         if(readVersion === NEWS_VERSION){
             newsButton.classList.add("read");
@@ -222,6 +232,7 @@ window.addEventListener("DOMContentLoaded", async () => {
         }
 
         newsButton.onclick = () => {
+
             openModal(newsModal);
 
             localStorage.setItem(
@@ -238,9 +249,14 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 
     // ---------- 使い方 ----------
-    const guideButton = document.getElementById("guideButton");
-    const guideModal = document.getElementById("guideModal");
-    const closeGuideModal = document.getElementById("closeGuideModal");
+    const guideButton =
+        document.getElementById("guideButton");
+
+    const guideModal =
+        document.getElementById("guideModal");
+
+    const closeGuideModal =
+        document.getElementById("closeGuideModal");
 
     if(guideButton && guideModal && closeGuideModal){
 
@@ -253,8 +269,13 @@ window.addEventListener("DOMContentLoaded", async () => {
         };
 
         closeGuideModal.onclick = () => {
+
             closeModalWindow(guideModal);
-            localStorage.setItem("guideRead", "true");
+
+            localStorage.setItem(
+                "guideRead",
+                "true"
+            );
         };
     }
 });
