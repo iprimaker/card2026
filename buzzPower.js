@@ -120,10 +120,30 @@ const BUZZ_POWER_LIST = {
             ],
 
             frame5: [
+                { id: "buzz1", name: "900", path: "./B_jounetu_900.png" },
+                { id: "buzz2", name: "950", path: "./B_jounetu_950.png" },
+                { id: "buzz3", name: "1000", path: "./B_jounetu_1000.png" },
+                { id: "buzz4", name: "1050", path: "./B_jounetu_1050.png" },
+                { id: "buzz5", name: "1100", path: "./B_jounetu_1100.png" },
+                { id: "buzz6", name: "1150", path: "./B_jounetu_1150.png" },
+                { id: "buzz7", name: "1200", path: "./B_jounetu_1200.png" },
+                { id: "buzz8", name: "1250", path: "./B_jounetu_1250.png" },
+                { id: "buzz9", name: "1300", path: "./B_jounetu_1300.png" },
+                { id: "buzz10", name: "1350", path: "./B_jounetu_1350.png" },
                 { id: "buzz11", name: "1400", path: "./B_jounetu_1400.png"}
             ],
 
             frame6: [
+                { id: "buzz1", name: "900", path: "./B_kibou_900.png" },
+                { id: "buzz2", name: "950", path: "./B_kibou_950.png" },
+                { id: "buzz3", name: "1000", path: "./B_kibou_1000.png" },
+                { id: "buzz4", name: "1050", path: "./B_kibou_1050.png" },
+                { id: "buzz5", name: "1100", path: "./B_kibou_1100.png" },
+                { id: "buzz6", name: "1150", path: "./B_kibou_1150.png" },
+                { id: "buzz7", name: "1200", path: "./B_kibou_1200.png" },
+                { id: "buzz8", name: "1250", path: "./B_kibou_1250.png" },
+                { id: "buzz9", name: "1300", path: "./B_kibou_1300.png" },
+                { id: "buzz10", name: "1350", path: "./B_kibou_1350.png" },
                 { id: "buzz11", name: "1400", path: "./B_kibou_1400.png"}
             ],
         },
