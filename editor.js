@@ -145,7 +145,7 @@ const PRELOAD_IMAGES = [
     "./B_kibou_1250.png",
     "./B_kibou_1300.png",
     "./B_kibou_1350.png",
-    "./B_kibou_1400.png"
+    "./B_kibou_1400.png",
 
     // バズパワー素材：おねがい（ゆめ）
     "./B_yume_900.png",
