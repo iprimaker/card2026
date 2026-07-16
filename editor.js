@@ -163,35 +163,30 @@ const PRELOAD_IMAGES = [
 
 window.addEventListener("DOMContentLoaded", async () => {
 
+    document.body.classList.add("isLoading");
+
     try{
-        console.log("フォント読み込み開始");
 
         if(document.fonts){
             await document.fonts.ready;
         }
 
-        console.log("素材プリロード開始");
-
         await preloadImages(PRELOAD_IMAGES);
 
-        console.log("素材プリロード完了");
-
     }catch(error){
-        console.error("プリロード中にエラーが発生しました", error);
 
-        // エラー時もローディング画面を閉じる
-        const loadingScreen = document.getElementById("loadingScreen");
+        console.error(
+            "メンテナンス画面を表示します",
+            error
+        );
 
-        if(loadingScreen){
-            loadingScreen.classList.add("hide");
-
-            setTimeout(() => {
-                loadingScreen.remove();
-            }, 400);
-        }
+        return;
     }
 
     startApp();
+
+    // 以下、モーダルなどの設定
+});
 
     // ---------- 利用にあたって ----------
     const noticeButton = document.getElementById("noticeButton");
