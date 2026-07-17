@@ -17,17 +17,17 @@ const RARITY_LIST = {
     A: [
         {
             id: "star2",
-            name: "★★ 2",
+            name: "★★　２",
             path: "./A_rank2.png"
         },
         {
             id: "star3",
-            name: "★★★ 3",
+            name: "★★★　３",
             path: "./A_rank3.png"
         },
         {
             id: "star4",
-            name: "★★★★ 4",
+            name: "★★★★　４",
             path: "./A_rank4.png"
         }
     ],
@@ -35,7 +35,7 @@ const RARITY_LIST = {
     B: [
         {
             id: "preparing",
-            name: "★★★ ３",
+            name: "★★★　３",
             path: "./B_rank3.png"
         }
     ]
