@@ -292,7 +292,7 @@ const TEXT_STYLE = {
             frame3: createBTextStyle("#008052"),
             frame4: createBTextStyle("#DF871F"),
             frame5: createBTextStyle("#C91C27"),
-            frame5: createBTextStyle("#5A0085")
+            frame6: createBTextStyle("#5A0085")
         },
 
         /* ===========================
