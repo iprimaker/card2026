@@ -49,7 +49,7 @@ async function saveImage(){
 
         const dataUrl = canvas.toDataURL({
             format: "png",
-            quality: 1,
+            quality: 2,
             multiplier
         });
 
