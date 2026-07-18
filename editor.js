@@ -3,7 +3,7 @@ import { preloadImages } from "./preload.js";
 
 const PRELOAD_IMAGES = [
     // 背景素材
-    "./backA1.png"
+    "./backA1.png",
     "./backA1_1.png",
     "./backB2.png",
 
