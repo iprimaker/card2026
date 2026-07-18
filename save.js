@@ -49,7 +49,7 @@ async function saveImage(){
 
         const dataUrl = canvas.toDataURL({
             format: "png",
-            quality: 2,
+            quality: 3,
             multiplier
         });
 
@@ -80,7 +80,7 @@ async function saveImage(){
                 await navigator.share({
                     files: [file],
                     title: "アイプリカード",
-                    text: "アイプリカードメーカーhttps://iprimaker.github.io/card2026/ にて作成しました"
+                    text: "アイプリカードメーカー https://iprimaker.github.io/card2026/ にて作成されました"
                 });
 
                 return;
