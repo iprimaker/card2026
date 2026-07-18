@@ -67,7 +67,7 @@
             <li>2026/07/07　アイプリカードメーカー公開　Ver.1.00</li>
             <li>2026/07/08　属性「ゆうき」を追加しました　Ver.1.01</li>
             <li>2026/07/09　テキスト入力機能を追加しました　Ver.2.00</li>
-            <li>2026/07/11　レアリティ―切り替え機能の一部を追加しました　Ver.2.03</li>
+            <li>2026/07/11　ひみつ版のレアリティ変更機能を追加しました　Ver.2.03</li>
             <li>2026/07/14　属性「じょうねつ」を追加しました　Ver.2.04</li>
             <li>2026/07/16　属性「きぼう」を追加しました　Ver.2.14</li>
         </ul>
@@ -78,16 +78,17 @@
             <li>2026/07/07　スマートフォンでの表示不具合を修正しました　Ver.1.03</li>
             <li>2026/07/10　画像が上手く操作できないバグを修正しました　Ver.2.01</li>
             <li>2026/07/11　細かなバグを修正しました　Ver.2.02</li>
+            <li>2026/07/18　保存操作に関わるバグを修正しました　Ver.2.15</li>
         </ul>
 
         <h2>実装予定</h2>
 
         <ul>
-            <li>レアリティ変更機能の更新・追加</li>
+            <li>おねがい版レアリティ変更機能の追加</li>
             <li>新規フレームや新規属性素材の順次追加</li>
         </ul>
 
-        <p style="text-align:right;">Ver.2.14</p>
+        <p style="text-align:right;">Ver.2.15</p>
     </div>
 </div>
 
@@ -146,7 +147,7 @@
 </div>
         
 <div class="item" id="rarityArea">
-    <label>レアリティを選択</label>
+    <label>レアリティ選択</label>
 
     <select id="rarity">
         <option value="star2">☆2</option>
@@ -156,27 +157,27 @@
 </div>
         
          <div class="item">
-            <label>フレームを選択</label>
+            <label>フレーム選択</label>
             <select id="frame"></select>
         </div>
 
         <div class="item" id="backgroundSelectArea">
-            <label>背景タイプを選択</label>
+            <label>背景タイプ選択</label>
             <select id="backgroundSelect"></select>
         </div>
 
         <div class="item">
-            <label>キャラクター画像を挿入（最大1枚）</label>
+            <label>キャラクター画像挿入（最大1枚）</label>
             <input type="file" id="character" accept="image/*">
         </div>
 
         <div class="item" id="attributeArea">
-            <label>属性を選択</label>
+            <label>属性選択</label>
             <select id="attribute"></select>
         </div>
 
         <div class="item" id="buzzPowerArea">
-            <label>バズパワーを選択</label>
+            <label>バズパワー選択</label>
             <select id="buzzPower"></select>
         </div>
 
@@ -212,14 +213,14 @@
         <input type="checkbox" id="serialModeToggle" checked>
 
         <span class="serialSlider">
-            <span class="serialLabel auto">自動</span>
-            <span class="serialLabel manual">手動</span>
+            <span class="serialLabel auto">自動入力</span>
+            <span class="serialLabel manual">手動入力</span>
         </span>
     </label>
 </div>
 
 <div class="item" id="serialManualArea" style="display:none;">
-    <label>シリアル番号設定（英数字のみ）</label>
+    <label>シリアル番号設定（半角英数字のみ）</label>
     <input
         id="serialManual"
         type="text"
