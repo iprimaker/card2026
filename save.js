@@ -164,5 +164,5 @@ function saveButtonState(disabled){
 
     saveButton.disabled = disabled;
     saveButton.textContent =
-        disabled ? "保存中" : "保存";
+        disabled ? "保存" : "保存";
 }
