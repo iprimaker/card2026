@@ -80,7 +80,7 @@ async function saveImage(){
                 await navigator.share({
                     files: [file],
                     title: "アイプリカード",
-                    text: "作成したカードです"
+                    text: "アイプリカードメーカーhttps://iprimaker.github.io/card2026/ にて作成しました"
                 });
 
                 return;
