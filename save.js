@@ -3,11 +3,11 @@ import { sortLayers } from "./layer.js";
 
 let saving = false;
 
-export function initSave(){
+export function initSave() {
 
     const saveButton = document.getElementById("saveButton");
 
-    if(!saveButton){
+    if (!saveButton) {
         console.error("保存ボタンが見つかりません");
         return;
     }
@@ -15,21 +15,22 @@ export function initSave(){
     saveButton.onclick = saveImage;
 }
 
-async function saveImage(){
+async function saveImage() {
 
-    if(saving) return;
+    if (saving) return;
 
     const canvas = getCanvas();
 
-    if(!canvas){
+    if (!canvas) {
         console.error("Canvasが取得できません");
         return;
     }
 
     saving = true;
-    saveButtonState(true);
+    setSaveButtonState(true);
 
-    try{
+    try {
+
         canvas.discardActiveObject();
 
         sortLayers();
@@ -37,132 +38,157 @@ async function saveImage(){
 
         await waitForRender();
 
-        /*
-         * スマホでは倍率3だとメモリ不足になりやすいため、
-         * スマホは1、PCは2にする
-         */
-        const isMobile = window.matchMedia(
-            "(max-width: 900px)"
-        ).matches;
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(
+            navigator.userAgent
+        );
 
-        const multiplier = isMobile ? 1 : 2;
-
-        const dataUrl = canvas.toDataURL({
-            format: "png",
-            quality: 3,
-            multiplier
-        });
+        const dataUrl = createHighQualityImage(canvas, isMobile);
 
         const blob = await dataUrlToBlob(dataUrl);
 
-        if(!blob){
-            throw new Error("画像データの作成に失敗しました");
+        if (!blob) {
+            throw new Error("Blobの作成に失敗しました");
         }
 
         const fileName = "ipricard.png";
 
-        /*
-         * スマホでWeb Share APIが使える場合は、
-         * 共有画面から「画像を保存」を選べる
-         */
-        if(
+        // スマホは共有画面を開く
+        if (
             isMobile &&
             navigator.share &&
             navigator.canShare
-        ){
+        ) {
+
             const file = new File(
                 [blob],
                 fileName,
-                { type: "image/png" }
+                {
+                    type: "image/png"
+                }
             );
 
-            if(navigator.canShare({ files: [file] })){
+            if (navigator.canShare({ files: [file] })) {
+
                 await navigator.share({
                     files: [file],
                     title: "アイプリカード",
-                    text: "アイプリカードメーカー https://iprimaker.github.io/card2026/ にて作成されました"
+                    text: "作成したカードです"
                 });
 
                 return;
             }
         }
 
-        /*
-         * PCや共有非対応ブラウザでは通常ダウンロード
-         */
+        // PC・共有非対応
         downloadBlob(blob, fileName);
 
-    }catch(error){
+    } catch (error) {
 
-        /*
-         * 共有画面をユーザーが閉じただけなら
-         * エラー表示しない
-         */
-        if(error?.name === "AbortError"){
+        if (error.name === "AbortError") {
             return;
         }
 
-        console.error("保存処理に失敗しました:", error);
+        console.error(error);
 
         alert(
-            "画像を保存できませんでした。\n" +
-            "ブラウザを最新版にして、もう一度お試しください。"
+            "保存に失敗しました。\nもう一度お試しください。"
         );
 
-    }finally{
+    } finally {
+
         saving = false;
-        saveButtonState(false);
+        setSaveButtonState(false);
     }
 }
 
-function dataUrlToBlob(dataUrl){
+function createHighQualityImage(canvas, isMobile) {
 
-    return fetch(dataUrl)
-        .then(response => response.blob())
-        .catch(error => {
-            console.error(
-                "Blob変換に失敗しました:",
-                error
+    const multipliers = isMobile
+        ? [3, 2, 1]
+        : [3];
+
+    for (const multiplier of multipliers) {
+
+        try {
+
+            console.log(
+                `${multiplier}倍で画像生成`
             );
 
-            return null;
-        });
+            const dataUrl = canvas.toDataURL({
+                format: "png",
+                quality: 1,
+                multiplier,
+                enableRetinaScaling: true
+            });
+
+            if (
+                typeof dataUrl === "string" &&
+                dataUrl.startsWith("data:image/png")
+            ) {
+                return dataUrl;
+            }
+
+        } catch (e) {
+
+            console.warn(
+                `${multiplier}倍失敗`,
+                e
+            );
+        }
+    }
+
+    throw new Error("画像生成に失敗しました");
 }
 
-function downloadBlob(blob, fileName){
+async function dataUrlToBlob(dataUrl) {
+
+    const response = await fetch(dataUrl);
+
+    return await response.blob();
+}
+
+function downloadBlob(blob, fileName) {
 
     const url = URL.createObjectURL(blob);
+
     const link = document.createElement("a");
 
     link.href = url;
     link.download = fileName;
-    link.style.display = "none";
 
     document.body.appendChild(link);
+
     link.click();
+
     link.remove();
 
-    setTimeout(() => {
-        URL.revokeObjectURL(url);
-    }, 1000);
+    URL.revokeObjectURL(url);
 }
 
-function waitForRender(){
+function waitForRender() {
 
     return new Promise(resolve => {
+
         requestAnimationFrame(() => {
+
             requestAnimationFrame(resolve);
+
         });
+
     });
 }
 
-function saveButtonState(disabled){
+function setSaveButtonState(disabled) {
 
-    const saveButton = document.getElementById("saveButton");
+    const saveButton =
+        document.getElementById("saveButton");
 
-    if(!saveButton) return;
+    if (!saveButton) return;
 
     saveButton.disabled = disabled;
-    saveButton.textContent =
-        disabled ? "保存" : "保存";
+
+    saveButton.textContent = disabled
+        ? "保存中..."
+        : "保存";
 }
